@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { useWorldStore } from '@/store/worldStore'
-import { ANDHERI_EAST_COORDS } from '@/lib/constants'
+import { VAN_NESS_COORDS } from '@/lib/constants'
 import CitizenDots from './CitizenDots'
 import ConstructionOverlay from './ConstructionOverlay'
 import MapControls from './MapControls'
@@ -24,7 +24,7 @@ export default function CesiumWorld() {
   return (
     <div className="relative w-full h-full bg-slate-950">
       <MapContainer
-        center={[ANDHERI_EAST_COORDS.lat, ANDHERI_EAST_COORDS.lng]}
+        center={[VAN_NESS_COORDS.lat, VAN_NESS_COORDS.lng]}
         zoom={15}
         style={{ width: '100%', height: '100%' }}
         zoomControl={false}

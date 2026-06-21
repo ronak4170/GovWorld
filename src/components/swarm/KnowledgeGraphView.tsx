@@ -2,20 +2,20 @@ import { useMemo, useState } from 'react'
 import type { KnowledgeGraph, GraphNode } from '@/types/swarm'
 
 const TYPE_COLORS: Record<string, string> = {
-  CivicOfficial: '#60a5fa',
+  CivicOfficial: '#76b900',
   Contractor: '#f59e0b',
-  NGO: '#34d399',
+  NGO: '#76b900',
   MediaOutlet: '#a78bfa',
-  Commuter: '#38bdf8',
-  Shopkeeper: '#fb923c',
+  Commuter: '#76b900',
+  Shopkeeper: '#76b900',
   Resident: '#f87171',
-  TransportWorker: '#22d3ee',
-  Person: '#94a3b8',
-  Organization: '#cbd5e1',
+  TransportWorker: '#76b900',
+  Person: '#a7a7a7',
+  Organization: '#a7a7a7',
 }
 
 function colorFor(type: string): string {
-  return TYPE_COLORS[type] ?? '#94a3b8'
+  return TYPE_COLORS[type] ?? '#a7a7a7'
 }
 
 export default function KnowledgeGraphView({ graph }: { graph: KnowledgeGraph }) {
@@ -47,7 +47,7 @@ export default function KnowledgeGraphView({ graph }: { graph: KnowledgeGraph })
               y1={s.y}
               x2={t.x}
               y2={t.y}
-              stroke="#334155"
+              stroke="#333333"
               strokeWidth={0.8}
               strokeOpacity={0.5}
             />
@@ -69,7 +69,7 @@ export default function KnowledgeGraphView({ graph }: { graph: KnowledgeGraph })
               <circle
                 r={r}
                 fill={colorFor(n.type)}
-                stroke={isPolicy ? '#f8fafc' : '#0f172a'}
+                stroke={isPolicy ? '#ffffff' : '#000000'}
                 strokeWidth={isPolicy ? 2 : 1}
                 opacity={hover && hover.id !== n.id ? 0.55 : 1}
               />
@@ -79,7 +79,7 @@ export default function KnowledgeGraphView({ graph }: { graph: KnowledgeGraph })
                   y={r + 11}
                   textAnchor="middle"
                   className="pointer-events-none"
-                  fill="#cbd5e1"
+                  fill="#a7a7a7"
                   fontSize={isPolicy ? 13 : 9}
                   fontWeight={isPolicy ? 700 : 500}
                 >

@@ -70,7 +70,7 @@ function ChamberScene({ expertIds, activeExpertId, policyTitle, introComplete }:
       <Stars radius={80} depth={40} count={1200} factor={3} saturation={0} fade speed={0.5} />
 
       <ambientLight intensity={0.15} />
-      <directionalLight position={[5, 8, 5]} intensity={0.35} color="#cbd5e1" />
+      <directionalLight position={[5, 8, 5]} intensity={0.35} color="#a7a7a7" />
 
       {/* Floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
@@ -79,15 +79,15 @@ function ChamberScene({ expertIds, activeExpertId, policyTitle, introComplete }:
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]}>
         <ringGeometry args={[5.5, 6, 64]} />
-        <meshStandardMaterial color="#1e293b" emissive="#0369A1" emissiveIntensity={0.15} />
+        <meshStandardMaterial color="#1a1a1a" emissive="#5a8d00" emissiveIntensity={0.15} />
       </mesh>
 
       {/* Center policy pedestal */}
       <mesh position={[0, 0.4, 0]}>
         <cylinderGeometry args={[0.6, 0.8, 0.8, 16]} />
         <meshStandardMaterial
-          color="#0f172a"
-          emissive="#0369A1"
+          color="#000000"
+          emissive="#5a8d00"
           emissiveIntensity={introComplete ? 0.6 : 0.2}
           roughness={0.3}
           metalness={0.6}
@@ -96,7 +96,7 @@ function ChamberScene({ expertIds, activeExpertId, policyTitle, introComplete }:
       <Text
         position={[0, 1.2, 0]}
         fontSize={0.18}
-        color="#e2e8f0"
+        color="#ffffff"
         anchorX="center"
         anchorY="middle"
         maxWidth={3}
@@ -110,7 +110,7 @@ function ChamberScene({ expertIds, activeExpertId, policyTitle, introComplete }:
       {expertIds.map((id, i) => {
         const [x, , z] = positions[i]
         const isActive = id === activeExpertId
-        const color = EXPERT_COLORS[id] ?? '#94a3b8'
+        const color = EXPERT_COLORS[id] ?? '#a7a7a7'
         return (
           <spotLight
             key={`spot-${id}`}

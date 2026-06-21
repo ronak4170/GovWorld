@@ -16,7 +16,7 @@ import { generateSwarmPosts, type SwarmAgentSeed } from '@/lib/llm'
 
 const ROUND_LABELS = [
   'Month 1 — Announcement & first digging',
-  'Month 3 — Monsoon delays bite',
+  'Month 3 — Winter storm delays bite',
   'Month 5 — Peak disruption',
   'Month 7 — Midpoint review',
   'Month 9 — Light at the end',
@@ -46,19 +46,19 @@ const ORG_POSTS: Record<string, { content: string; sentiment: Sentiment }[]> = {
   ORG_ROADS: [
     { content: 'Phase 1 works have begun. Traffic control deployed at Van Ness and Market. Estimated completion 18 months.', sentiment: 'neutral' },
     { content: 'We acknowledge delays from heavy rainfall and are revising the Block B schedule. Updated timeline soon.', sentiment: 'neutral' },
-    { content: 'Block A is complete and open. Two lanes restored ahead of the festival rush.', sentiment: 'positive' },
+    { content: 'Block A is complete and open. Two lanes restored ahead of the holiday rush.', sentiment: 'positive' },
   ],
   ORG_MOBILITY: [
     { content: 'Removing the cycle lane without an alternative puts 1000s of riders at risk. We are requesting a safety audit.', sentiment: 'negative' },
-    { content: 'Filed an RTI on the diversion plan. Commuters deserve to know the real reroute times.', sentiment: 'negative' },
+    { content: 'Filed a public records request on the diversion plan. Commuters deserve to know the real reroute times.', sentiment: 'negative' },
   ],
   ORG_CLEANAIR: [
     { content: 'PM2.5 near the school zone is 3x safe limits during excavation. Where are the dust screens?', sentiment: 'negative' },
     { content: 'Wider roads = induced demand = more cars. Has anyone modelled the emissions for this corridor?', sentiment: 'negative' },
   ],
   ORG_DAILY: [
-    { content: 'INVESTIGATION: Ram Construction missed its Block B milestone by 3 weeks. Contractor history shows a prior 8-week delay.', sentiment: 'negative' },
-    { content: 'City Daily confirms an unbudgeted utility pipe burst added ₹4cr to the project cost.', sentiment: 'negative' },
+    { content: 'INVESTIGATION: Bay Area Infrastructure missed its Block B milestone by 3 weeks. Contractor history shows a prior 8-week delay.', sentiment: 'negative' },
+    { content: 'San Francisco Chronicle confirms an unbudgeted utility pipe burst added $4M to the project cost.', sentiment: 'negative' },
   ],
 }
 
@@ -158,7 +158,7 @@ export function runSwarmRound(
         avatar: replier.avatarEmoji,
         content:
           rSent === 'negative'
-            ? 'Same here. We should organise and show up at the ward meeting.'
+            ? 'Same here. We should organise and show up at the town hall meeting.'
             : rSent === 'positive'
             ? 'Give it time — the end result will help all of us.'
             : 'Depends where you are on the corridor, honestly.',

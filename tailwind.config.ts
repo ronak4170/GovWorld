@@ -9,47 +9,111 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Stitch / mission-control color tokens
-        'primary':               '#ffb690',
-        'primary-container':     '#f97316',
-        'on-primary':            '#552100',
-        'on-primary-container':  '#582200',
-        'secondary':             '#4edea3',
-        'secondary-container':   '#00a572',
-        'on-secondary':          '#003824',
-        'tertiary':              '#93ccff',
-        'tertiary-container':    '#00a2f4',
-        'on-tertiary':           '#003351',
-        'error':                 '#ffb4ab',
-        'error-container':       '#93000a',
-        'on-error-container':    '#ffdad6',
-        'surface':               '#1c110b',
-        'surface-variant':       '#40322a',
-        'surface-container':     '#291d16',
-        'surface-container-low': '#251913',
-        'surface-container-high':'#352720',
-        'surface-container-lowest': '#160c06',
-        'surface-container-highest': '#40322a',
-        'surface-dim':           '#1c110b',
-        'surface-bright':        '#45362f',
-        'on-surface':            '#f6ded3',
-        'on-surface-variant':    '#e0c0b1',
-        'outline':               '#a78b7d',
-        'outline-variant':       '#584237',
-        'inverse-surface':       '#f6ded3',
-        'inverse-on-surface':    '#3c2d26',
-        'inverse-primary':       '#9d4300',
-        // Citizen status colours
+        // NVIDIA design system — single green accent on black/white/gray chrome
+        // (dark-chrome interpretation: control surface uses NVIDIA's black nav/footer palette)
+        'primary':               '#76b900', // NVIDIA Green — the one accent
+        'primary-container':     '#76b900',
+        'on-primary':            '#000000',
+        'on-primary-container':  '#000000',
+        'primary-dark':          '#5a8d00', // pressed state
+        'secondary':             '#76b900',
+        'secondary-container':   '#5a8d00',
+        'on-secondary':          '#000000',
+        'tertiary':              '#bff230', // accent green pale — rare highlight
+        'tertiary-container':    '#5a8d00',
+        'on-tertiary':           '#000000',
+        'error':                 '#e52020',
+        'error-container':       '#650b0b',
+        'on-error-container':    '#ffffff',
+        'surface':               '#000000', // black canvas / chrome
+        'surface-variant':       '#1a1a1a', // surface-elevated
+        'surface-container':     '#0d0d0d',
+        'surface-container-low': '#080808',
+        'surface-container-high':'#1a1a1a',
+        'surface-container-lowest': '#000000',
+        'surface-container-highest': '#242424',
+        'surface-dim':           '#000000',
+        'surface-bright':        '#242424',
+        'on-surface':            '#ffffff',
+        'on-surface-variant':    '#a7a7a7', // ash — secondary text on dark
+        'outline':               '#5e5e5e', // hairline-strong (dividers on dark)
+        'outline-variant':       '#333333',
+        'inverse-surface':       '#ffffff',
+        'inverse-on-surface':    '#000000',
+        'inverse-primary':       '#5a8d00',
+        // NVIDIA paper-white surfaces (for any light-mode chapters)
+        'canvas':                '#ffffff',
+        'surface-soft':          '#f7f7f7',
+        'hairline':              '#cccccc',
+        'ink':                   '#000000',
+        'mute':                  '#757575',
+        // Override Tailwind's orange + blue ramps -> NVIDIA green (single accent).
+        // Catches every stray orange-*/blue-* utility across legacy components.
+        orange: {
+          50:  '#f4ffd9',
+          100: '#e9ffb0',
+          200: '#d4f86a',
+          300: '#bff230',
+          400: '#9fd400',
+          500: '#76b900',
+          600: '#5a8d00',
+          700: '#4a7300',
+          800: '#3a5a00',
+          900: '#2a4200',
+          950: '#1a2900',
+        },
+        blue: {
+          50:  '#f4ffd9',
+          100: '#e9ffb0',
+          200: '#d4f86a',
+          300: '#bff230',
+          400: '#9fd400',
+          500: '#76b900',
+          600: '#5a8d00',
+          700: '#4a7300',
+          800: '#3a5a00',
+          900: '#2a4200',
+          950: '#1a2900',
+        },
+        // Override Tailwind's slate ramp -> NVIDIA neutral grayscale (black -> white).
+        // Kills the legacy navy chrome wherever slate-* utilities are used.
+        slate: {
+          50:  '#f7f7f7',
+          100: '#f0f0f0',
+          200: '#e0e0e0',
+          300: '#cccccc',
+          400: '#a7a7a7',
+          500: '#757575',
+          600: '#5e5e5e',
+          700: '#333333',
+          800: '#1a1a1a',
+          900: '#0a0a0a',
+          950: '#000000',
+        },
+        // Citizen / semantic status colours (aligned to NVIDIA semantic palette)
         citizen: {
-          green: '#10B981',
-          amber: '#F59E0B',
-          red: '#EF4444',
-          grey: '#64748B',
+          green: '#76b900',
+          amber: '#ef9100',
+          red: '#e52020',
+          grey: '#757575',
         },
       },
       fontFamily: {
-        sans: ['Geist', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Inter', 'Arial', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
+      borderRadius: {
+        // NVIDIA: aggressively angular — 2px on every interactive element, circles excepted
+        none: '0px',
+        xs: '1px',
+        sm: '2px',
+        DEFAULT: '2px',
+        md: '2px',
+        lg: '2px',
+        xl: '2px',
+        '2xl': '2px',
+        '3xl': '2px',
+        full: '9999px',
       },
       backgroundImage: {
         'grid-slate': 'linear-gradient(rgba(148,163,184,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.05) 1px, transparent 1px)',

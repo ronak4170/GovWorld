@@ -7,10 +7,10 @@ import { useUIStore } from '@/store/uiStore'
 const Shell = lazy(() =>
   import('./components/layout/Shell').catch(() => ({
     default: () => (
-      <div className="flex items-center justify-center h-screen" style={{ backgroundColor: '#08090d' }}>
+      <div className="flex items-center justify-center h-screen" style={{ backgroundColor: '#000000' }}>
         <div className="text-center">
           <div className="text-4xl font-bold gradient-text mb-2">GOVWORLD</div>
-          <div style={{ color: '#8b95a8' }}>Layout loading...</div>
+          <div style={{ color: '#a7a7a7' }}>Layout loading...</div>
         </div>
       </div>
     ),
@@ -25,12 +25,12 @@ This project redesigns Van Ness from Market to Jackson Street with dedicated BRT
 
 function Splash({ message }: { message: string }) {
   return (
-    <div className="flex items-center justify-center h-screen" style={{ backgroundColor: '#08090d' }}>
+    <div className="flex items-center justify-center h-screen" style={{ backgroundColor: '#000000' }}>
       <div className="text-center">
         <div className="text-5xl font-black gradient-text mb-3 tracking-tight">GOVWORLD</div>
-        <div className="text-sm mb-1" style={{ color: '#8b95a8' }}>The Living City</div>
-        <div className="text-sm mt-4 flex items-center gap-2 justify-center" style={{ color: '#3d4b61' }}>
-          <div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: '#f97316', borderTopColor: 'transparent' }} />
+        <div className="text-sm mb-1" style={{ color: '#a7a7a7' }}>The Living City</div>
+        <div className="text-sm mt-4 flex items-center gap-2 justify-center" style={{ color: '#757575' }}>
+          <div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: '#76b900', borderTopColor: 'transparent' }} />
           {message}
         </div>
       </div>

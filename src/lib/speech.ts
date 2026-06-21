@@ -29,7 +29,7 @@ export class SpeechRecognizer {
     this.recognition = new SpeechRecognition()
     this.recognition.continuous = true
     this.recognition.interimResults = true
-    this.recognition.lang = config.lang ?? 'en-IN'
+    this.recognition.lang = config.lang ?? 'en-US'
     this.recognition.onresult = this.handleResult.bind(this)
     this.recognition.onerror = (e: any) => config.onError?.(e.error)
   }
@@ -80,13 +80,13 @@ export function speak(
   const utterance = new SpeechSynthesisUtterance(text)
   utterance.rate = options?.rate ?? 0.95
   utterance.pitch = options?.pitch ?? 1.0
-  utterance.lang = options?.lang ?? 'en-IN'
+  utterance.lang = options?.lang ?? 'en-US'
   if (options?.voice) {
     utterance.voice = options.voice
   } else {
     const voices = window.speechSynthesis.getVoices()
     const preferred =
-      voices.find((v) => v.lang.startsWith('en-IN')) ?? voices.find((v) => v.lang.startsWith('en'))
+      voices.find((v) => v.lang.startsWith('en-US')) ?? voices.find((v) => v.lang.startsWith('en'))
     if (preferred) utterance.voice = preferred
   }
   if (options?.onEnd) utterance.onend = options.onEnd

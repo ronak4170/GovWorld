@@ -4,7 +4,7 @@
 import { Polyline } from 'react-leaflet'
 import { useWorldStore } from '@/store/worldStore'
 import { useSimulationStore } from '@/store/simulationStore'
-import { SAHAR_ROAD_ROUTE, CONSTRUCTION_COLORS } from '@/lib/constants'
+import { VAN_NESS_ROUTE, CONSTRUCTION_COLORS } from '@/lib/constants'
 
 export default function ConstructionOverlay() {
   const currentMonth = useWorldStore((s) => s.currentMonth)
@@ -13,13 +13,13 @@ export default function ConstructionOverlay() {
 
   if (currentMonth === 0 || constructionProgress === 0) return null
 
-  const color = CONSTRUCTION_COLORS[currentMonth] ?? '#e2e8f0'
+  const color = CONSTRUCTION_COLORS[currentMonth] ?? '#ffffff'
   const weight = currentMonth === 12 ? 12 : 8
 
   // Slice the route proportionally to constructionProgress
-  const totalPoints = SAHAR_ROAD_ROUTE.length
+  const totalPoints = VAN_NESS_ROUTE.length
   const progressIndex = Math.ceil((constructionProgress / 100) * (totalPoints - 1))
-  const visibleRoute = SAHAR_ROAD_ROUTE.slice(0, Math.max(2, progressIndex + 1))
+  const visibleRoute = VAN_NESS_ROUTE.slice(0, Math.max(2, progressIndex + 1))
 
   // Extra overlays from the current simulation tick
   const tick = getCurrentTick()

@@ -1,6 +1,6 @@
 // NeighbourhoodSelector.tsx — OWNED BY Map Agent
 // Full-screen splash shown before the map loads in demo mode.
-// Lets the judge immediately load the pre-computed Andheri East scenario.
+// Lets the judge immediately load the pre-computed Van Ness Avenue scenario.
 // Calls onSelect() to signal App.tsx to begin loading demo data.
 
 import { useState, KeyboardEvent } from 'react'

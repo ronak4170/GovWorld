@@ -69,11 +69,11 @@ export function prepareTextForSpeech(text: string): string {
   return (
     text
       // Currency & numbers
-      .replace(/₹\s*/g, 'dollars ')
-      .replace(/\$(\d+(?:\.\d+)?)\s*[Mm]/g, '$1 million dollars')
+      .replace(/\$(\d+(?:\.\d+)?)\s*[Mm]\b/g, '$1 million dollars')
+      .replace(/\$(\d+(?:\.\d+)?)\s*[Kk]\b/g, '$1 thousand dollars')
       .replace(/\$(\d+(?:,\d+)*)/g, '$1 dollars')
       .replace(/\b(\d+(?:\.\d+)?)\s*km\b/gi, '$1 kilometers')
-      .replace(/\b(\d+(?:\.\d+)?)\s*cr\b/gi, '$1 crore')
+      .replace(/\b(\d+(?:\.\d+)?)\s*mi\b/gi, '$1 miles')
       .replace(/\b(\d+(?:\.\d+)?)%/g, '$1 percent')
       // Acronyms & technical terms
       .replace(/\bPM2\.5\b/gi, 'fine particulate matter')

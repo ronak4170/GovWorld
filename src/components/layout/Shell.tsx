@@ -25,12 +25,12 @@ function ToastContainer({ toasts }: { toasts: Toast[] }) {
           className="px-4 py-3 rounded-xl text-sm font-medium shadow-xl border transition-all"
           style={
             toast.type === 'error'
-              ? { backgroundColor: 'rgba(127,29,29,0.95)', color: '#fca5a5', borderColor: '#7f1d1d' }
+              ? { backgroundColor: 'rgba(229,32,32,0.95)', color: '#fca5a5', borderColor: '#7f1d1d' }
               : toast.type === 'success'
-              ? { backgroundColor: 'rgba(6,78,59,0.95)', color: '#6ee7b7', borderColor: '#065f46' }
+              ? { backgroundColor: 'rgba(58,90,0,0.95)', color: '#76b900', borderColor: '#5a8d00' }
               : toast.type === 'warning'
               ? { backgroundColor: 'rgba(120,53,15,0.95)', color: '#fcd34d', borderColor: '#92400e' }
-              : { backgroundColor: 'rgba(15,17,23,0.97)', color: '#f0f2f8', borderColor: '#1e2535' }
+              : { backgroundColor: 'rgba(15,17,23,0.97)', color: '#ffffff', borderColor: '#1a1a1a' }
           }
         >
           {toast.message}
@@ -51,7 +51,7 @@ export default function Shell() {
   }, [])
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden" style={{ backgroundColor: '#08090d' }}>
+    <div className="flex flex-col h-screen overflow-hidden" style={{ backgroundColor: '#000000' }}>
       {/* Cinematic scanline */}
       <div className="scanline" />
       {/* SimulationEngine runs silently in background */}
@@ -74,7 +74,7 @@ export default function Shell() {
         {/* Right Panel: 360px fixed width */}
         <div
           className="w-[360px] flex-shrink-0 overflow-hidden flex flex-col border-l"
-          style={{ backgroundColor: '#0f1117', borderColor: '#1e2535' }}
+          style={{ backgroundColor: '#000000', borderColor: '#1a1a1a' }}
         >
           <PanelManager />
         </div>

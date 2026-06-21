@@ -37,17 +37,17 @@ export default function DebateControls({
       {/* Session progress bar */}
       <div className="px-8 pb-2 pt-1">
         <div className="flex justify-between items-center px-1 mb-1.5">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#a78b7d' }}>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#5e5e5e' }}>
             Session Progress
           </span>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.1em] tabular-nums" style={{ color: '#f6ded3' }}>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.1em] tabular-nums" style={{ color: '#ffffff' }}>
             {isComplete ? 'Complete' : `Round ${round} / ${maxRound}`} · {pct}%
           </span>
         </div>
-        <div className="h-1 w-full rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(64,50,42,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="h-1 w-full rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(26,26,26,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
           <div
             className="h-full relative transition-all duration-300"
-            style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #ffb690 0%, #f97316 100%)' }}
+            style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #76b900 0%, #76b900 100%)' }}
           >
             <div className="absolute right-0 top-0 bottom-0 w-8 blur-sm" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
           </div>
@@ -57,15 +57,15 @@ export default function DebateControls({
       {/* Transport bar */}
       <div
         className="flex items-center gap-3 px-4 py-3 border-t backdrop-blur-md"
-        style={{ borderColor: 'rgba(88,66,55,0.4)', background: 'rgba(15,17,23,0.7)' }}
+        style={{ borderColor: 'rgba(94,94,94,0.4)', background: 'rgba(15,17,23,0.7)' }}
       >
         <button
           onClick={onExit}
           className={ICON_BTN}
-          style={{ border: '1px solid #584237', color: '#a78b7d' }}
+          style={{ border: '1px solid #333333', color: '#5e5e5e' }}
           aria-label="Exit debate"
-          onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb690')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = '#a78b7d')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#76b900')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#5e5e5e')}
         >
           <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
         </button>
@@ -76,7 +76,7 @@ export default function DebateControls({
               onClick={isPlaying ? onPause : onPlay}
               disabled={playbackState === 'idle'}
               className={ICON_BTN + ' disabled:opacity-40'}
-              style={{ backgroundColor: '#f97316', color: '#552100' }}
+              style={{ backgroundColor: '#76b900', color: '#000000' }}
               aria-label={isPlaying ? 'Pause' : 'Play'}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '22px', fontVariationSettings: "'FILL' 1" }}>
@@ -88,7 +88,7 @@ export default function DebateControls({
               onClick={onSkip}
               disabled={!isPlaying && playbackState !== 'paused'}
               className={ICON_BTN + ' disabled:opacity-40'}
-              style={{ border: '1px solid #584237', color: '#e0c0b1' }}
+              style={{ border: '1px solid #333333', color: '#a7a7a7' }}
               aria-label="Skip to next point"
               title="Skip to next point"
             >
@@ -99,7 +99,7 @@ export default function DebateControls({
               onClick={onSkipToEnd}
               disabled={!isPlaying && playbackState !== 'paused'}
               className="flex items-center justify-center gap-1 px-3 h-11 rounded-lg transition-all active:scale-95 disabled:opacity-40 cursor-pointer text-xs font-semibold"
-              style={{ border: '1px solid #584237', color: '#e0c0b1' }}
+              style={{ border: '1px solid #333333', color: '#a7a7a7' }}
               aria-label="Skip to verdict"
               title="Skip to verdict"
             >
@@ -112,7 +112,7 @@ export default function DebateControls({
         <button
           onClick={onToggleMute}
           className={ICON_BTN}
-          style={{ border: '1px solid #584237', color: '#e0c0b1' }}
+          style={{ border: '1px solid #333333', color: '#a7a7a7' }}
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
           <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
@@ -121,12 +121,12 @@ export default function DebateControls({
         </button>
 
         <div className="flex-1 text-center">
-          <span className="text-[10px] uppercase tracking-[0.15em]" style={{ color: '#584237' }}>
+          <span className="text-[10px] uppercase tracking-[0.15em]" style={{ color: '#333333' }}>
             {isComplete ? 'Debate Complete' : 'Live Council Simulation'}
           </span>
         </div>
 
-        <div className="text-xs tabular-nums w-12 text-right" style={{ color: '#a78b7d' }}>
+        <div className="text-xs tabular-nums w-12 text-right" style={{ color: '#5e5e5e' }}>
           {pct}%
         </div>
       </div>

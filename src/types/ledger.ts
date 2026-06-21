@@ -18,8 +18,8 @@ export interface LedgerTask {
   delayDays: number             // 0 if on track
   flagReason?: string           // Why flagged (if status === 'flagged')
   weatherImpactDays: number     // Days lost to weather events
-  budget: number                // In INR
-  spentToDate: number           // In INR
+  budget: number                // In USD
+  spentToDate: number           // In USD
 }
 
 export interface WorkerAssignment {

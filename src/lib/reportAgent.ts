@@ -64,7 +64,7 @@ export function generateReport(graph: KnowledgeGraph, rounds: SwarmRound[]): Pre
     {
       title: 'Public sentiment trajectory',
       toolCalls: [tool('sentiment_scan', 'per-round sentiment', rounds.map((r) => `${r.label}: +${r.sentimentBreakdown.positive}/~${r.sentimentBreakdown.neutral}/-${r.sentimentBreakdown.negative}`).join(' | '))],
-      content: `Sentiment starts cautious at announcement, deteriorates sharply through the monsoon-delay and peak-disruption phases, then recovers once Block A reopens and the corridor nears completion. The recovery is real but does **not** fully erase the trust damage caused by contractor delays.`,
+      content: `Sentiment starts cautious at announcement, deteriorates sharply through the storm-delay and peak-disruption phases, then recovers once Block A reopens and the corridor nears completion. The recovery is real but does **not** fully erase the trust damage caused by contractor delays.`,
     },
     {
       title: 'Most affected groups',
@@ -79,7 +79,7 @@ export function generateReport(graph: KnowledgeGraph, rounds: SwarmRound[]): Pre
     {
       title: 'Recommendations',
       toolCalls: [tool('panorama', 'mitigation levers', 'Phasing, dust screens, cyclist diversion, transparent contractor reporting.')],
-      content: `1. Publish a public contractor scorecard with live milestone tracking.\n2. Install dust screens and restrict heavy work during school hours.\n3. Provide a protected interim cycle diversion before removing the lane.\n4. Offer rent/▼revenue relief to frontage businesses during peak disruption.\n5. Pre-commit a monsoon contingency schedule to avoid repeat delays.`,
+      content: `1. Publish a public contractor scorecard with live milestone tracking.\n2. Install dust screens and restrict heavy work during school hours.\n3. Provide a protected interim cycle diversion before removing the lane.\n4. Offer rent/▼revenue relief to frontage businesses during peak disruption.\n5. Pre-commit a winter storm contingency schedule to avoid repeat delays.`,
     },
   ]
 

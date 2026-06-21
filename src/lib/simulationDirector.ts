@@ -135,7 +135,7 @@ CORRUPTION: ghost workers on payroll | inflated material invoices | permit delay
 TECHNICAL: unexpected underground utility found | soil liquefaction risk discovered | groundwater table higher than designed | structural design error found mid-construction | equipment breakdown halting critical path
 SOCIAL: community organises protest blocking site access | local media exposes poor conditions | politician uses project as campaign flashpoint | NGO files complaint | residents form monitoring committee
 ECONOMIC: key supplier defaults, halting materials | worker wages unpaid, triggering strike | local shop closures cascade into micro-recession | contractor financing collapses | subcontractor walks off
-ENVIRONMENTAL: pre-monsoon flooding sweeps materials | archaeological heritage artifact found | protected migratory birds nesting on site | toxic soil discovered from old industrial use | air quality monitoring triggers work halt
+ENVIRONMENTAL: winter storm flooding sweeps materials | archaeological heritage artifact found | protected migratory birds nesting on site | toxic soil discovered from old industrial use | air quality monitoring triggers work halt
 SAFETY: worker fatality triggers OSHA investigation | dust-related respiratory illness spike | traffic fatality at unmarked crossing | scaffolding failure injures bystander | child struck by construction vehicle
 POLITICAL: upcoming election freezes approvals for 3 weeks | budget reallocation cuts $5M | new mayor demands project review | anti-corruption audit launched | opposition files public interest litigation
 ADAPTIVE: community informally widens parallel alley as alternative | street vendors relocate and form new market | residents crowdfund to hire independent engineer inspector | local NGO maps affected households for compensation | displaced workers self-organise for retraining
@@ -164,7 +164,7 @@ Generate a JSON object with this EXACT structure (no markdown, no explanation �
       "month": 1,
       "label": "Month 1 — Excavation begins",
       "constructionProgress": 8,
-      "weatherEvent": "Pre-monsoon dry spell — 2 additional workdays gained",
+      "weatherEvent": "Late-summer dry spell — 2 additional workdays gained",
       "citizenUpdates": [
         {
           "citizenId": "C001",
@@ -191,7 +191,7 @@ Generate a JSON object with this EXACT structure (no markdown, no explanation �
           "type": "construction_zone",
           "label": "Block A — Excavation",
           "coordinates": [[19.1100, 72.8650], [19.1136, 72.8697]],
-          "color": "#f97316",
+          "color": "#76b900",
           "style": "dashed",
           "visible": true,
           "opacity": 0.8
@@ -234,7 +234,7 @@ const EDGE_CASE_TEMPLATES: Omit<EdgeCase, 'id' | 'month' | 'discoveredAt'>[] = [
   {
     category: 'corruption',
     title: 'Ghost Workers on Contractor Payroll',
-    description: 'Internal audit flags 8 non-existent workers on Ram Construction payroll. ₹45 lakh in fraudulent wages identified over 3 months.',
+    description: 'Internal audit flags 8 non-existent workers on Bay Area Infrastructure payroll. $180,000 in fraudulent wages identified over 3 months.',
     severity: 'critical',
     affectedCitizenIds: ['C002', 'C003'],
     isResolved: false,
@@ -250,7 +250,7 @@ const EDGE_CASE_TEMPLATES: Omit<EdgeCase, 'id' | 'month' | 'discoveredAt'>[] = [
   {
     category: 'social',
     title: 'Residents Form Monitoring Committee',
-    description: 'Twelve affected households form the Sahar Road Citizens Watch. They demand weekly progress updates and a dedicated grievance hotline.',
+    description: 'Twelve affected households form the Van Ness Corridor Citizens Watch. They demand weekly progress updates and a dedicated grievance hotline.',
     severity: 'info',
     affectedCitizenIds: ['C002', 'C005'],
     isResolved: true,
@@ -291,7 +291,7 @@ const EDGE_CASE_TEMPLATES: Omit<EdgeCase, 'id' | 'month' | 'discoveredAt'>[] = [
   },
   {
     category: 'environmental',
-    title: 'Pre-Monsoon Flooding Damages Site',
+    title: 'Winter Storm Flooding Damages Site',
     description: 'Unseasonal heavy rainfall sweeps loose gravel and construction debris into storm drains. MCGM issues environmental notice. 6 workdays lost.',
     severity: 'warning',
     affectedCitizenIds: ['C004', 'C005'],
@@ -301,7 +301,7 @@ const EDGE_CASE_TEMPLATES: Omit<EdgeCase, 'id' | 'month' | 'discoveredAt'>[] = [
   {
     category: 'adaptive',
     title: 'Informal Alley Widened by Community',
-    description: 'Residents of Sahar Compound collaboratively clear a 2m-wide alley behind shops, creating an informal pedestrian bypass. Footfall partially restored.',
+    description: 'Residents of Van Ness corridor collaboratively clear a 2m-wide alley behind shops, creating an informal pedestrian bypass. Footfall partially restored.',
     severity: 'info',
     affectedCitizenIds: ['C002', 'C004'],
     isResolved: true,
@@ -310,7 +310,7 @@ const EDGE_CASE_TEMPLATES: Omit<EdgeCase, 'id' | 'month' | 'discoveredAt'>[] = [
   {
     category: 'systemic',
     title: 'Cascading Project Delays — 6-Week Slippage',
-    description: 'Combination of monsoon delays, utility conflict, and contractor staff absence pushes overall timeline out by 6 weeks. Budget buffer consumed.',
+    description: 'Combination of winter storm delays, utility conflict, and contractor staff absence pushes overall timeline out by 6 weeks. Budget buffer consumed.',
     severity: 'critical',
     affectedCitizenIds: ['C001', 'C002', 'C003', 'C004'],
     isResolved: false,
@@ -321,7 +321,7 @@ const SUMMARY_TEMPLATES = [
   'This run is defined by a corruption-to-legal cascade: ghost workers trigger an audit, leading to a court challenge that halts Block C. The systemic risk that emerged is institutional capture of the contractor oversight mechanism.',
   'A technical utility conflict in Month 3 compresses the project timeline, forcing a political trade-off between safety and speed. The systemic risk is that rushed re-routing creates a hidden safety liability that surfaces post-completion.',
   'Social mobilisation drives this run — a citizens committee formed in Month 2 creates accountability pressure that paradoxically slows construction but improves quality. The emergent risk is elite capture of the monitoring process.',
-  'Environmental and economic pressures intersect: monsoon damage triggers business closures which fuel political pressure for accelerated, unsafe construction. The systemic risk is a positive-feedback loop between weather and budget erosion.',
+  'Environmental and economic pressures intersect: winter storm damage triggers business closures which fuel political pressure for accelerated, unsafe construction. The systemic risk is a positive-feedback loop between weather and budget erosion.',
   'Adaptive community behaviour is the hallmark of this run: informal solutions emerge faster than official ones, but they create legal ambiguity about ownership and maintenance responsibility after project completion.',
 ]
 

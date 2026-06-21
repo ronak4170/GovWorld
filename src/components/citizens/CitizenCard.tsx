@@ -49,12 +49,12 @@ export default function CitizenCard() {
     : null
 
   return (
-    <div className="h-full flex flex-col bg-[#0d1526] overflow-y-auto">
+    <div className="h-full flex flex-col bg-[#000000] overflow-y-auto">
       {/* Back + status badge row */}
       <div className="px-4 pt-4 pb-3 flex items-center justify-between flex-shrink-0">
         <button
           onClick={() => selectCitizen(null)}
-          className="flex items-center gap-1.5 text-[#7a90b8] hover:text-[#e8edf7] transition-colors text-sm"
+          className="flex items-center gap-1.5 text-[#a7a7a7] hover:text-[#ffffff] transition-colors text-sm"
           aria-label="Back to list"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -75,10 +75,10 @@ export default function CitizenCard() {
             <img
               src={avatarUrl}
               alt={citizen.name}
-              className="w-14 h-14 rounded-full border-2 border-[#1e2d4a] bg-[#131f38]"
+              className="w-14 h-14 rounded-full border-2 border-[#333333] bg-[#1a1a1a]"
             />
           ) : (
-            <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold border-2 border-[#1e2d4a] ${cfg.badge}`}>
+            <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold border-2 border-[#333333] ${cfg.badge}`}>
               {citizen.name.charAt(0)}
             </div>
           )}
@@ -86,13 +86,13 @@ export default function CitizenCard() {
 
         {/* Name + details */}
         <div className="flex-1 min-w-0">
-          <div className="text-[#e8edf7] font-bold text-xl leading-tight" style={{ fontFamily: 'Lexend, sans-serif' }}>
+          <div className="text-[#ffffff] font-bold text-xl leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
             {citizen.name}
           </div>
-          <div className="text-[#7a90b8] text-sm mt-0.5">
+          <div className="text-[#a7a7a7] text-sm mt-0.5">
             {citizen.occupation} &middot; {citizen.age}
           </div>
-          <div className="text-[#3d5280] text-xs mt-0.5 truncate">{citizen.employer}</div>
+          <div className="text-[#757575] text-xs mt-0.5 truncate">{citizen.employer}</div>
         </div>
       </div>
 
@@ -113,11 +113,11 @@ export default function CitizenCard() {
       )}
 
       {/* Impact story */}
-      <div className="mx-4 mt-4 p-3 bg-[#131f38] rounded-xl border border-[#1e2d4a] flex-shrink-0">
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-[#3d5280] mb-2">
+      <div className="mx-4 mt-4 p-3 bg-[#1a1a1a] rounded-xl border border-[#333333] flex-shrink-0">
+        <div className="text-[10px] font-semibold uppercase tracking-widest text-[#757575] mb-2">
           {currentMonth > 0 ? `Month ${currentMonth} Impact` : 'Policy Impact'}
         </div>
-        <p className="text-[#e8edf7] text-sm leading-relaxed">{citizen.currentPolicyImpact}</p>
+        <p className="text-[#ffffff] text-sm leading-relaxed">{citizen.currentPolicyImpact}</p>
         <p className={`text-xs mt-2 ${cfg.text} opacity-70`}>
           {STATUS_NARRATIVES[citizen.statusColor]}
         </p>
@@ -125,45 +125,45 @@ export default function CitizenCard() {
 
       {/* Fear & Hope */}
       <div className="mx-4 mt-3 space-y-2 flex-shrink-0">
-        <div className="p-3 bg-[#131f38] rounded-xl border border-[#1e2d4a]">
+        <div className="p-3 bg-[#1a1a1a] rounded-xl border border-[#333333]">
           <div className="text-[10px] font-semibold uppercase tracking-widest text-red-400/70 mb-1.5">Fear</div>
-          <p className="text-[#b0bcd4] text-sm italic leading-relaxed">&ldquo;{citizen.fears}&rdquo;</p>
+          <p className="text-[#a7a7a7] text-sm italic leading-relaxed">&ldquo;{citizen.fears}&rdquo;</p>
         </div>
-        <div className="p-3 bg-[#131f38] rounded-xl border border-[#1e2d4a]">
+        <div className="p-3 bg-[#1a1a1a] rounded-xl border border-[#333333]">
           <div className="text-[10px] font-semibold uppercase tracking-widest text-green-400/70 mb-1.5">Hope</div>
-          <p className="text-[#b0bcd4] text-sm italic leading-relaxed">&ldquo;{citizen.hopes}&rdquo;</p>
+          <p className="text-[#a7a7a7] text-sm italic leading-relaxed">&ldquo;{citizen.hopes}&rdquo;</p>
         </div>
       </div>
 
       {/* Details grid */}
-      <div className="mx-4 mt-3 p-3 bg-[#131f38] rounded-xl border border-[#1e2d4a] flex-shrink-0">
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-[#3d5280] mb-2.5">Details</div>
+      <div className="mx-4 mt-3 p-3 bg-[#1a1a1a] rounded-xl border border-[#333333] flex-shrink-0">
+        <div className="text-[10px] font-semibold uppercase tracking-widest text-[#757575] mb-2.5">Details</div>
         <div className="space-y-2 text-sm">
           <div className="flex justify-between gap-4">
-            <span className="text-[#3d5280]">Income</span>
-            <span className="text-[#e8edf7] font-medium tabular-nums">
-              &#x20B9;{citizen.monthlyIncome.toLocaleString('en-IN')}/mo
+            <span className="text-[#757575]">Income</span>
+            <span className="text-[#ffffff] font-medium tabular-nums">
+              ${citizen.monthlyIncome.toLocaleString('en-US')}/mo
             </span>
           </div>
           <div className="flex justify-between gap-4">
-            <span className="text-[#3d5280]">Family</span>
-            <span className="text-[#b0bcd4] text-right text-xs leading-relaxed max-w-[180px]">{citizen.familyStructure}</span>
+            <span className="text-[#757575]">Family</span>
+            <span className="text-[#a7a7a7] text-right text-xs leading-relaxed max-w-[180px]">{citizen.familyStructure}</span>
           </div>
           <div className="flex justify-between gap-4">
-            <span className="text-[#3d5280]">Health</span>
-            <span className="text-[#b0bcd4] capitalize">{citizen.healthStatus.replace(/_/g, ' ')}</span>
+            <span className="text-[#757575]">Health</span>
+            <span className="text-[#a7a7a7] capitalize">{citizen.healthStatus.replace(/_/g, ' ')}</span>
           </div>
         </div>
       </div>
 
       {/* Skills */}
       <div className="mx-4 mt-3 flex-shrink-0">
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-[#3d5280] mb-2">Skills</div>
+        <div className="text-[10px] font-semibold uppercase tracking-widest text-[#757575] mb-2">Skills</div>
         <div className="flex flex-wrap gap-1.5">
           {citizen.skills.map((skill) => (
             <span
               key={skill}
-              className="bg-[#131f38] border border-[#1e2d4a] text-[#7a90b8] text-xs px-2.5 py-0.5 rounded-full"
+              className="bg-[#1a1a1a] border border-[#333333] text-[#a7a7a7] text-xs px-2.5 py-0.5 rounded-full"
             >
               {skill}
             </span>
@@ -174,12 +174,12 @@ export default function CitizenCard() {
       {/* Status history */}
       {citizen.statusHistory.length > 0 && (
         <div className="mx-4 mt-3 flex-shrink-0">
-          <div className="text-[10px] font-semibold uppercase tracking-widest text-[#3d5280] mb-2">Recent History</div>
+          <div className="text-[10px] font-semibold uppercase tracking-widest text-[#757575] mb-2">Recent History</div>
           <div className="space-y-1.5">
             {citizen.statusHistory.slice(-3).reverse().map((entry) => (
-              <div key={`${entry.tick}-${entry.status}`} className="flex gap-3 text-xs p-2 rounded-lg bg-[#131f38] border border-[#1e2d4a]">
-                <span className="text-[#3d5280] flex-shrink-0 font-medium w-14">Mo. {entry.tick}</span>
-                <span className="text-[#7a90b8] leading-relaxed">{entry.narrative}</span>
+              <div key={`${entry.tick}-${entry.status}`} className="flex gap-3 text-xs p-2 rounded-lg bg-[#1a1a1a] border border-[#333333]">
+                <span className="text-[#757575] flex-shrink-0 font-medium w-14">Mo. {entry.tick}</span>
+                <span className="text-[#a7a7a7] leading-relaxed">{entry.narrative}</span>
               </div>
             ))}
           </div>
@@ -191,7 +191,7 @@ export default function CitizenCard() {
         <button
           onClick={openVoiceChat}
           className="w-full text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2.5 transition-all duration-150"
-          style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)', boxShadow: '0 4px 14px rgba(249,115,22,0.3)' }}
+          style={{ background: 'linear-gradient(135deg, #76b900 0%, #5a8d00 100%)', boxShadow: '0 4px 14px rgba(118,185,0,0.3)' }}
           onMouseEnter={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
           onMouseLeave={e => (e.currentTarget.style.filter = 'none')}
         >
@@ -200,7 +200,7 @@ export default function CitizenCard() {
           </svg>
           <span>Chat with {firstName}</span>
         </button>
-        <p className="text-xs text-center mt-2" style={{ color: '#3d4b61' }}>Ask them how the construction is affecting their life</p>
+        <p className="text-xs text-center mt-2" style={{ color: '#757575' }}>Ask them how the construction is affecting their life</p>
       </div>
     </div>
   )

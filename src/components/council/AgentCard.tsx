@@ -1,4 +1,5 @@
 import type { DebateMember } from '@/store/councilStore'
+import CornerSquare from '@/components/common/CornerSquare'
 
 interface Props {
   member: DebateMember
@@ -43,6 +44,7 @@ export default function AgentCard({ member, isSpeaking = false, typedText }: Pro
           : 'border-slate-700'
       }`}
     >
+      <CornerSquare position="tr" />
       {/* "Now speaking" badge */}
       {isSpeaking && (
         <div className="absolute -top-3 left-4 bg-blue-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-lg">

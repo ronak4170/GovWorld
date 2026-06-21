@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { ANDHERI_EAST_COORDS, DEMO_TOTAL_MONTHS } from '@/lib/constants'
+import { VAN_NESS_COORDS, DEMO_TOTAL_MONTHS } from '@/lib/constants'
 
 export interface WorldState {
   neighbourhoodName: string
@@ -28,7 +28,7 @@ export interface WorldState {
 
 const initialState = {
   neighbourhoodName: 'Van Ness Avenue, San Francisco',
-  centreCoords: [ANDHERI_EAST_COORDS.lat, ANDHERI_EAST_COORDS.lng] as [number, number],
+  centreCoords: [VAN_NESS_COORDS.lat, VAN_NESS_COORDS.lng] as [number, number],
   mapInstance: null,
   isMapReady: false,
   currentMonth: 0,

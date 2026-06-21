@@ -23,17 +23,17 @@ export default function CinematicSubtitle({ expertId, text, visible = true }: Pr
             <span
               key={i}
               className="waveform-bar w-1 rounded-full"
-              style={{ backgroundColor: '#f97316', animationDelay: delay }}
+              style={{ backgroundColor: '#76b900', animationDelay: delay }}
             />
           ))}
         </div>
 
         {/* Speech text */}
         <div className="min-w-0">
-          <span className="block mb-1 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#ffb690' }}>
+          <span className="block mb-1 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#76b900' }}>
             {expert ? `${expert.name} · ${expert.title}` : 'Analyzing speech'}
           </span>
-          <p className="text-[15px] leading-snug italic" style={{ color: '#e0c0b1' }}>
+          <p className="text-[15px] leading-snug italic" style={{ color: '#a7a7a7' }}>
             {text ? `“${text}”` : '…'}
           </p>
         </div>

@@ -3,7 +3,7 @@
 // Shows: camera reset button, construction progress pill, weather event banner.
 
 import { useWorldStore } from '@/store/worldStore'
-import { ANDHERI_EAST_COORDS, DEMO_ROAD_NAME } from '@/lib/constants'
+import { VAN_NESS_COORDS, DEMO_ROAD_NAME } from '@/lib/constants'
 
 export default function MapControls() {
   const mapInstance = useWorldStore((s) => s.mapInstance)
@@ -14,7 +14,7 @@ export default function MapControls() {
 
   const handleResetView = () => {
     if (mapInstance) {
-      mapInstance.setView([ANDHERI_EAST_COORDS.lat, ANDHERI_EAST_COORDS.lng], 15)
+      mapInstance.setView([VAN_NESS_COORDS.lat, VAN_NESS_COORDS.lng], 15)
     }
   }
 
@@ -47,7 +47,7 @@ export default function MapControls() {
               className="h-1.5 rounded-full transition-all duration-700 ease-out"
               style={{
                 width: `${constructionProgress}%`,
-                backgroundColor: currentMonth === 12 ? '#10b981' : '#3b82f6',
+                backgroundColor: currentMonth === 12 ? '#76b900' : '#76b900',
               }}
             />
           </div>
@@ -55,7 +55,7 @@ export default function MapControls() {
             <span className="text-slate-400 text-[10px]">Month {currentMonth}/12</span>
             <span
               className="text-xs font-semibold"
-              style={{ color: currentMonth === 12 ? '#10b981' : '#60a5fa' }}
+              style={{ color: currentMonth === 12 ? '#76b900' : '#76b900' }}
             >
               {constructionProgress}%
             </span>

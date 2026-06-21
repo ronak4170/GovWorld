@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* Leaflet styles */
 @import 'leaflet/dist/leaflet.css';
@@ -16,9 +16,9 @@
   body,
   #root {
     @apply h-full w-full overflow-hidden;
-    background-color: #08090d;
-    color: #f0f2f8;
-    font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Inter', 'Arial', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -34,16 +34,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0f1117;
+    background: #000000;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1e2535;
+    background: #333333;
     border-radius: 2px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #f97316;
+    background: #76b900;
   }
 
   /* Material Symbols base */
@@ -63,7 +63,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: rgba(249, 115, 22, 0.07);
+    background: rgba(118, 185, 0, 0.07);
     z-index: 9998;
     pointer-events: none;
     animation: scan 10s linear infinite;
@@ -90,7 +90,7 @@
   }
 
   .cinematic-vignette {
-    background: radial-gradient(ellipse at center, transparent 30%, rgba(8, 9, 13, 0.92) 100%);
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.92) 100%);
   }
 
   /* ── Waveform bars ─────────────────────────────────── */
@@ -107,9 +107,8 @@
 
   /* ── Glass panel ───────────────────────────────────── */
   .glass-panel {
-    backdrop-filter: blur(12px);
-    background: rgba(15, 17, 23, 0.75);
-    border: 1px solid rgba(30, 37, 53, 0.6);
+    background: rgba(0, 0, 0, 0.92);
+    border: 1px solid #5e5e5e;
   }
 
   /* ── Map pulse (citizen dots on SVG overlays) ──────── */
@@ -123,26 +122,26 @@
 
   /* ── Spotlight glow (debate center avatar) ─────────── */
   .spotlight-glow {
-    box-shadow: 0 0 60px 10px rgba(249, 115, 22, 0.22);
+    box-shadow: 0 0 60px 10px rgba(118, 185, 0, 0.22);
   }
 
   /* Leaflet map fills its container */
   .leaflet-container {
     @apply h-full w-full;
-    background: #08090d;
+    background: #000000;
   }
 
   /* Style citizen name labels */
   .citizen-label {
-    background: rgba(8, 9, 13, 0.92) !important;
-    border: 1px solid rgba(249, 115, 22, 0.4) !important;
-    color: #f0f2f8 !important;
+    background: rgba(0, 0, 0, 0.92) !important;
+    border: 1px solid #76b900 !important;
+    color: #ffffff !important;
     font-size: 11px !important;
     font-weight: 700 !important;
     letter-spacing: 0.02em !important;
     padding: 2px 8px !important;
-    border-radius: 6px !important;
-    box-shadow: 0 0 8px rgba(249, 115, 22, 0.2) !important;
+    border-radius: 2px !important;
+    box-shadow: none !important;
   }
 
   .citizen-label::before {
@@ -151,24 +150,23 @@
 
   /* Panel glass effect */
   .panel-glass {
-    background: rgba(15, 17, 23, 0.92);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(30, 37, 53, 0.6);
+    background: #000000;
+    border: 1px solid #5e5e5e;
   }
 
   /* Status colour dot */
-  .status-dot-green  { @apply bg-green-500; }
-  .status-dot-amber  { @apply bg-amber-500; }
-  .status-dot-red    { @apply bg-red-500; }
-  .status-dot-grey   { @apply bg-slate-500; }
+  .status-dot-green  { background-color: #76b900; }
+  .status-dot-amber  { background-color: #ef9100; }
+  .status-dot-red    { background-color: #e52020; }
+  .status-dot-grey   { background-color: #757575; }
 
-  /* Status glow classes */
-  .glow-green { box-shadow: 0 0 16px rgba(34, 197, 94, 0.3); }
-  .glow-amber { box-shadow: 0 0 16px rgba(245, 158, 11, 0.3); }
-  .glow-red   { box-shadow: 0 0 16px rgba(239, 68, 68, 0.3); }
+  /* Status glow classes — NVIDIA system is flat; keep only a faint ring */
+  .glow-green { box-shadow: 0 0 12px rgba(118, 185, 0, 0.25); }
+  .glow-amber { box-shadow: 0 0 12px rgba(239, 145, 0, 0.25); }
+  .glow-red   { box-shadow: 0 0 12px rgba(229, 32, 32, 0.25); }
 
-  /* Orange accent glow */
-  .glow-orange { box-shadow: 0 0 20px rgba(249, 115, 22, 0.25); }
+  /* Accent glow (was orange) — now NVIDIA green */
+  .glow-orange { box-shadow: 0 0 16px rgba(118, 185, 0, 0.22); }
 
   /* Flagged ledger row — red inset accent + fade */
   .flagged-row-glow {
@@ -185,21 +183,19 @@
   /* Streaming text cursor */
   .streaming-cursor::after {
     content: '|';
-    @apply text-orange-400 animate-pulse;
+    color: #76b900;
+    @apply animate-pulse;
   }
 
-  /* Gradient text — Golden Gate to Bay blue */
+  /* Accent text — NVIDIA is single-colour, no gradients */
   .gradient-text {
-    background: linear-gradient(135deg, #f97316 0%, #60a5fa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #76b900;
   }
 
   /* Tab active indicator */
   .tab-active {
-    border-bottom: 2px solid #f97316;
-    color: #f0f2f8;
+    border-bottom: 2px solid #76b900;
+    color: #ffffff;
   }
 }
 

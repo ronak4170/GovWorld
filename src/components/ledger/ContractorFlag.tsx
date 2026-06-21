@@ -4,9 +4,9 @@ interface Props {
 }
 
 const STYLES: Record<string, { color: string; bg: string; border: string; icon: string }> = {
-  info: { color: '#93ccff', bg: 'rgba(0,162,244,0.12)', border: 'rgba(147,204,255,0.3)', icon: 'info' },
-  warning: { color: '#ffb690', bg: 'rgba(249,115,22,0.12)', border: 'rgba(249,115,22,0.3)', icon: 'warning' },
-  critical: { color: '#ffb4ab', bg: 'rgba(147,0,10,0.2)', border: 'rgba(255,180,171,0.3)', icon: 'flag' },
+  info: { color: '#76b900', bg: 'rgba(118,185,0,0.12)', border: 'rgba(118,185,0,0.3)', icon: 'info' },
+  warning: { color: '#76b900', bg: 'rgba(118,185,0,0.12)', border: 'rgba(118,185,0,0.3)', icon: 'warning' },
+  critical: { color: '#e52020', bg: 'rgba(229,32,32,0.2)', border: 'rgba(229,32,32,0.3)', icon: 'flag' },
 }
 
 export default function ContractorFlag({ reason, severity = 'warning' }: Props) {

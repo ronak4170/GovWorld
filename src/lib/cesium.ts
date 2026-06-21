@@ -1,13 +1,13 @@
 import * as Cesium from 'cesium'
 
 // Van Ness & Market — midpoint of the Van Ness Complete Streets project (2.3km stretch)
-export const ANDHERI_EAST = {
+export const VAN_NESS = {
   lat: 37.7790,
   lng: -122.4193,
   height: 500,
 }
 
-export const SAHAR_ROAD_ROUTE: [number, number][] = [
+export const VAN_NESS_ROUTE: [number, number][] = [
   [37.7749, -122.4194],
   [37.7769, -122.4196],
   [37.7779, -122.4200],
@@ -56,7 +56,7 @@ export async function initCesiumViewer(options: CesiumViewerOptions): Promise<Ce
 
 export function flyToVanNess(viewer: Cesium.Viewer, heightMeters = 600): void {
   viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(ANDHERI_EAST.lng, ANDHERI_EAST.lat, heightMeters),
+    destination: Cesium.Cartesian3.fromDegrees(VAN_NESS.lng, VAN_NESS.lat, heightMeters),
     orientation: {
       heading: Cesium.Math.toRadians(0),
       pitch: Cesium.Math.toRadians(-45),
@@ -93,10 +93,10 @@ export function removeEntity(viewer: Cesium.Viewer, entity: Cesium.Entity): void
 
 export function getCesiumColor(statusColor: 'green' | 'amber' | 'red' | 'grey'): Cesium.Color {
   switch (statusColor) {
-    case 'green': return Cesium.Color.fromCssColorString('#10b981')
+    case 'green': return Cesium.Color.fromCssColorString('#76b900')
     case 'amber': return Cesium.Color.fromCssColorString('#f59e0b')
     case 'red':   return Cesium.Color.fromCssColorString('#ef4444')
-    case 'grey':  return Cesium.Color.fromCssColorString('#64748b')
+    case 'grey':  return Cesium.Color.fromCssColorString('#757575')
   }
 }
 
@@ -143,8 +143,8 @@ export function addBillboard(
 }
 
 export function getConstructionColor(month: number): string {
-  if (month <= 3) return '#f97316'   // orange — excavation
+  if (month <= 3) return '#76b900'   // orange — excavation
   if (month <= 8) return '#f59e0b'   // amber — active construction
   if (month <= 11) return '#eab308'  // yellow — paving
-  return '#e2e8f0'                    // white/grey — complete
+  return '#ffffff'                    // white/grey — complete
 }

@@ -35,7 +35,7 @@ export default function PanelManager() {
       {/* Tab bar */}
       <div
         className="flex-shrink-0 flex items-stretch border-b"
-        style={{ height: '40px', backgroundColor: '#08090d', borderColor: '#1e2535' }}
+        style={{ height: '40px', backgroundColor: '#000000', borderColor: '#1a1a1a' }}
       >
         {TABS.map(({ id, label }) => {
           const isActive = activeTab === id
@@ -44,12 +44,12 @@ export default function PanelManager() {
               key={id}
               onClick={() => setActivePanel(id)}
               className="relative flex-1 flex items-center justify-center text-xs font-semibold tracking-wide transition-colors duration-150"
-              style={{ color: isActive ? '#f0f2f8' : '#3d4b61' }}
+              style={{ color: isActive ? '#ffffff' : '#757575' }}
               onMouseEnter={e => {
-                if (!isActive) e.currentTarget.style.color = '#8b95a8'
+                if (!isActive) e.currentTarget.style.color = '#a7a7a7'
               }}
               onMouseLeave={e => {
-                if (!isActive) e.currentTarget.style.color = '#3d4b61'
+                if (!isActive) e.currentTarget.style.color = '#757575'
               }}
             >
               {label}
@@ -57,7 +57,7 @@ export default function PanelManager() {
               {isActive && (
                 <div
                   className="absolute bottom-0 left-0 right-0 h-0.5"
-                  style={{ backgroundColor: '#f97316' }}
+                  style={{ backgroundColor: '#76b900' }}
                 />
               )}
             </button>

@@ -74,7 +74,7 @@ export default function CitizenDots() {
             : [citizen.homeCoords, citizen.workCoords]
 
         const [lat, lng] = getRoutePosition(route, elapsedRef.current, CITIZEN_ROUTE_CYCLE_MS)
-        const color = STATUS_COLORS[citizen.statusColor]?.hex ?? '#64748b'
+        const color = STATUS_COLORS[citizen.statusColor]?.hex ?? '#757575'
         const isSelected = citizen.id === selectedId
         const radius = citizen.isFeatured ? FEATURED_CITIZEN_DOT_SIZE : BACKGROUND_CITIZEN_DOT_SIZE
 

@@ -1,12 +1,12 @@
 // Van Ness Avenue midpoint — San Francisco Complete Streets corridor
-export const ANDHERI_EAST_COORDS = {
+export const VAN_NESS_COORDS = {
   lat: 37.7790,
   lng: -122.4193,
   name: 'Van Ness Avenue, San Francisco',
 }
 
 // Van Ness Avenue, San Francisco — Market St to Jackson St (N-S corridor)
-export const SAHAR_ROAD_ROUTE: [number, number][] = [
+export const VAN_NESS_ROUTE: [number, number][] = [
   [37.7749, -122.4194],  // Market St / Van Ness — south end
   [37.7765, -122.4199],
   [37.7780, -122.4205],
@@ -22,19 +22,19 @@ export const SAHAR_ROAD_ROUTE: [number, number][] = [
 export const FEATURED_CITIZEN_IDS = ['C001', 'C002', 'C003', 'C004', 'C005', 'C006'] as const
 
 export const STATUS_COLORS = {
-  green: { bg: 'bg-emerald-500', text: 'text-emerald-400', bgMuted: 'bg-emerald-900/30', hex: '#10b981' },
+  green: { bg: 'bg-emerald-500', text: 'text-emerald-400', bgMuted: 'bg-emerald-900/30', hex: '#76b900' },
   amber: { bg: 'bg-amber-500', text: 'text-amber-400', bgMuted: 'bg-amber-900/30', hex: '#f59e0b' },
   red:   { bg: 'bg-red-500',   text: 'text-red-400',   bgMuted: 'bg-red-900/30',   hex: '#ef4444' },
-  grey:  { bg: 'bg-slate-500', text: 'text-slate-400', bgMuted: 'bg-slate-900/30', hex: '#64748b' },
+  grey:  { bg: 'bg-slate-500', text: 'text-slate-400', bgMuted: 'bg-slate-900/30', hex: '#757575' },
 } as const
 
 export const COUNCIL_MEMBER_IDS = ['economist', 'advocate', 'engineer', 'watchdog', 'climate'] as const
 
 export const CONSTRUCTION_COLORS: Record<number, string> = {
-  1: '#f97316', 2: '#f97316', 3: '#f97316',
+  1: '#76b900', 2: '#76b900', 3: '#76b900',
   4: '#f59e0b', 5: '#f59e0b', 6: '#f59e0b', 7: '#f59e0b', 8: '#f59e0b',
   9: '#eab308', 10: '#eab308', 11: '#eab308',
-  12: '#e2e8f0',
+  12: '#ffffff',
 }
 
 export const SEVERITY_COLORS = {

@@ -20,8 +20,8 @@ function classifyCitizen(c: Citizen): string {
 // Institutional nodes seeded from the demo scenario.
 const INSTITUTIONS: { id: string; label: string; type: string; summary: string; attributes: Record<string, string> }[] = [
   { id: 'ORG_ROADS', label: 'Metropolitan Roads Division', type: 'CivicOfficial', summary: 'Authority accountable for the widening project.', attributes: { department: 'Roads & Infrastructure' } },
-  { id: 'ORG_RAM', label: 'Ram Construction Ltd', type: 'Contractor', summary: 'Lead contractor — Blocks A & B excavation and laying.', attributes: { track_record: '4/5 on time, 1 delayed 8wks', scope: 'Excavation + laying' } },
-  { id: 'ORG_BHARAT', label: 'Bharat Infra Pvt Ltd', type: 'Contractor', summary: 'Contractor — Block C, clean delivery record.', attributes: { track_record: '3/3 on time', scope: 'Excavation + laying' } },
+  { id: 'ORG_RAM', label: 'Bay Area Infrastructure Inc.', type: 'Contractor', summary: 'Lead contractor — Blocks A & B excavation and laying.', attributes: { track_record: '4/5 on time, 1 delayed 8wks', scope: 'Excavation + laying' } },
+  { id: 'ORG_BHARAT', label: 'Golden Gate Civil Works', type: 'Contractor', summary: 'Contractor — Block C, clean delivery record.', attributes: { track_record: '3/3 on time', scope: 'Excavation + laying' } },
   { id: 'ORG_CITYUTIL', label: 'CityUtil Services', type: 'Contractor', summary: 'Utility relocation, mixed delivery record.', attributes: { track_record: '2/3 delayed', scope: 'Utility relocation' } },
   { id: 'ORG_MOBILITY', label: 'Citizen Mobility Forum', type: 'NGO', summary: 'Advocates for commuters and pedestrians on the corridor.', attributes: { focus: 'Mobility & road safety' } },
   { id: 'ORG_CLEANAIR', label: 'Clean Air Coalition', type: 'NGO', summary: 'Campaigns on dust, emissions and induced traffic.', attributes: { focus: 'Air quality' } },

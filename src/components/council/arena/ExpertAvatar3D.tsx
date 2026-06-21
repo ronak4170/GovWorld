@@ -5,24 +5,24 @@ import * as THREE from 'three'
 import { EXPERT_POOL } from '@/store/councilStore'
 
 const EXPERT_COLORS: Record<string, string> = {
-  economist: '#60a5fa',
-  advocate: '#34d399',
-  engineer: '#fb923c',
+  economist: '#76b900',
+  advocate: '#76b900',
+  engineer: '#76b900',
   watchdog: '#f87171',
-  climate: '#2dd4bf',
+  climate: '#76b900',
   lawyer: '#c084fc',
-  urbanplanner: '#38bdf8',
+  urbanplanner: '#76b900',
   health: '#f472b6',
   transport: '#facc15',
   heritage: '#fbbf24',
 }
 
 const HAIR_COLORS: Record<string, string> = {
-  economist: '#1e3a5f',
-  advocate: '#2d4a3e',
-  engineer: '#4a3728',
-  watchdog: '#1a1a2e',
-  climate: '#2d3a4a',
+  economist: '#1a1a1a',
+  advocate: '#1a1a1a',
+  engineer: '#333333',
+  watchdog: '#000000',
+  climate: '#1a1a1a',
 }
 
 interface Props {
@@ -47,9 +47,9 @@ export default function ExpertAvatar3D({
   const rightArmRef = useRef<THREE.Group>(null)
 
   const expert = EXPERT_POOL.find((e) => e.id === expertId)
-  const shirtColor = EXPERT_COLORS[expertId] ?? '#94a3b8'
-  const hairColor = HAIR_COLORS[expertId] ?? '#1e293b'
-  const skinColor = '#fcd9b6'
+  const shirtColor = EXPERT_COLORS[expertId] ?? '#a7a7a7'
+  const hairColor = HAIR_COLORS[expertId] ?? '#1a1a1a'
+  const skinColor = '#a7a7a7'
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()
@@ -104,11 +104,11 @@ export default function ExpertAvatar3D({
         {/* --- Legs (chibi stubby) --- */}
         <mesh position={[-0.18, 0.35, 0]}>
           <capsuleGeometry args={[0.14, 0.35, 6, 12]} />
-          <meshStandardMaterial color="#334155" roughness={0.7} />
+          <meshStandardMaterial color="#333333" roughness={0.7} />
         </mesh>
         <mesh position={[0.18, 0.35, 0]}>
           <capsuleGeometry args={[0.14, 0.35, 6, 12]} />
-          <meshStandardMaterial color="#334155" roughness={0.7} />
+          <meshStandardMaterial color="#333333" roughness={0.7} />
         </mesh>
 
         {/* --- Torso (cartoon shirt) --- */}
@@ -125,7 +125,7 @@ export default function ExpertAvatar3D({
         {/* Collar */}
         <mesh position={[0, 1.1, 0]}>
           <torusGeometry args={[0.22, 0.04, 8, 16]} />
-          <meshStandardMaterial color="#f8fafc" roughness={0.6} />
+          <meshStandardMaterial color="#ffffff" roughness={0.6} />
         </mesh>
 
         {/* --- Left arm --- */}
@@ -181,11 +181,11 @@ export default function ExpertAvatar3D({
         {/* Pupils */}
         <mesh position={[-0.14, 1.56, 0.42]}>
           <sphereGeometry args={[0.045, 8, 8]} />
-          <meshStandardMaterial color="#0f172a" roughness={0.1} />
+          <meshStandardMaterial color="#000000" roughness={0.1} />
         </mesh>
         <mesh position={[0.14, 1.56, 0.42]}>
           <sphereGeometry args={[0.045, 8, 8]} />
-          <meshStandardMaterial color="#0f172a" roughness={0.1} />
+          <meshStandardMaterial color="#000000" roughness={0.1} />
         </mesh>
         {/* Eye shine */}
         <mesh position={[-0.11, 1.6, 0.44]}>
@@ -227,7 +227,7 @@ export default function ExpertAvatar3D({
         <div
           className="whitespace-nowrap px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide"
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             background: 'rgba(0,0,0,0.8)',
             border: `2px solid ${shirtColor}`,
             color: shirtColor,

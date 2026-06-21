@@ -29,7 +29,7 @@ export interface Citizen {
   // Work + life
   occupation: string
   employer: string
-  monthlyIncome: number              // In INR (Indian Rupees)
+  monthlyIncome: number              // In USD
   familyStructure: string            // e.g. "Married, 3 children"
   healthStatus: 'healthy' | 'chronic_condition' | 'mobility_limited'
 

@@ -54,11 +54,11 @@ export default function SeverityReveal({ visible, onDismiss }: Props) {
         <div className="text-center">
           <p
             className="text-slate-500 text-xs uppercase tracking-widest mb-2"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
             Council Verdict
           </p>
-          <p className={`text-6xl font-bold tabular-nums ${riskColor}`} style={{ fontFamily: 'Lexend, sans-serif' }}>
+          <p className={`text-6xl font-bold tabular-nums ${riskColor}`} style={{ fontFamily: 'Inter, sans-serif' }}>
             {scoreDisplay}
             <span className="text-2xl text-slate-500">/10</span>
           </p>
@@ -105,7 +105,7 @@ export default function SeverityReveal({ visible, onDismiss }: Props) {
         <button
           onClick={onDismiss}
           className="w-full py-3 rounded-lg bg-blue-700 hover:bg-blue-600 text-white text-sm font-semibold transition-colors cursor-pointer"
-          style={{ fontFamily: 'Lexend, sans-serif' }}
+          style={{ fontFamily: 'Inter, sans-serif' }}
         >
           Close Arena
         </button>

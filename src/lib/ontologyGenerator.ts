@@ -55,7 +55,7 @@ export const FALLBACK_ONTOLOGY: Ontology = {
         { name: 'track_record', type: 'text', description: 'Delivery history' },
         { name: 'scope', type: 'text', description: 'Work package' },
       ],
-      examples: ['Ram Construction Ltd', 'Bharat Infra Pvt Ltd'],
+      examples: ['Bay Area Infrastructure Inc.', 'Golden Gate Civil Works'],
     },
     {
       name: 'CivicOfficial',
@@ -73,7 +73,7 @@ export const FALLBACK_ONTOLOGY: Ontology = {
       name: 'MediaOutlet',
       description: 'Local newspapers, TV and online creators reporting on the project.',
       attributes: [{ name: 'reach', type: 'text', description: 'Audience size' }],
-      examples: ['City daily', 'Neighbourhood Instagram page'],
+      examples: ['San Francisco Chronicle', 'Neighbourhood Instagram page'],
     },
     {
       name: 'Person',

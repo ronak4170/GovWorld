@@ -1,6 +1,7 @@
 import { useSimulationStore } from '@/store/simulationStore'
 import { useWorldStore } from '@/store/worldStore'
 import type { EdgeCase, EdgeCaseCategory } from '@/lib/simulationDirector'
+import CornerSquare from '@/components/common/CornerSquare'
 
 const CATEGORY_META: Record<EdgeCaseCategory, { icon: string; label: string; color: string; bg: string; border: string }> = {
   corruption:    { icon: '🔴', label: 'Corruption',    color: 'text-red-400',     bg: 'bg-red-900/20',     border: 'border-red-800/40' },
@@ -22,7 +23,8 @@ function EdgeCaseCard({ ec, allEdgeCases }: { ec: EdgeCase; allEdgeCases: EdgeCa
     .filter(Boolean) as EdgeCase[] | undefined
 
   return (
-    <div className={`rounded-xl p-4 border ${meta.bg} ${meta.border} flex flex-col gap-2.5 transition-all duration-300`}>
+    <div className={`relative rounded-xl p-4 border ${meta.bg} ${meta.border} flex flex-col gap-2.5 transition-all duration-300`}>
+      <CornerSquare position="tr" />
       {/* Header row */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2 flex-wrap">

@@ -52,15 +52,15 @@ export default function Sidebar() {
   return (
     <nav
       className="w-12 flex-shrink-0 flex flex-col items-center py-3 z-30 border-r"
-      style={{ backgroundColor: '#160c06', borderColor: 'rgba(88,66,55,0.3)' }}
+      style={{ backgroundColor: '#000000', borderColor: 'rgba(94,94,94,0.3)' }}
     >
       {/* Logo */}
       <div
         className="w-8 h-8 rounded-full flex items-center justify-center mb-5 flex-shrink-0"
-        style={{ backgroundColor: 'rgba(249,115,22,0.18)' }}
+        style={{ backgroundColor: 'rgba(118,185,0,0.18)' }}
         title="GOVWORLD Mission Control"
       >
-        <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#ffb690', fontVariationSettings: "'FILL' 1" }}>
+        <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#76b900', fontVariationSettings: "'FILL' 1" }}>
           rocket_launch
         </span>
       </div>
@@ -76,18 +76,18 @@ export default function Sidebar() {
             className="relative w-10 h-10 flex items-center justify-center rounded transition-all cursor-pointer"
             style={
               item.active
-                ? { color: '#ffb690', backgroundColor: 'rgba(249,115,22,0.12)', borderLeft: '2px solid #f97316' }
-                : { color: '#a78b7d' }
+                ? { color: '#76b900', backgroundColor: 'rgba(118,185,0,0.12)', borderLeft: '2px solid #76b900' }
+                : { color: '#5e5e5e' }
             }
             onMouseEnter={(e) => {
               if (!item.active) {
-                e.currentTarget.style.color = '#f6ded3'
-                e.currentTarget.style.backgroundColor = 'rgba(64,50,42,0.5)'
+                e.currentTarget.style.color = '#ffffff'
+                e.currentTarget.style.backgroundColor = 'rgba(26,26,26,0.5)'
               }
             }}
             onMouseLeave={(e) => {
               if (!item.active) {
-                e.currentTarget.style.color = '#a78b7d'
+                e.currentTarget.style.color = '#5e5e5e'
                 e.currentTarget.style.backgroundColor = 'transparent'
               }
             }}
@@ -105,26 +105,6 @@ export default function Sidebar() {
             )}
           </button>
         ))}
-      </div>
-
-      {/* Bottom: settings + avatar */}
-      <div className="mt-auto flex flex-col items-center gap-3 pb-1">
-        <button
-          className="w-10 h-10 flex items-center justify-center transition-colors cursor-pointer"
-          style={{ color: '#a78b7d' }}
-          title="Settings"
-          onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb690')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = '#a78b7d')}
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>settings</span>
-        </button>
-        <div
-          className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden"
-          style={{ border: '1px solid #584237', backgroundColor: 'rgba(64,50,42,0.5)' }}
-          title="Operator"
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#e0c0b1' }}>person</span>
-        </div>
       </div>
     </nav>
   )

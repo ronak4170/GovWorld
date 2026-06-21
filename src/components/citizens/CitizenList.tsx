@@ -61,9 +61,9 @@ export default function CitizenList() {
   }
 
   return (
-    <div className="flex flex-col h-full bg-[#0d1526]">
+    <div className="flex flex-col h-full bg-[#000000]">
       {/* Status summary / filter bar */}
-      <div className="grid grid-cols-4 gap-1.5 p-3 border-b border-[#1e2d4a]">
+      <div className="grid grid-cols-4 gap-1.5 p-3 border-b border-[#333333]">
         {(['red', 'amber', 'green', 'grey'] as CitizenStatusType[]).map((s) => {
           const cfg = STATUS_CONFIG[s]
           const isActive = filter === s
@@ -74,14 +74,14 @@ export default function CitizenList() {
               className={`rounded-xl p-2 text-center transition-all duration-150 border ${
                 isActive
                   ? `${cfg.badge} ${cfg.border} shadow-sm`
-                  : 'bg-[#131f38] border-[#1e2d4a] hover:border-[#2a4480]'
+                  : 'bg-[#1a1a1a] border-[#333333] hover:border-[#76b900]'
               }`}
               aria-label={`Filter by ${s} status`}
             >
-              <div className={`text-sm font-bold tabular-nums ${isActive ? cfg.text : 'text-[#e8edf7]'}`}>
+              <div className={`text-sm font-bold tabular-nums ${isActive ? cfg.text : 'text-[#ffffff]'}`}>
                 {statusCounts[s]}
               </div>
-              <div className={`text-[9px] font-semibold uppercase tracking-wide mt-0.5 ${isActive ? cfg.text : 'text-[#3d5280]'}`}>
+              <div className={`text-[9px] font-semibold uppercase tracking-wide mt-0.5 ${isActive ? cfg.text : 'text-[#757575]'}`}>
                 {cfg.label}
               </div>
             </button>
@@ -90,29 +90,29 @@ export default function CitizenList() {
       </div>
 
       {/* Search input */}
-      <div className="p-3 border-b border-[#1e2d4a]">
+      <div className="p-3 border-b border-[#333333]">
         <div className="relative">
-          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#3d5280]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#757575]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name or job..."
-            className="w-full bg-[#131f38] border border-[#1e2d4a] rounded-xl pl-9 pr-3 py-2 text-[#e8edf7] text-sm focus:outline-none focus:border-[#2a4480] focus:ring-1 focus:ring-blue-500/20 placeholder:text-[#3d5280] transition-colors"
+            className="w-full bg-[#1a1a1a] border border-[#333333] rounded-xl pl-9 pr-3 py-2 text-[#ffffff] text-sm focus:outline-none focus:border-[#76b900] focus:ring-1 focus:ring-blue-500/20 placeholder:text-[#757575] transition-colors"
           />
         </div>
       </div>
 
       {/* Active filter bar */}
       {filter !== 'all' && (
-        <div className="px-3 py-2 bg-[#131f38] border-b border-[#1e2d4a] flex items-center justify-between">
-          <span className="text-[#7a90b8] text-xs">
+        <div className="px-3 py-2 bg-[#1a1a1a] border-b border-[#333333] flex items-center justify-between">
+          <span className="text-[#a7a7a7] text-xs">
             {filtered.length} {filter} citizen{filtered.length !== 1 ? 's' : ''}
           </span>
           <button
             onClick={() => setFilter('all')}
-            className="text-[#3d5280] hover:text-[#7a90b8] text-xs transition-colors"
+            className="text-[#757575] hover:text-[#a7a7a7] text-xs transition-colors"
           >
             Clear
           </button>
@@ -123,12 +123,12 @@ export default function CitizenList() {
       <div className="flex-1 overflow-y-auto px-2 py-2 space-y-1">
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 text-center px-4">
-            <div className="w-10 h-10 rounded-full bg-[#131f38] flex items-center justify-center mb-3">
-              <svg className="w-5 h-5 text-[#3d5280]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-[#757575]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
-            <p className="text-[#7a90b8] text-sm">No citizens match your search</p>
+            <p className="text-[#a7a7a7] text-sm">No citizens match your search</p>
             {search && (
               <button
                 onClick={() => setSearch('')}
@@ -149,8 +149,8 @@ export default function CitizenList() {
                 onClick={() => handleSelect(citizen.id)}
                 className={`w-full text-left px-3 py-2.5 rounded-xl border transition-all duration-150 flex items-center gap-3 group ${
                   isSelected
-                    ? `bg-[#131f38] border-[#2a4480] shadow-[0_0_12px_rgba(59,130,246,0.12)]`
-                    : `bg-[#0d1526] border-[#1e2d4a] hover:bg-[#131f38] hover:${cfg.border}`
+                    ? `bg-[#1a1a1a] border-[#76b900] shadow-[0_0_12px_rgba(59,130,246,0.12)]`
+                    : `bg-[#000000] border-[#333333] hover:bg-[#1a1a1a] hover:${cfg.border}`
                 }`}
               >
                 {/* Status dot */}
@@ -167,16 +167,16 @@ export default function CitizenList() {
                     {citizen.isFeatured && (
                       <span className="text-blue-400 text-[11px] flex-shrink-0">✦</span>
                     )}
-                    <span className={`text-sm font-semibold truncate ${citizen.isFeatured ? 'text-[#e8edf7]' : 'text-[#b0bcd4]'}`}>
+                    <span className={`text-sm font-semibold truncate ${citizen.isFeatured ? 'text-[#ffffff]' : 'text-[#a7a7a7]'}`}>
                       {citizen.name}
                     </span>
                     {citizen.isWorker && (
-                      <span className="flex-shrink-0 text-[9px] bg-[#131f38] text-[#7a90b8] px-1.5 py-px rounded border border-[#1e2d4a]">
+                      <span className="flex-shrink-0 text-[9px] bg-[#1a1a1a] text-[#a7a7a7] px-1.5 py-px rounded border border-[#333333]">
                         worker
                       </span>
                     )}
                   </div>
-                  <div className="text-[#3d5280] text-xs truncate group-hover:text-[#7a90b8] transition-colors">
+                  <div className="text-[#757575] text-xs truncate group-hover:text-[#a7a7a7] transition-colors">
                     {citizen.occupation}
                   </div>
                 </div>
@@ -192,8 +192,8 @@ export default function CitizenList() {
       </div>
 
       {/* Footer */}
-      <div className="px-3 py-2.5 border-t border-[#1e2d4a]">
-        <p className="text-[#3d5280] text-[11px] text-center">
+      <div className="px-3 py-2.5 border-t border-[#333333]">
+        <p className="text-[#757575] text-[11px] text-center">
           {citizens.length} citizens in simulation
         </p>
       </div>

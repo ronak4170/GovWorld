@@ -99,37 +99,37 @@ export default function CitizenChat() {
         className="relative w-full sm:w-[400px] flex flex-col rounded-t-2xl sm:rounded-2xl overflow-hidden shadow-2xl"
         style={{
           height: '560px',
-          backgroundColor: '#0f1117',
-          border: '1px solid #1e2535',
+          backgroundColor: '#000000',
+          border: '1px solid #1a1a1a',
         }}
       >
         {/* Header */}
         <div
           className="flex-shrink-0 flex items-center gap-3 px-4 py-3 border-b"
           style={{
-            backgroundColor: '#08090d',
-            borderColor: '#1e2535',
+            backgroundColor: '#000000',
+            borderColor: '#1a1a1a',
           }}
         >
           {/* Avatar + status dot */}
           <div className="relative flex-shrink-0">
             <div
               className="w-10 h-10 rounded-full flex items-center justify-center text-xl"
-              style={{ backgroundColor: '#161921' }}
+              style={{ backgroundColor: '#1a1a1a' }}
             >
               {citizen.avatarEmoji}
             </div>
             <span
               className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 ${statusColors.bg}`}
-              style={{ borderColor: '#08090d' }}
+              style={{ borderColor: '#000000' }}
             />
           </div>
 
           <div className="flex-1 min-w-0">
-            <div className="text-sm font-semibold truncate" style={{ color: '#f0f2f8' }}>
+            <div className="text-sm font-semibold truncate" style={{ color: '#ffffff' }}>
               {citizen.name}
             </div>
-            <div className="text-xs truncate" style={{ color: '#3d4b61' }}>
+            <div className="text-xs truncate" style={{ color: '#757575' }}>
               {citizen.occupation}
               {currentMonth > 0 && <span> · Month {currentMonth}</span>}
             </div>
@@ -146,9 +146,9 @@ export default function CitizenChat() {
             <button
               onClick={closeVoiceChat}
               className="text-xl leading-none transition-colors"
-              style={{ color: '#3d4b61' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#f0f2f8')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#3d4b61')}
+              style={{ color: '#757575' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#757575')}
             >
               &times;
             </button>
@@ -162,13 +162,13 @@ export default function CitizenChat() {
             <div className="text-center">
               <div
                 className="inline-block text-xs px-3 py-1.5 rounded-full mb-3"
-                style={{ backgroundColor: '#161921', color: '#3d4b61' }}
+                style={{ backgroundColor: '#1a1a1a', color: '#757575' }}
               >
                 {statusNarrative}
               </div>
               <div
                 className="text-xs text-center mx-4 italic"
-                style={{ color: '#3d4b61' }}
+                style={{ color: '#757575' }}
               >
                 Ask {firstName} how the Van Ness construction is affecting their life
               </div>
@@ -184,7 +184,7 @@ export default function CitizenChat() {
               {msg.role === 'citizen' && (
                 <div
                   className="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5"
-                  style={{ backgroundColor: '#161921' }}
+                  style={{ backgroundColor: '#1a1a1a' }}
                 >
                   {citizen.avatarEmoji}
                 </div>
@@ -196,14 +196,14 @@ export default function CitizenChat() {
                 style={
                   msg.role === 'user'
                     ? {
-                        backgroundColor: '#f97316',
+                        backgroundColor: '#76b900',
                         color: '#fff',
                         borderRadius: '18px 18px 4px 18px',
                       }
                     : {
-                        backgroundColor: '#161921',
-                        color: '#e2e8f0',
-                        border: '1px solid #1e2535',
+                        backgroundColor: '#1a1a1a',
+                        color: '#ffffff',
+                        border: '1px solid #1a1a1a',
                         borderRadius: '18px 18px 18px 4px',
                       }
                 }
@@ -218,22 +218,22 @@ export default function CitizenChat() {
             <div className="flex gap-2">
               <div
                 className="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0"
-                style={{ backgroundColor: '#161921' }}
+                style={{ backgroundColor: '#1a1a1a' }}
               >
                 {citizen.avatarEmoji}
               </div>
               <div
                 className="px-4 py-3 rounded-2xl"
                 style={{
-                  backgroundColor: '#161921',
-                  border: '1px solid #1e2535',
+                  backgroundColor: '#1a1a1a',
+                  border: '1px solid #1a1a1a',
                   borderRadius: '18px 18px 18px 4px',
                 }}
               >
                 <div className="flex gap-1 items-center h-4">
-                  <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: '#3d4b61', animationDelay: '0ms' }} />
-                  <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: '#3d4b61', animationDelay: '150ms' }} />
-                  <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: '#3d4b61', animationDelay: '300ms' }} />
+                  <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: '#757575', animationDelay: '0ms' }} />
+                  <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: '#757575', animationDelay: '150ms' }} />
+                  <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: '#757575', animationDelay: '300ms' }} />
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function CitizenChat() {
         {/* Input footer */}
         <div
           className="flex-shrink-0 px-3 py-3 border-t flex gap-2 items-end"
-          style={{ backgroundColor: '#08090d', borderColor: '#1e2535' }}
+          style={{ backgroundColor: '#000000', borderColor: '#1a1a1a' }}
         >
           <input
             ref={inputRef}
@@ -257,21 +257,21 @@ export default function CitizenChat() {
             disabled={isLoading}
             className="flex-1 rounded-xl px-4 py-2.5 text-sm outline-none transition-colors"
             style={{
-              backgroundColor: '#161921',
-              border: '1px solid #1e2535',
-              color: '#f0f2f8',
+              backgroundColor: '#1a1a1a',
+              border: '1px solid #1a1a1a',
+              color: '#ffffff',
             }}
-            onFocus={(e) => (e.target.style.borderColor = '#f97316')}
-            onBlur={(e) => (e.target.style.borderColor = '#1e2535')}
+            onFocus={(e) => (e.target.style.borderColor = '#76b900')}
+            onBlur={(e) => (e.target.style.borderColor = '#1a1a1a')}
           />
           <button
             onClick={sendMessage}
             disabled={!input.trim() || isLoading}
             className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all"
             style={{
-              backgroundColor: input.trim() && !isLoading ? '#f97316' : '#161921',
-              color: input.trim() && !isLoading ? '#fff' : '#3d4b61',
-              border: '1px solid #1e2535',
+              backgroundColor: input.trim() && !isLoading ? '#76b900' : '#1a1a1a',
+              color: input.trim() && !isLoading ? '#fff' : '#757575',
+              border: '1px solid #1a1a1a',
             }}
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

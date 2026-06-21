@@ -164,7 +164,7 @@ export default function SwarmEngine() {
                 value={injectText}
                 onChange={(e) => setInjectText(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleInject()}
-                placeholder="e.g. Budget cut 20% / monsoon extended"
+                placeholder="e.g. Budget cut 20% / storm season extended"
                 disabled={rounds.length === 0}
                 className="w-full rounded-lg border border-slate-700 bg-slate-950 px-2 py-1.5 text-xs text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none disabled:opacity-50"
               />

@@ -9,7 +9,7 @@ const MONTH_LABELS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT
 
 const KEY_EVENTS: Record<number, { label: string; icon: string }> = {
   1:  { label: 'Excavation begins', icon: 'construction' },
-  3:  { label: 'Monsoon delay',     icon: 'thunderstorm' },
+  3:  { label: 'Storm delay',     icon: 'thunderstorm' },
   6:  { label: 'Contractor flagged', icon: 'flag' },
   9:  { label: 'Tyler relocates',   icon: 'moving' },
   10: { label: 'Pipe burst',        icon: 'warning' },
@@ -80,9 +80,9 @@ export default function TimelineBar() {
       className="flex-shrink-0 border-t"
       style={{
         backgroundColor: 'rgba(28,17,11,0.9)',
-        borderColor: 'rgba(88,66,55,0.35)',
+        borderColor: 'rgba(94,94,94,0.35)',
         backdropFilter: 'blur(12px)',
-        boxShadow: '0 -4px 24px rgba(249,115,22,0.08)',
+        boxShadow: '0 -4px 24px rgba(118,185,0,0.08)',
       }}
     >
       <div className="flex items-center gap-4 px-4 h-16">
@@ -92,9 +92,9 @@ export default function TimelineBar() {
           onClick={togglePlay}
           className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all active:scale-90"
           style={{
-            backgroundColor: '#f97316',
-            color: '#552100',
-            boxShadow: isPlaying ? '0 0 14px rgba(249,115,22,0.5)' : 'none',
+            backgroundColor: '#76b900',
+            color: '#000000',
+            boxShadow: isPlaying ? '0 0 14px rgba(118,185,0,0.5)' : 'none',
           }}
         >
           <span className="material-symbols-outlined" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>
@@ -108,12 +108,12 @@ export default function TimelineBar() {
           className="flex flex-col items-start flex-shrink-0 transition-all"
           title="Click to cycle speed"
         >
-          <span className="text-[8px] uppercase tracking-[0.12em]" style={{ color: '#ffb690' }}>SPEED</span>
-          <span className="text-[13px] font-bold leading-none" style={{ color: '#f6ded3' }}>{speed}.0×</span>
+          <span className="text-[8px] uppercase tracking-[0.12em]" style={{ color: '#76b900' }}>SPEED</span>
+          <span className="text-[13px] font-bold leading-none" style={{ color: '#ffffff' }}>{speed}.0×</span>
         </button>
 
         {/* Divider */}
-        <div className="w-px h-8 flex-shrink-0" style={{ backgroundColor: 'rgba(88,66,55,0.4)' }} />
+        <div className="w-px h-8 flex-shrink-0" style={{ backgroundColor: 'rgba(94,94,94,0.4)' }} />
 
         {/* Timeline scrubber */}
         <div className="flex-1 flex flex-col justify-center gap-1 min-w-0">
@@ -129,7 +129,7 @@ export default function TimelineBar() {
                   key={m}
                   className="text-[8px] tabular-nums font-semibold tracking-wide cursor-pointer select-none"
                   style={{
-                    color: isCurrent ? '#ffb690' : isPast ? '#a78b7d' : '#584237',
+                    color: isCurrent ? '#76b900' : isPast ? '#5e5e5e' : '#333333',
                     fontWeight: isCurrent ? 700 : 400,
                   }}
                   onClick={() => seekTo(month)}
@@ -146,12 +146,12 @@ export default function TimelineBar() {
             ref={scrubberRef}
             onClick={handleScrubClick}
             className="h-2 rounded-full cursor-pointer relative overflow-hidden"
-            style={{ backgroundColor: 'rgba(88,66,55,0.4)', border: '1px solid rgba(88,66,55,0.3)' }}
+            style={{ backgroundColor: 'rgba(94,94,94,0.4)', border: '1px solid rgba(94,94,94,0.3)' }}
           >
             {/* Filled portion */}
             <div
               className="absolute left-0 top-0 bottom-0 rounded-full transition-all duration-500"
-              style={{ width: `${progressPct}%`, background: 'linear-gradient(90deg, rgba(249,115,22,0.5) 0%, #f97316 100%)' }}
+              style={{ width: `${progressPct}%`, background: 'linear-gradient(90deg, rgba(118,185,0,0.5) 0%, #76b900 100%)' }}
             />
             {/* Scrub handle */}
             {currentMonth > 0 && (
@@ -159,9 +159,9 @@ export default function TimelineBar() {
                 className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 transition-all duration-500"
                 style={{
                   left: `calc(${progressPct}% - 8px)`,
-                  backgroundColor: '#f97316',
-                  borderColor: '#f6ded3',
-                  boxShadow: '0 0 10px rgba(249,115,22,0.6)',
+                  backgroundColor: '#76b900',
+                  borderColor: '#ffffff',
+                  boxShadow: '0 0 10px rgba(118,185,0,0.6)',
                 }}
               />
             )}
@@ -169,7 +169,7 @@ export default function TimelineBar() {
         </div>
 
         {/* Divider */}
-        <div className="w-px h-8 flex-shrink-0" style={{ backgroundColor: 'rgba(88,66,55,0.4)' }} />
+        <div className="w-px h-8 flex-shrink-0" style={{ backgroundColor: 'rgba(94,94,94,0.4)' }} />
 
         {/* Jump-to quick links */}
         <div className="hidden md:flex items-center gap-1 flex-shrink-0">
@@ -181,8 +181,8 @@ export default function TimelineBar() {
                 onClick={() => handleFrameSelect(frame)}
                 className="px-2 py-1 rounded text-[10px] font-medium tracking-wide transition-all"
                 style={isActive
-                  ? { backgroundColor: '#f97316', color: '#fff' }
-                  : { backgroundColor: 'rgba(64,50,42,0.5)', color: '#a78b7d', border: '1px solid rgba(88,66,55,0.4)' }
+                  ? { backgroundColor: '#76b900', color: '#fff' }
+                  : { backgroundColor: 'rgba(26,26,26,0.5)', color: '#5e5e5e', border: '1px solid rgba(94,94,94,0.4)' }
                 }
               >
                 {frame.label}
@@ -193,8 +193,8 @@ export default function TimelineBar() {
 
         {/* Coords + current event */}
         <div className="hidden lg:flex flex-col items-end gap-0 flex-shrink-0">
-          <span className="text-[8px] uppercase tracking-widest" style={{ color: '#584237' }}>COORD</span>
-          <span className="text-[10px] tabular-nums" style={{ color: '#a78b7d' }}>37.7749° N, 122.4194° W</span>
+          <span className="text-[8px] uppercase tracking-widest" style={{ color: '#333333' }}>COORD</span>
+          <span className="text-[10px] tabular-nums" style={{ color: '#5e5e5e' }}>37.7749° N, 122.4194° W</span>
         </div>
       </div>
 
@@ -202,13 +202,13 @@ export default function TimelineBar() {
       {currentMonth > 0 && KEY_EVENTS[currentMonth] && (
         <div
           className="flex items-center gap-2 px-4 py-1.5 border-t text-[10px]"
-          style={{ borderColor: 'rgba(88,66,55,0.3)', backgroundColor: 'rgba(249,115,22,0.06)' }}
+          style={{ borderColor: 'rgba(94,94,94,0.3)', backgroundColor: 'rgba(118,185,0,0.06)' }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: '13px', color: '#f97316' }}>
+          <span className="material-symbols-outlined" style={{ fontSize: '13px', color: '#76b900' }}>
             {KEY_EVENTS[currentMonth].icon}
           </span>
-          <span style={{ color: '#ffb690' }}>{KEY_EVENTS[currentMonth].label}</span>
-          <span style={{ color: '#584237' }}>· Month {currentMonth}</span>
+          <span style={{ color: '#76b900' }}>{KEY_EVENTS[currentMonth].label}</span>
+          <span style={{ color: '#333333' }}>· Month {currentMonth}</span>
         </div>
       )}
     </footer>

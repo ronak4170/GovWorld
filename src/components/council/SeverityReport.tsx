@@ -1,4 +1,5 @@
 import { useCouncilStore } from '@/store/councilStore'
+import CornerSquare from '@/components/common/CornerSquare'
 
 export default function SeverityReport() {
   const { isComplete, overallRiskScore, topRisks, consensusRecommendations, members } =
@@ -21,7 +22,8 @@ export default function SeverityReport() {
       : 'bg-emerald-500'
 
   return (
-    <div className="mt-4 bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+    <div className="relative mt-4 bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+      <CornerSquare position="tl" />
       {/* Header row */}
       <div className="flex items-center justify-between mb-4">
         <div className="text-slate-300 font-semibold text-sm">Council Synthesis</div>

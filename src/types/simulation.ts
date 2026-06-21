@@ -35,7 +35,7 @@ export interface SimulationTick {
   month: number                 // 1-12
   label: string                 // e.g. "Month 3 — Construction Phase 1"
   constructionProgress: number  // 0-100 percentage
-  weatherEvent?: string         // e.g. "Monsoon season — 14 workdays lost"
+  weatherEvent?: string         // e.g. "Winter storm — 14 workdays lost"
   citizenUpdates: CitizenUpdate[]
   events: SimulationEvent[]
   mapOverlays: MapOverlay[]     // What appears/disappears on the 3D map

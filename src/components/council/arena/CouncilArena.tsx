@@ -171,7 +171,7 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
           useCouncilStore.setState({
             overallRiskScore: 7,
             topRisks: [
-              'Monsoon delay risk compounded by contractor performance history',
+              'Winter storm delay risk compounded by contractor performance history',
               '55% revenue loss for Van Ness corridor small businesses with no compensation framework',
               'Induced demand from 4-lane road negates projected congestion relief within 18 months',
             ],
@@ -247,7 +247,7 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
     : 0
 
   return (
-    <div className="relative h-full w-full overflow-hidden" style={{ backgroundColor: '#08090d' }}>
+    <div className="relative h-full w-full overflow-hidden" style={{ backgroundColor: '#000000' }}>
       {/* Cinematic background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="star-field absolute inset-0" />
@@ -260,9 +260,9 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
           <button
             onClick={handleExit}
             className="w-10 h-10 glass-panel rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer"
-            style={{ color: '#a78b7d' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb690')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#a78b7d')}
+            style={{ color: '#5e5e5e' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#76b900')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#5e5e5e')}
             aria-label="Close arena"
           >
             <span className="material-symbols-outlined">close</span>
@@ -270,21 +270,21 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
           <button
             onClick={() => setMuted(!isMuted)}
             className="w-10 h-10 glass-panel rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer"
-            style={{ color: '#a78b7d' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb690')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#a78b7d')}
+            style={{ color: '#5e5e5e' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#76b900')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#5e5e5e')}
             aria-label={isMuted ? 'Unmute' : 'Mute'}
           >
             <span className="material-symbols-outlined">{isMuted ? 'volume_off' : 'volume_up'}</span>
           </button>
         </div>
         <div className="text-right flex flex-col items-end pointer-events-auto">
-          <span className="text-[10px] font-semibold tracking-[0.2em] mb-1" style={{ color: '#ffb690' }}>
+          <span className="text-[10px] font-semibold tracking-[0.2em] mb-1" style={{ color: '#76b900' }}>
             LIVE SIMULATION
           </span>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4edea3', boxShadow: '0 0 8px #4edea3' }} />
-            <span className="text-[20px] font-semibold tracking-tighter" style={{ color: '#f6ded3' }}>
+            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#76b900', boxShadow: '0 0 8px #76b900' }} />
+            <span className="text-[20px] font-semibold tracking-tighter" style={{ color: '#ffffff' }}>
               POLICY COUNCIL
             </span>
           </div>
@@ -320,13 +320,13 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
         {/* Idle start overlay */}
         {debatePlaybackState === 'idle' && (
           <div className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-4 pointer-events-none">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: '#a78b7d' }}>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: '#5e5e5e' }}>
               Van Ness Avenue · Complete Streets Phase 1
             </p>
             <button
               onClick={startCinematicDebate}
               className="pointer-events-auto px-6 py-3 rounded-xl text-sm font-bold tracking-wide transition-all active:scale-95 cursor-pointer flex items-center gap-2"
-              style={{ backgroundColor: '#f97316', color: '#552100', boxShadow: '0 0 30px rgba(249,115,22,0.4)' }}
+              style={{ backgroundColor: '#76b900', color: '#000000', boxShadow: '0 0 30px rgba(118,185,0,0.4)' }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
               Begin Debate
@@ -338,14 +338,14 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
         {debatePlaybackState !== 'idle' && (
           <div className="absolute bottom-28 right-6 z-20 flex gap-2 pointer-events-none">
             <div className="glass-panel px-3 py-1.5 rounded-lg flex items-center gap-2">
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#4edea3' }}>analytics</span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#e0c0b1' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#76b900' }}>analytics</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#a7a7a7' }}>
                 Experts {completeCount}/{members.length || 5}
               </span>
             </div>
             <div className="glass-panel px-3 py-1.5 rounded-lg flex items-center gap-2">
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#ffb690' }}>psychology</span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#e0c0b1' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#76b900' }}>psychology</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#a7a7a7' }}>
                 Risk {riskScore || '—'}/10
               </span>
             </div>

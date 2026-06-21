@@ -176,7 +176,7 @@ export default function PolicyInput() {
         onClick={handleCinematicDebate}
         disabled={isDebating}
         className="w-full bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all text-sm cursor-pointer shadow-lg shadow-blue-900/30"
-        style={{ fontFamily: 'Lexend, sans-serif' }}
+        style={{ fontFamily: 'Inter, sans-serif' }}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
