@@ -48,6 +48,11 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       fs: { allow: ['..'] },
+      // Proxy the Browserbase research endpoint to the local dev shim
+      // (server/dev.ts). In production Vercel serves api/research.ts directly.
+      proxy: {
+        '/api': 'http://localhost:3001',
+      },
     },
   }
 })

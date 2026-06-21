@@ -1,6 +1,9 @@
 /**
- * Expert sector research — gathers real-world facts via public web sources
- * (Wikipedia API, DuckDuckGo, and page scraping) before debate arguments.
+ * Expert sector research — each council expert is a web agent that researches
+ * before arguing. Live research is powered by the Browserbase platform (Search +
+ * Fetch) via the server-side /api/research endpoint, with public web sources
+ * (Wikipedia / DuckDuckGo / page scraping) as a fallback and pre-computed JSON
+ * for demo mode.
  */
 
 export interface ResearchFact {
@@ -104,6 +107,28 @@ async function fetchWithTimeout(url: string, init?: RequestInit, ms = 9000): Pro
   } finally {
     clearTimeout(timer)
   }
+}
+
+/**
+ * Primary live path: Browserbase platform (Search + Fetch) behind /api/research.
+ * The Browserbase API key stays server-side; the browser only sees facts.
+ */
+async function researchViaBrowserbase(
+  queries: string[],
+  scrapeUrls: Array<{ url: string; label: string }>,
+): Promise<ResearchFact[]> {
+  const res = await fetchWithTimeout(
+    '/api/research',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ queries, scrapeUrls, maxFacts: 6 }),
+    },
+    30000,
+  )
+  if (!res.ok) return []
+  const data = (await res.json()) as { facts?: ResearchFact[] }
+  return Array.isArray(data.facts) ? data.facts : []
 }
 
 async function searchWikipedia(query: string): Promise<ResearchFact[]> {
@@ -231,6 +256,18 @@ export async function gatherExpertResearch(
   const config = EXPERT_RESEARCH_CONFIG[expertId] ?? EXPERT_RESEARCH_CONFIG.economist
   const policyQuery = buildPolicyQuery(policyText)
 
+  // Primary: Browserbase platform (Search + Fetch) via the server-side proxy.
+  try {
+    const bbQueries = config.queries.map((q) => `${q} ${policyQuery}`)
+    const bbFacts = dedupeFacts(await researchViaBrowserbase(bbQueries, config.scrapeUrls)).slice(0, 6)
+    if (bbFacts.length > 0) {
+      return { expertId, facts: bbFacts, researchedAt: Date.now() }
+    }
+  } catch {
+    // fall through to public-source fallback below
+  }
+
+  // Fallback: public sources (Wikipedia / DuckDuckGo / page scrape).
   const wikiPromises = config.queries.map((q) => searchWikipedia(`${q} ${policyQuery}`))
   const ddgPromises = config.queries.slice(0, 1).map((q) => searchDuckDuckGo(`${q} San Francisco California`))
   const scrapePromises = config.scrapeUrls.slice(0, 2).map(({ url, label }) => scrapePage(url, label))
