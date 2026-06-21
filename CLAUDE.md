@@ -19,6 +19,103 @@ You are building GOVWORLD: a SimCity-style, real-time, 3D, AI-populated simulati
 
 ---
 
+## 0.5. AS-BUILT STATUS (source of truth — read this first)
+
+> The sections below this one describe the *original* design intent. The codebase has since
+> diverged. **Where this section conflicts with anything later in the file, this section wins.**
+> Keep it updated as the code changes.
+
+### Scenario moved: Mumbai → San Francisco
+The demo is no longer Andheri East, Mumbai. It is now the **Van Ness Avenue Complete Streets — Phase 1**
+project in **San Francisco** (centre `37.7790, -122.4193`; corridor Market St → Jackson St).
+Budget **$45M USD**, currency is `$`. Timeline is modelled as **12 monthly ticks** (`DEMO_TOTAL_MONTHS=12`),
+though the UI exposes a `TIME_FRAMES` selector (30 days → 5 years) in `src/lib/constants.ts`.
+
+Some files still contain **leftover Mumbai/India artefacts** (the word "monsoon", `₹`/`crore`,
+"festival rush", "ward meeting", and an `ORG_DAILY` label that maps to "San Francisco Chronicle"
+but reads like the old Mumbai paper). These are migration residue in `src/lib/swarmSimulation.ts`,
+`src/lib/llm.ts`, and `src/lib/deepgram.ts` (`₹`/`crore` text-prep) — treat them as bugs to clean up,
+not intent.
+
+### The 6 featured citizens were re-cast for SF (`src/data/demo_citizens.json`, 50 total)
+| ID | Name | Age | Job |
+|---|---|---|---|
+| C001 | Jasmine Chen | 34 | SFMTA Bus Driver |
+| C002 | Tony Ricci | 57 | Restaurant Owner |
+| C003 | Sofia Rodriguez | 26 | Civil Engineer (assigned as inspector) |
+| C004 | Earl Washington | 72 | Retired, diabetic, no car |
+| C005 | Amy Park | 41 | Elementary School Teacher |
+| C006 | Tyler Brooks | 29 | Startup Founder, cyclist |
+
+### Map is Leaflet, NOT Cesium
+`src/components/map/CesiumWorld.tsx` is a **misnomer** — it renders **Leaflet + OpenStreetMap**
+(`react-leaflet`), no API key required. Citizen dots (`CitizenDots.tsx`) and the construction
+overlay (`ConstructionOverlay.tsx`) are Leaflet layers. Cesium/Three.js are still in
+`package.json` but the live map does not use Cesium 3D Tiles. `ANDHERI_EAST_COORDS` in
+`constants.ts` is a stale name that now holds the SF coordinates.
+
+### Council expanded: 5 fixed members → pool of 10 selectable experts
+`EXPERT_POOL` in `src/store/councilStore.ts` defines **10 SF experts** (economist, advocate,
+engineer, watchdog, climate, lawyer, urbanplanner, health, transport, heritage). The user selects
+**2–7** (default = the original 5). Rich per-expert system prompts live in `EXPERT_SYSTEM_PROMPTS`
+in `src/lib/llm.ts`.
+
+There are **two debate UIs**, both opened as full-screen overlays from `Shell.tsx`:
+- **Legacy text debate** — `src/components/debate/DebateArena.tsx` (opened via the sidebar "Council" button).
+- **Cinematic 3D Council Arena** — `src/components/council/arena/*` (`CouncilArena`, `CouncilChamber3D`,
+  `ExpertAvatar3D`, `CinematicSubtitle`, `SeverityReveal`, `DebateControls`), driven by
+  `src/lib/debateOrchestrator.ts` (`runCinematicDebate`: round-robin sentence queue, pause/skip/abort).
+
+### New subsystems not in the original spec
+- **TTS via Deepgram Aura-2** — `src/lib/deepgram.ts`. Per-expert voices with Web Speech API fallback.
+  Requires `VITE_DEEPGRAM_API_KEY`. Used by the debate orchestrator.
+- **Live expert web research** — `src/lib/expertResearch.ts`. Before arguing, each expert "researches"
+  via Wikipedia API, DuckDuckGo, and `r.jina.ai` page scraping. Demo fallback: `demo_expert_research.json`.
+- **Simulation Director** — `src/lib/simulationDirector.ts`. Generative-agents-inspired (Park et al. 2023)
+  memory streams / reflection / planning + cascading **edge cases**. Used by `SimControls.tsx`
+  (`runSimulation`), `EdgeCaseFeed.tsx`, and `simulationStore.ts`. Has live (LLM) and demo modes.
+- **MiroFish "swarm" social-opinion pipeline** — `src/lib/{seedProcessor,ontologyGenerator,graphBuilder,
+  swarmSimulation,reportAgent}.ts`, `src/store/swarmStore.ts`, `src/components/swarm/*`, `src/types/swarm.ts`.
+  Pipeline: Seed → Ontology → Knowledge Graph → Personas → multi-agent social simulation → prediction report,
+  with God's-eye variable injection. **⚠️ Currently NOT mounted anywhere in the UI** — it is complete but
+  dormant code. Wire `SwarmEngine`/`SwarmFeed` into `Shell.tsx` to surface it.
+
+### LLM routing (as built, `src/lib/llm.ts`)
+| Use | Provider/model |
+|---|---|
+| Citizen profiles, citizen reactions, worker assignment, council arguments, swarm posts, report sections, ontology | **Gemini 2.5 Flash** (`VITE_GEMINI_API_KEY`) |
+| Real-time citizen voice chat + per-turn debate arguments | **Groq Llama 3.3 70B** (`VITE_GROQ_API_KEY`) |
+| Expert debate speech (TTS) | **Deepgram Aura-2** (`VITE_DEEPGRAM_API_KEY`) |
+
+`DEMO_MODE` = `VITE_DEMO_MODE === 'true' || VITE_SKIP_API === 'true'`. In demo mode every function loads
+pre-computed JSON or throws a "use fallback" error the caller catches.
+
+### Data files (`src/data/`) — beyond the original six
+`demo_citizens.json`, `demo_policy.json`, `demo_council_debate.json`, `demo_simulation_ticks.json`,
+`demo_citizen_reactions.json`, `demo_ledger.json`, **plus** `demo_voice_responses.json`,
+`demo_debate_sentences.json`, `demo_expert_research.json`.
+
+### UI / layout (as built)
+- **Theme:** warm "mission control" brown/orange (`#160c06`, `#ffb690`, accent `#f97316`), Material Symbols
+  icons, `Geist` wordmark — **not** the slate-950 palette described in §8. Styles in `src/globals.css`.
+- **Shell** (`src/components/layout/Shell.tsx`): 48px left rail (`Sidebar`) · centre Leaflet map · fixed
+  **360px** right panel (`PanelManager`) · bottom `TimelineBar` · `SimulationEngine` running headless.
+- **Right panel tabs:** only **Updates / People / Ledger** (`PanelManager.tsx`). Citizen selection auto-opens
+  the People tab → `CitizenCard`. `PANEL_IDS` still lists COUNCIL/VOICE/POLICY/EDGE_CASES but they are not tabs.
+- **Voice chat** (`CitizenChat`) and **DissatisfactionAlert** render as fixed overlays.
+
+### Agent spec / config files
+- Agent specs (`AGENT_*.md`) live at the **repo root**, not `/agents/`.
+- `.claude/agents/` holds 6 Claude Code subagent definitions (map, citizen, council, simulation, voice, ledger).
+- `env.example` is **stale** (says `VITE_DEMO_NEIGHBOURHOOD=andheri`; missing nothing critical but out of date).
+  `DEMO_NEIGHBOURHOOD` in code is `'vanness'`.
+
+### Scripts
+`npm run demo` (demo mode), `npm run dev`, `npm run build`, `npm run typecheck`, `npm run lint`,
+`npm run precompute` (regenerate `/src/data/` via `scripts/precompute_demo.ts`).
+
+---
+
 ## 1. PROJECT OVERVIEW
 
 ### What GOVWORLD is
