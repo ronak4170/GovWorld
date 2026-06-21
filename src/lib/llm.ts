@@ -16,6 +16,7 @@ import type { LedgerTask, WorkerAssignment } from '@/types/ledger'
 import type { ExpertDefinition } from '@/store/councilStore'
 import type { ResearchFact } from '@/lib/expertResearch'
 import { formatResearchForPrompt, factsToCitedEvidence } from '@/lib/expertResearch'
+import { withLLMSpan } from '@/lib/tracing'
 
 const DEMO_MODE =
   import.meta.env.VITE_DEMO_MODE === 'true' ||
@@ -309,7 +310,23 @@ Stay sharply in character and do not repeat yourself.
 Assign a severity score 1–10 at the end in this exact format — SEVERITY: X/10`
 
   // Higher temperature + per-run angle => a genuinely different argument each run.
-  return callGemini(prompt, member.systemPrompt, { temperature: 1.0 })
+  return withLLMSpan(
+    'council_argument',
+    {
+      input: prompt,
+      model: 'gemini-2.5-flash',
+      provider: 'google',
+      surface: 'council_argument',
+      system: member.systemPrompt,
+      extra: {
+        'govworld.expert_id': member.id,
+        'govworld.expert_name': member.name,
+        'govworld.debate_variant': variant,
+      },
+    },
+    () => callGemini(prompt, member.systemPrompt, { temperature: 1.0 }),
+    (out) => out,
+  )
 }
 
 /**
@@ -557,12 +574,29 @@ Speak directly and stay in character. 3–4 sentences maximum. Cite real sources
       { role: 'user' as const, content: userPrompt },
     ]
 
-    const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
-      messages,
-      max_tokens: 300,
-      temperature: 0.9,
-    })
+    const completion = await withLLMSpan(
+      'council_turn_argument',
+      {
+        input: userPrompt,
+        model: 'llama-3.3-70b-versatile',
+        provider: 'groq',
+        surface: 'council_turn_argument',
+        system: systemPrompt,
+        extra: {
+          'govworld.expert_id': expert.id,
+          'govworld.expert_name': expert.name,
+          'govworld.round': round,
+        },
+      },
+      () =>
+        groq.chat.completions.create({
+          model: 'llama-3.3-70b-versatile',
+          messages,
+          max_tokens: 300,
+          temperature: 0.9,
+        }),
+      (c) => c.choices[0]?.message?.content?.trim() ?? '',
+    )
 
     const content = completion.choices[0]?.message?.content?.trim()
     if (content) return content

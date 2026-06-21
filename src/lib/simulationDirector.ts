@@ -129,7 +129,7 @@ DURATION: ${monthsToSimulate} months (${policy.plannedStartDate} → ${policy.pl
 FEATURED CITIZENS:
 ${citizenBlocks}
 
-EDGE CASE TAXONOMY — select 4-6 from these categories based on the seed "${seed}":
+EDGE CASE TAXONOMY — select 6-8 from these categories based on the seed "${seed}" (vary the mix every run):
 
 CORRUPTION: ghost workers on payroll | inflated material invoices | permit delayed for informal payment | substandard materials used to cut costs | contractor colludes with inspector
 TECHNICAL: unexpected underground utility found | soil liquefaction risk discovered | groundwater table higher than designed | structural design error found mid-construction | equipment breakdown halting critical path
@@ -139,7 +139,8 @@ ENVIRONMENTAL: winter storm flooding sweeps materials | archaeological heritage 
 SAFETY: worker fatality triggers OSHA investigation | dust-related respiratory illness spike | traffic fatality at unmarked crossing | scaffolding failure injures bystander | child struck by construction vehicle
 POLITICAL: upcoming election freezes approvals for 3 weeks | budget reallocation cuts $5M | new mayor demands project review | anti-corruption audit launched | opposition files public interest litigation
 ADAPTIVE: community informally widens parallel alley as alternative | street vendors relocate and form new market | residents crowdfund to hire independent engineer inspector | local NGO maps affected households for compensation | displaced workers self-organise for retraining
-LEGAL: land boundary dispute freezes Block C | court order halts work pending environmental clearance | worker files wrongful injury suit | contractor files arbitration claim for scope creep | heritage body files injunction
+LEGAL: land boundary dispute freezes Block C | court order halts work pending CEQA review | worker files wrongful injury suit | contractor files arbitration claim for scope creep | ADA noncompliance suit over interim sidewalks
+SYSTEMIC: cascading delays consume the budget buffer | contingency exhausted before final stretch | single-bid procurement removes cost control | no independent milestone verification before payment
 
 Generate a JSON object with this EXACT structure (no markdown, no explanation — pure JSON only):
 {
@@ -229,90 +230,248 @@ RULES:
 // Fallback: randomised version of pre-computed demo data
 // ---------------------------------------------------------------------------
 
-/** Edge case templates used to generate varied fallback results */
+/** Edge case templates used to generate varied fallback results.
+ *  Pool is intentionally large and spans every category so each re-roll
+ *  surfaces a different combination. */
 const EDGE_CASE_TEMPLATES: Omit<EdgeCase, 'id' | 'month' | 'discoveredAt'>[] = [
+  // ── Corruption ──────────────────────────────────────────────
   {
     category: 'corruption',
     title: 'Ghost Workers on Contractor Payroll',
-    description: 'Internal audit flags 8 non-existent workers on Bay Area Infrastructure payroll. $180,000 in fraudulent wages identified over 3 months.',
+    description: 'Internal audit flags 8 non-existent workers on Bay Area Infrastructure Inc. payroll. $180,000 in fraudulent wages identified over 3 months.',
     severity: 'critical',
     affectedCitizenIds: ['C002', 'C003'],
     isResolved: false,
   },
   {
+    category: 'corruption',
+    title: 'Inflated Material Invoices Uncovered',
+    description: 'Forensic accounting finds aggregate and rebar billed 32% above market rate across Blocks A–B. Estimated $1.2M overcharge under DA review.',
+    severity: 'critical',
+    affectedCitizenIds: ['C003'],
+    isResolved: false,
+  },
+  {
+    category: 'corruption',
+    title: 'Inspector Conflict of Interest Flagged',
+    description: 'Ethics Commission learns the lead site inspector previously consulted for the prime contractor. All Block A sign-offs ordered re-reviewed.',
+    severity: 'warning',
+    affectedCitizenIds: ['C003'],
+    isResolved: false,
+  },
+  // ── Technical ───────────────────────────────────────────────
+  {
     category: 'technical',
     title: 'Unexpected Utility Conflict at Block B',
-    description: 'Excavation uncovers unmapped BSNL fibre bundle and TATA Power cables 0.8m below surface. Block B halted for 11 working days.',
+    description: 'Excavation uncovers an unmapped AT&T fiber bundle and PG&E power cables 0.8m below surface. Block B halted for 11 working days.',
     severity: 'warning',
     affectedCitizenIds: ['C001', 'C004'],
     isResolved: false,
   },
   {
-    category: 'social',
-    title: 'Residents Form Monitoring Committee',
-    description: 'Twelve affected households form the Van Ness Corridor Citizens Watch. They demand weekly progress updates and a dedicated grievance hotline.',
-    severity: 'info',
-    affectedCitizenIds: ['C002', 'C005'],
-    isResolved: true,
-    resolution: 'Municipal corporation agreed to bi-weekly town halls.',
-  },
-  {
-    category: 'safety',
-    title: 'Dust-Related Illness Spike at Local School',
-    description: 'School health records show 23% rise in respiratory complaints. Pollution board issues a formal notice. Wet-sweeping mandate issued.',
-    severity: 'warning',
-    affectedCitizenIds: ['C005'],
+    category: 'technical',
+    title: 'Soil Liquefaction Risk Discovered',
+    description: 'Geotech cores reveal Block C sits on bay-fill prone to liquefaction. Foundation design must be revised; +$2.1M and a 4-week redesign.',
+    severity: 'critical',
+    affectedCitizenIds: ['C003', 'C006'],
     isResolved: false,
   },
   {
-    category: 'political',
-    title: 'Pre-Election Approval Freeze',
-    description: 'Municipal elections announced — all new contractor sub-awards frozen for 3 weeks pending Model Code of Conduct compliance.',
+    category: 'technical',
+    title: 'Groundwater Higher Than Designed',
+    description: 'Trench dewatering pumps run 24/7 after the water table is found 1.5m above survey. Schedule slips and utility costs climb.',
     severity: 'warning',
-    affectedCitizenIds: [],
+    affectedCitizenIds: ['C004'],
     isResolved: true,
-    resolution: 'Freeze lifted after election notification period ended.',
+    resolution: 'Wellpoint dewatering system installed; trenching resumed.',
   },
+  // ── Social ──────────────────────────────────────────────────
+  {
+    category: 'social',
+    title: 'Residents Form Monitoring Committee',
+    description: 'Twelve affected households form the Van Ness Corridor Citizens Watch, demanding weekly progress updates and a dedicated grievance hotline.',
+    severity: 'info',
+    affectedCitizenIds: ['C002', 'C005'],
+    isResolved: true,
+    resolution: 'SF Public Works agreed to bi-weekly town halls.',
+  },
+  {
+    category: 'social',
+    title: 'Local Media Exposes Site Conditions',
+    description: 'A San Francisco Chronicle investigation runs photos of exposed trenches near the school. Public pressure forces an emergency safety audit.',
+    severity: 'warning',
+    affectedCitizenIds: ['C005', 'C002'],
+    isResolved: false,
+  },
+  {
+    category: 'social',
+    title: 'Protest Blocks Site Access',
+    description: 'Cyclist-safety advocates stage a sit-in after the bike lane is removed without an interim diversion. Work paused at the south staging area.',
+    severity: 'warning',
+    affectedCitizenIds: ['C006'],
+    isResolved: false,
+  },
+  // ── Economic ────────────────────────────────────────────────
   {
     category: 'economic',
     title: 'Local Business Micro-Recession',
-    description: 'Five shops along the affected stretch report revenue declines of 40-70%. Two have given notice to vacate. Risk of permanent closures identified.',
+    description: 'Five storefronts along the corridor report revenue down 40–70%. Two have given notice to vacate. Risk of permanent closures identified.',
     severity: 'critical',
     affectedCitizenIds: ['C002'],
     isResolved: false,
   },
   {
+    category: 'economic',
+    title: 'Key Aggregate Supplier Defaults',
+    description: 'The sole regional aggregate supplier files for bankruptcy mid-pour. Materials sourcing stalls Block B paving for 9 days.',
+    severity: 'warning',
+    affectedCitizenIds: ['C001'],
+    isResolved: false,
+  },
+  {
+    category: 'economic',
+    title: 'Subcontractor Walks Off Over Unpaid Invoices',
+    description: 'The electrical subcontractor halts work, citing 60 days of unpaid invoices. Signal and lighting installation freezes.',
+    severity: 'critical',
+    affectedCitizenIds: ['C003'],
+    isResolved: false,
+  },
+  // ── Environmental ───────────────────────────────────────────
+  {
+    category: 'environmental',
+    title: 'Winter Storm Flooding Damages Site',
+    description: 'An atmospheric river sweeps loose gravel and debris into storm drains. SF Public Works issues an environmental notice. 6 workdays lost.',
+    severity: 'warning',
+    affectedCitizenIds: ['C004', 'C005'],
+    isResolved: true,
+    resolution: 'Temporary drainage berms installed; work resumed after clearance.',
+  },
+  {
+    category: 'environmental',
+    title: 'Historic Artifact Found During Excavation',
+    description: 'Crews unearth 19th-century cobblestones and a streetcar rail. The Planning Department orders an archaeological review of Block A.',
+    severity: 'warning',
+    affectedCitizenIds: ['C002'],
+    isResolved: false,
+  },
+  {
+    category: 'environmental',
+    title: 'Contaminated Soil from Former Gas Station',
+    description: 'Petroleum-contaminated soil is found at a legacy fuel-station parcel. Hazmat remediation required before excavation continues.',
+    severity: 'critical',
+    affectedCitizenIds: ['C004', 'C005'],
+    isResolved: false,
+  },
+  // ── Safety ──────────────────────────────────────────────────
+  {
+    category: 'safety',
+    title: 'Dust-Related Illness Spike at Local School',
+    description: 'School health records show a 23% rise in respiratory complaints. The Bay Area AQMD issues a formal notice; a wet-sweeping mandate follows.',
+    severity: 'warning',
+    affectedCitizenIds: ['C005'],
+    isResolved: false,
+  },
+  {
+    category: 'safety',
+    title: 'Worker Injury Triggers Cal/OSHA Probe',
+    description: 'A scaffolding collapse injures two laborers. Cal/OSHA opens an investigation and issues a partial stop-work order on Block B.',
+    severity: 'critical',
+    affectedCitizenIds: ['C003'],
+    isResolved: false,
+  },
+  {
+    category: 'safety',
+    title: 'Pedestrian Struck at Unmarked Crossing',
+    description: 'A senior is struck by a delivery truck at a crossing where signage was removed. The intersection is closed pending a safety redesign.',
+    severity: 'critical',
+    affectedCitizenIds: ['C004'],
+    isResolved: false,
+  },
+  // ── Political ───────────────────────────────────────────────
+  {
+    category: 'political',
+    title: 'Pre-Election Approval Freeze',
+    description: 'With city elections called, all new contractor sub-awards are frozen for 3 weeks pending pre-election ethics-compliance review.',
+    severity: 'warning',
+    affectedCitizenIds: [],
+    isResolved: true,
+    resolution: 'Freeze lifted after the notification period ended.',
+  },
+  {
+    category: 'political',
+    title: 'Budget Reallocation Cuts $5M',
+    description: 'The Board of Supervisors redirects $5M to emergency storm repairs citywide. The corridor team must de-scope street trees and two shelters.',
+    severity: 'critical',
+    affectedCitizenIds: ['C006', 'C005'],
+    isResolved: false,
+  },
+  {
+    category: 'political',
+    title: 'New Supervisor Demands Project Review',
+    description: 'A newly seated district supervisor calls for a full project audit, freezing the Block C notice-to-proceed for two weeks.',
+    severity: 'warning',
+    affectedCitizenIds: [],
+    isResolved: false,
+  },
+  // ── Adaptive ────────────────────────────────────────────────
+  {
+    category: 'adaptive',
+    title: 'Merchants Launch Pop-Up Market',
+    description: 'Displaced storefronts band together to run a weekend pop-up market on a closed side street, partially restoring foot traffic and morale.',
+    severity: 'info',
+    affectedCitizenIds: ['C002', 'C004'],
+    isResolved: true,
+    resolution: 'City granted a temporary event permit; market continues monthly.',
+  },
+  {
+    category: 'adaptive',
+    title: 'Residents Crowdfund Independent Inspector',
+    description: 'Neighbors raise funds to hire an independent civil engineer to verify milestone claims, creating bottom-up accountability pressure.',
+    severity: 'info',
+    affectedCitizenIds: ['C003', 'C006'],
+    isResolved: true,
+    resolution: 'Findings shared publicly; DPW agreed to reconcile two disputed milestones.',
+  },
+  // ── Legal ───────────────────────────────────────────────────
+  {
     category: 'legal',
-    title: 'Land Boundary Dispute Halts Block C',
-    description: 'Property owner files complaint alleging 1.2m encroachment on private land. District court issues stay order pending survey.',
+    title: 'Court Order Halts Work Pending CEQA Review',
+    description: 'A neighborhood group wins a Superior Court order pausing Block C until an environmental review challenge is resolved.',
     severity: 'critical',
     affectedCitizenIds: ['C002', 'C006'],
     isResolved: false,
   },
   {
-    category: 'environmental',
-    title: 'Winter Storm Flooding Damages Site',
-    description: 'Unseasonal heavy rainfall sweeps loose gravel and construction debris into storm drains. MCGM issues environmental notice. 6 workdays lost.',
+    category: 'legal',
+    title: 'Contractor Files Arbitration for Scope Creep',
+    description: 'The prime contractor files a $3.4M arbitration claim, alleging design changes expanded scope. Payments enter dispute.',
     severity: 'warning',
-    affectedCitizenIds: ['C004', 'C005'],
-    isResolved: true,
-    resolution: 'Temporary drainage bunds installed. Work resumed after drainage clearance.',
+    affectedCitizenIds: ['C003'],
+    isResolved: false,
   },
   {
-    category: 'adaptive',
-    title: 'Informal Alley Widened by Community',
-    description: 'Residents of Van Ness corridor collaboratively clear a 2m-wide alley behind shops, creating an informal pedestrian bypass. Footfall partially restored.',
-    severity: 'info',
-    affectedCitizenIds: ['C002', 'C004'],
-    isResolved: true,
-    resolution: 'Community-driven solution; municipality agreed to pave the alley post-construction.',
+    category: 'legal',
+    title: 'ADA Noncompliance Suit Filed',
+    description: 'A disability-rights group sues over inaccessible interim sidewalks. The city must retrofit temporary ADA ramps within 30 days.',
+    severity: 'warning',
+    affectedCitizenIds: ['C004'],
+    isResolved: false,
   },
+  // ── Systemic ────────────────────────────────────────────────
   {
     category: 'systemic',
     title: 'Cascading Project Delays — 6-Week Slippage',
-    description: 'Combination of winter storm delays, utility conflict, and contractor staff absence pushes overall timeline out by 6 weeks. Budget buffer consumed.',
+    description: 'Winter storm delays, a utility conflict, and contractor staff shortages compound, pushing the timeline out 6 weeks and consuming the buffer.',
     severity: 'critical',
     affectedCitizenIds: ['C001', 'C002', 'C003', 'C004'],
+    isResolved: false,
+  },
+  {
+    category: 'systemic',
+    title: 'Budget Contingency Exhausted by Month 7',
+    description: 'Compounding change-orders burn through the 10% contingency before the final stretch, leaving no buffer for the Block C unknowns.',
+    severity: 'critical',
+    affectedCitizenIds: ['C002', 'C003'],
     isResolved: false,
   },
 ]
@@ -327,15 +486,17 @@ const SUMMARY_TEMPLATES = [
 
 const SYSTEMIC_RISK_POOL = [
   'Contractor financial instability — two undisclosed loans against project revenue discovered',
-  'Material supply chain fragility — single supplier for bitumen creates single point of failure',
-  'Worker welfare gap — no formal dispute mechanism for 47 daily-wage labourers',
-  'Community information asymmetry — 60% of affected residents unaware of appeal process',
-  'Budget contingency exhausted by Month 7 — no buffer for final stretch',
-  'Parallel road diversions creating informal settlements risk',
-  'Groundwater contamination from construction runoff unmonitored',
-  'Political pressure driving unsafe pace of work in final 2 months',
-  'Contractor history of using substandard materials in previous MCGM projects',
-  'Inspector co-location with contractor offices creating conflict of interest',
+  'Material supply chain fragility — single regional asphalt supplier is a single point of failure',
+  'Worker welfare gap — no formal dispute mechanism for 47 day-laborers on site',
+  'Community information asymmetry — 60% of affected residents unaware of the appeal process',
+  'Budget contingency exhausted by Month 7 — no buffer for the final stretch',
+  'Interim traffic diversions pushing congestion onto unprepared side streets',
+  'Stormwater runoff from the site discharging untreated into the Bay sewer system',
+  'Political pressure driving an unsafe pace of work in the final 2 months',
+  'Contractor history of substandard materials on prior SF Public Works projects',
+  'Inspector co-location with contractor offices creating a conflict of interest',
+  'Single-bid procurement on Block C limiting competitive cost control',
+  'No independent verification of milestone completion before payment release',
 ]
 
 /** Vary construction progress ±5% per tick around the expected value */
@@ -359,27 +520,67 @@ function varyNarrative(base: string, seed: string, citizenId: string, month: num
   return base + modifiers[idx]
 }
 
+/** Map an edge-case category to a timeline event type for the Updates feed. */
+const CATEGORY_EVENT_TYPE: Record<EdgeCaseCategory, SimulationEvent['type']> = {
+  corruption: 'flag',
+  technical: 'construction',
+  social: 'flag',
+  economic: 'closure',
+  environmental: 'construction',
+  safety: 'flag',
+  political: 'flag',
+  adaptive: 'employment',
+  legal: 'flag',
+  systemic: 'flag',
+}
+
+/** Turn an edge case into a timeline event so it surfaces in the Updates feed. */
+function edgeCaseToEvent(ec: EdgeCase): SimulationEvent {
+  return {
+    id: `EVT-${ec.id}`,
+    tick: ec.month,
+    type: CATEGORY_EVENT_TYPE[ec.category] ?? 'flag',
+    title: ec.title,
+    description: ec.description,
+    affectedCitizenIds: ec.affectedCitizenIds,
+    severity: ec.severity,
+  }
+}
+
 async function generateFallbackSimulation(options: DirectorOptions, seed: string): Promise<DirectorSimulation> {
   // Load pre-computed ticks as the base
   const baseMod = await import('@/data/demo_simulation_ticks.json')
   const baseTicks: SimulationTick[] = baseMod.default as unknown as SimulationTick[]
 
-  // Select 4 edge case templates based on seed
-  const selectedTemplates = seededPick(EDGE_CASE_TEMPLATES, 4, seed)
+  // Pick a varied NUMBER of edge cases (5–7) so each re-roll differs in count too
+  const ecCount = 5 + Math.floor(seededRandom(seed, 42) * 3) // 5, 6, or 7
+  const selectedTemplates = seededPick(EDGE_CASE_TEMPLATES, ecCount, seed)
 
-  // Assign them to varied months
-  const monthPool = [2, 3, 4, 5, 6, 7, 8, 9, 10]
-  const selectedMonths = seededPick(monthPool, 4, seed, 100)
+  // Assign each to a distinct month across the whole timeline, ordered chronologically
+  const monthPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const selectedMonths = seededPick(monthPool, ecCount, seed, 100).sort((a, b) => a - b)
 
-  const edgeCases: EdgeCase[] = selectedTemplates.map((tpl, i) => ({
-    ...tpl,
-    id: `EC${String(i + 1).padStart(3, '0')}`,
-    month: selectedMonths[i],
-    discoveredAt: Date.now(),
-    cascadesTo: i < selectedTemplates.length - 1 ? [`EC${String(i + 2).padStart(3, '0')}`] : undefined,
-  }))
+  const edgeCases: EdgeCase[] = selectedTemplates
+    .map((tpl, i) => ({ tpl, month: selectedMonths[i] }))
+    .map(({ tpl, month }, i, arr) => ({
+      ...tpl,
+      id: `EC${String(i + 1).padStart(3, '0')}`,
+      month,
+      discoveredAt: Date.now(),
+      // Cascade to the next chronological edge case (forward in time)
+      cascadesTo: i < arr.length - 1 ? [`EC${String(i + 2).padStart(3, '0')}`] : undefined,
+    }))
 
-  // Vary the ticks
+  // Index edge-case-derived events by month
+  const edgeEventsByMonth = new Map<number, SimulationEvent[]>()
+  for (const ec of edgeCases) {
+    const list = edgeEventsByMonth.get(ec.month) ?? []
+    list.push(edgeCaseToEvent(ec))
+    edgeEventsByMonth.set(ec.month, list)
+  }
+
+  // Vary the ticks AND inject the unique edge-case events, so the Updates feed
+  // (not just the Edge Cases panel) changes on every re-roll.
   const ticks: SimulationTick[] = baseTicks.map((tick) => ({
     ...tick,
     constructionProgress: varyProgress(tick.constructionProgress, seed, tick.month),
@@ -387,6 +588,7 @@ async function generateFallbackSimulation(options: DirectorOptions, seed: string
       ...cu,
       narrative: varyNarrative(cu.narrative, seed, cu.citizenId, tick.month),
     })),
+    events: [...tick.events, ...(edgeEventsByMonth.get(tick.month) ?? [])],
   }))
 
   // Build citizen memories from the tick data

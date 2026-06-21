@@ -48,6 +48,13 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       fs: { allow: ['..'] },
+      // Proxy Phoenix OTLP trace ingestion so the browser stays same-origin (no CORS).
+      proxy: {
+        '/v1/traces': {
+          target: 'http://localhost:6006',
+          changeOrigin: true,
+        },
+      },
     },
   }
 })
