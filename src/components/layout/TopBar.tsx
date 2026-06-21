@@ -31,25 +31,6 @@ export default function TopBar() {
         </span>
       </div>
 
-      {/* Divider */}
-      <div className="w-px h-5 flex-shrink-0" style={{ backgroundColor: '#584237' }} />
-
-      {/* NAV LINKS */}
-      <nav className="hidden md:flex items-center gap-5">
-        {['Simulation', 'Intelligence', 'Logistics', 'Governance'].map((label, i) => (
-          <span
-            key={label}
-            className="text-[10px] tracking-[0.1em] uppercase cursor-pointer transition-colors select-none"
-            style={i === 0
-              ? { color: '#ffb690', borderBottom: '1px solid #ffb690', paddingBottom: '2px' }
-              : { color: '#a78b7d' }
-            }
-          >
-            {label}
-          </span>
-        ))}
-      </nav>
-
       {/* Spacer */}
       <div className="flex-1" />
 

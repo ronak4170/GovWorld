@@ -12,6 +12,9 @@ interface Props {
   onExit: () => void
 }
 
+const ICON_BTN =
+  'flex items-center justify-center w-11 h-11 rounded-lg transition-all active:scale-95 cursor-pointer'
+
 export default function DebateControls({
   playbackState,
   progress,
@@ -27,29 +30,44 @@ export default function DebateControls({
 }: Props) {
   const isPlaying = playbackState === 'playing'
   const isComplete = playbackState === 'complete'
+  const pct = Math.round(progress * 100)
 
   return (
     <div className="absolute bottom-0 left-0 right-0 z-30">
-      {/* Progress bar */}
-      <div className="h-0.5 bg-slate-800">
-        <div
-          className="h-full bg-blue-600 transition-all duration-300"
-          style={{ width: `${Math.round(progress * 100)}%` }}
-        />
+      {/* Session progress bar */}
+      <div className="px-8 pb-2 pt-1">
+        <div className="flex justify-between items-center px-1 mb-1.5">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#a78b7d' }}>
+            Session Progress
+          </span>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.1em] tabular-nums" style={{ color: '#f6ded3' }}>
+            {isComplete ? 'Complete' : `Round ${round} / ${maxRound}`} · {pct}%
+          </span>
+        </div>
+        <div className="h-1 w-full rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(64,50,42,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
+          <div
+            className="h-full relative transition-all duration-300"
+            style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #ffb690 0%, #f97316 100%)' }}
+          >
+            <div className="absolute right-0 top-0 bottom-0 w-8 blur-sm" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
+          </div>
+        </div>
       </div>
 
+      {/* Transport bar */}
       <div
-        className="flex items-center gap-3 px-4 py-3 border-t border-slate-800/80 backdrop-blur-md"
-        style={{ background: 'rgba(0,0,0,0.75)' }}
+        className="flex items-center gap-3 px-4 py-3 border-t backdrop-blur-md"
+        style={{ borderColor: 'rgba(88,66,55,0.4)', background: 'rgba(15,17,23,0.7)' }}
       >
         <button
           onClick={onExit}
-          className="flex items-center justify-center w-11 h-11 rounded-lg border border-slate-700 text-slate-400 hover:text-slate-100 hover:border-slate-500 transition-colors cursor-pointer"
+          className={ICON_BTN}
+          style={{ border: '1px solid #584237', color: '#a78b7d' }}
           aria-label="Exit debate"
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb690')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#a78b7d')}
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
         </button>
 
         {!isComplete && (
@@ -57,42 +75,35 @@ export default function DebateControls({
             <button
               onClick={isPlaying ? onPause : onPlay}
               disabled={playbackState === 'idle'}
-              className="flex items-center justify-center w-11 h-11 rounded-lg bg-blue-700 hover:bg-blue-600 disabled:opacity-40 text-white transition-colors cursor-pointer"
+              className={ICON_BTN + ' disabled:opacity-40'}
+              style={{ backgroundColor: '#f97316', color: '#552100' }}
               aria-label={isPlaying ? 'Pause' : 'Play'}
             >
-              {isPlaying ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7L8 5z" />
-                </svg>
-              )}
+              <span className="material-symbols-outlined" style={{ fontSize: '22px', fontVariationSettings: "'FILL' 1" }}>
+                {isPlaying ? 'pause' : 'play_arrow'}
+              </span>
             </button>
 
             <button
               onClick={onSkip}
               disabled={!isPlaying && playbackState !== 'paused'}
-              className="flex items-center justify-center w-11 h-11 rounded-lg border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white disabled:opacity-40 transition-colors cursor-pointer"
+              className={ICON_BTN + ' disabled:opacity-40'}
+              style={{ border: '1px solid #584237', color: '#e0c0b1' }}
               aria-label="Skip to next point"
               title="Skip to next point"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 18l8.5-6L6 6v12zm2-6l8.5 6V6L8 12zm8.5 6V6H18v12h-1.5z" />
-              </svg>
+              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>skip_next</span>
             </button>
 
             <button
               onClick={onSkipToEnd}
               disabled={!isPlaying && playbackState !== 'paused'}
-              className="flex items-center justify-center px-3 h-11 rounded-lg border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white disabled:opacity-40 transition-colors cursor-pointer text-xs font-semibold gap-1"
+              className="flex items-center justify-center gap-1 px-3 h-11 rounded-lg transition-all active:scale-95 disabled:opacity-40 cursor-pointer text-xs font-semibold"
+              style={{ border: '1px solid #584237', color: '#e0c0b1' }}
               aria-label="Skip to verdict"
               title="Skip to verdict"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z" />
-              </svg>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>fast_forward</span>
               Verdict
             </button>
           </>
@@ -100,32 +111,23 @@ export default function DebateControls({
 
         <button
           onClick={onToggleMute}
-          className="flex items-center justify-center w-11 h-11 rounded-lg border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white transition-colors cursor-pointer"
+          className={ICON_BTN}
+          style={{ border: '1px solid #584237', color: '#e0c0b1' }}
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
-          {isMuted ? (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-            </svg>
-          ) : (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12m-3.536-9.536a5 5 0 000 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            </svg>
-          )}
+          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
+            {isMuted ? 'volume_off' : 'volume_up'}
+          </span>
         </button>
 
         <div className="flex-1 text-center">
-          <span
-            className="text-slate-500 text-xs uppercase tracking-widest"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-          >
-            {isComplete ? 'Debate Complete' : `Round ${round} / ${maxRound}`}
+          <span className="text-[10px] uppercase tracking-[0.15em]" style={{ color: '#584237' }}>
+            {isComplete ? 'Debate Complete' : 'Live Council Simulation'}
           </span>
         </div>
 
-        <div className="text-slate-600 text-xs tabular-nums w-12 text-right">
-          {Math.round(progress * 100)}%
+        <div className="text-xs tabular-nums w-12 text-right" style={{ color: '#a78b7d' }}>
+          {pct}%
         </div>
       </div>
     </div>

@@ -241,39 +241,61 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
   }
 
   const activeExpert = EXPERT_POOL.find((e) => e.id === speakingExpertId)
+  const completeCount = members.filter((m) => m.isComplete).length
+  const riskScore = activeExpert
+    ? (members.find((m) => m.id === activeExpert.id)?.severityScore ?? 0)
+    : 0
 
   return (
-    <div className="h-full w-full bg-black flex flex-col overflow-hidden">
-      {/* Header */}
-      <div
-        className="relative z-20 flex items-center justify-between px-5 py-3 border-b border-slate-800/80"
-        style={{ background: 'rgba(0,0,0,0.85)' }}
-      >
-        <div>
-          <h1
-            className="text-slate-100 text-sm font-semibold tracking-wide"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-          >
-            Policy Council — Live Debate
-          </h1>
-          <p className="text-slate-500 text-xs">Van Ness Avenue, San Francisco · Complete Streets Phase 1</p>
-        </div>
-        {debatePlaybackState === 'idle' && (
-          <button
-            onClick={startCinematicDebate}
-            className="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-600 text-white text-sm font-semibold transition-colors cursor-pointer"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-          >
-            Start Debate
-          </button>
-        )}
+    <div className="relative h-full w-full overflow-hidden" style={{ backgroundColor: '#08090d' }}>
+      {/* Cinematic background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="star-field absolute inset-0" />
+        <div className="cinematic-vignette absolute inset-0" />
       </div>
 
+      {/* Top navigation */}
+      <nav className="absolute top-0 left-0 right-0 z-50 p-6 flex justify-between items-start pointer-events-none">
+        <div className="flex items-center gap-3 pointer-events-auto">
+          <button
+            onClick={handleExit}
+            className="w-10 h-10 glass-panel rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer"
+            style={{ color: '#a78b7d' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb690')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#a78b7d')}
+            aria-label="Close arena"
+          >
+            <span className="material-symbols-outlined">close</span>
+          </button>
+          <button
+            onClick={() => setMuted(!isMuted)}
+            className="w-10 h-10 glass-panel rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer"
+            style={{ color: '#a78b7d' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb690')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#a78b7d')}
+            aria-label={isMuted ? 'Unmute' : 'Mute'}
+          >
+            <span className="material-symbols-outlined">{isMuted ? 'volume_off' : 'volume_up'}</span>
+          </button>
+        </div>
+        <div className="text-right flex flex-col items-end pointer-events-auto">
+          <span className="text-[10px] font-semibold tracking-[0.2em] mb-1" style={{ color: '#ffb690' }}>
+            LIVE SIMULATION
+          </span>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4edea3', boxShadow: '0 0 8px #4edea3' }} />
+            <span className="text-[20px] font-semibold tracking-tighter" style={{ color: '#f6ded3' }}>
+              POLICY COUNCIL
+            </span>
+          </div>
+        </div>
+      </nav>
+
       {/* Main stage */}
-      <div className="relative flex-1 overflow-hidden">
+      <div className="absolute inset-0 z-10 overflow-hidden">
         {use2DFallback ? (
-          <div className="absolute inset-0 overflow-y-auto p-4 bg-slate-950">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-4xl mx-auto">
+          <div className="absolute inset-0 overflow-y-auto p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-4xl mx-auto pt-20">
               {members.map((member) => (
                 <AgentCard
                   key={member.id}
@@ -295,28 +317,36 @@ export default function CouncilArena({ autoStart: _autoStart }: Props) {
           />
         )}
 
-        {/* Vignette overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.65) 100%)',
-          }}
-        />
-
-        {/* Active speaker indicator (top) */}
-        {activeExpert && debatePlaybackState !== 'idle' && (
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20">
-            <div
-              className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-700/50 backdrop-blur-md"
-              style={{ background: 'rgba(0,0,0,0.7)' }}
+        {/* Idle start overlay */}
+        {debatePlaybackState === 'idle' && (
+          <div className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-4 pointer-events-none">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: '#a78b7d' }}>
+              Van Ness Avenue · Complete Streets Phase 1
+            </p>
+            <button
+              onClick={startCinematicDebate}
+              className="pointer-events-auto px-6 py-3 rounded-xl text-sm font-bold tracking-wide transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+              style={{ backgroundColor: '#f97316', color: '#552100', boxShadow: '0 0 30px rgba(249,115,22,0.4)' }}
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+              <span className="material-symbols-outlined" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
+              Begin Debate
+            </button>
+          </div>
+        )}
+
+        {/* Analysis chips (bottom-right) */}
+        {debatePlaybackState !== 'idle' && (
+          <div className="absolute bottom-28 right-6 z-20 flex gap-2 pointer-events-none">
+            <div className="glass-panel px-3 py-1.5 rounded-lg flex items-center gap-2">
+              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#4edea3' }}>analytics</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#e0c0b1' }}>
+                Experts {completeCount}/{members.length || 5}
               </span>
-              <span className={`text-xs font-semibold ${activeExpert.color}`} style={{ fontFamily: 'Lexend, sans-serif' }}>
-                {activeExpert.name} · {activeExpert.title}
+            </div>
+            <div className="glass-panel px-3 py-1.5 rounded-lg flex items-center gap-2">
+              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#ffb690' }}>psychology</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#e0c0b1' }}>
+                Risk {riskScore || '—'}/10
               </span>
             </div>
           </div>

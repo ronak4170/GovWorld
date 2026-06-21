@@ -170,6 +170,18 @@
   /* Orange accent glow */
   .glow-orange { box-shadow: 0 0 20px rgba(249, 115, 22, 0.25); }
 
+  /* Flagged ledger row — red inset accent + fade */
+  .flagged-row-glow {
+    box-shadow: inset 4px 0 0 0 #ef4444, inset 12px 0 20px -10px rgba(239, 68, 68, 0.2);
+  }
+
+  /* Tooltip reveal on hover */
+  .tooltip-container:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
   /* Streaming text cursor */
   .streaming-cursor::after {
     content: '|';

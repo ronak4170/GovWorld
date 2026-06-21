@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import TopBar from './TopBar'
 import Sidebar from './Sidebar'
 import PanelManager from './PanelManager'
+import MapHud from './MapHud'
 import CesiumWorld from '@/components/map/CesiumWorld'
 import TimelineBar from '@/components/simulation/TimelineBar'
 import SimulationEngine from '@/components/simulation/SimulationEngine'
 import CitizenChat from '@/components/voice/CitizenChat'
 import DissatisfactionAlert from '@/components/notifications/DissatisfactionAlert'
 import DebateArena from '@/components/debate/DebateArena'
-import CouncilArena from '@/components/council/arena/CouncilArena'
 import FullScreenOverlay from '@/components/layout/FullScreenOverlay'
 import { useUIStore } from '@/store/uiStore'
 import { useCouncilStore } from '@/store/councilStore'
@@ -43,7 +43,6 @@ function ToastContainer({ toasts }: { toasts: Toast[] }) {
 export default function Shell() {
   const toasts = useUIStore((s) => s.toasts)
   const isDebateArenaOpen = useCouncilStore((s) => s.isDebateArenaOpen)
-  const isCouncilArenaOpen = useCouncilStore((s) => s.isCouncilArenaOpen)
   const setActivePanel = useUIStore((s) => s.setActivePanel)
 
   // Set Updates as default panel on mount
@@ -69,6 +68,7 @@ export default function Shell() {
         {/* Center: Map */}
         <div className="relative flex-1 overflow-hidden">
           <CesiumWorld />
+          <MapHud />
         </div>
 
         {/* Right Panel: 360px fixed width */}
@@ -91,14 +91,9 @@ export default function Shell() {
       {/* Voice chat modal (renders over everything) */}
       <CitizenChat />
 
-      {/* Legacy text debate — portaled above Leaflet */}
+      {/* Debate arena — portaled above the map */}
       <FullScreenOverlay open={isDebateArenaOpen}>
         <DebateArena />
-      </FullScreenOverlay>
-
-      {/* Cinematic 3D Council Arena — portaled above Leaflet */}
-      <FullScreenOverlay open={isCouncilArenaOpen}>
-        <CouncilArena />
       </FullScreenOverlay>
 
       {/* Toast notifications */}

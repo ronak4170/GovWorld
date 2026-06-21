@@ -8,7 +8,7 @@ export default function WorkerAssignment({ workerIds }: Props) {
   const getCitizenById = useCitizenStore((s) => s.getCitizenById)
 
   if (workerIds.length === 0) {
-    return <span className="text-slate-500 text-xs">Unassigned</span>
+    return <span className="text-xs" style={{ color: '#a78b7d' }}>Unassigned</span>
   }
 
   return (
@@ -18,7 +18,8 @@ export default function WorkerAssignment({ workerIds }: Props) {
         return (
           <span
             key={id}
-            className="inline-flex items-center gap-1 bg-slate-800 border border-slate-700 rounded-full px-2 py-0.5 text-[10px] text-slate-300"
+            className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px]"
+            style={{ color: '#e0c0b1', backgroundColor: 'rgba(64,50,42,0.5)', border: '1px solid rgba(88,66,55,0.4)' }}
           >
             {citizen ? (
               <>

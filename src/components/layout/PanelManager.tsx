@@ -4,12 +4,10 @@ import { PANEL_IDS } from '@/lib/constants'
 import CitizenCard from '@/components/citizens/CitizenCard'
 import CitizenList from '@/components/citizens/CitizenList'
 import UpdatesFeed from '@/components/simulation/UpdatesFeed'
-import AccountabilityLedger from '@/components/ledger/AccountabilityLedger'
 
 const TABS = [
   { id: PANEL_IDS.UPDATES, label: 'Updates' },
   { id: PANEL_IDS.CITIZEN, label: 'People' },
-  { id: PANEL_IDS.LEDGER, label: 'Ledger' },
 ] as const
 
 type TabId = typeof TABS[number]['id']
@@ -28,7 +26,7 @@ export default function PanelManager() {
 
   // Determine the effective active tab (fall back to UPDATES for non-tab panels)
   const activeTab: TabId =
-    activePanel === PANEL_IDS.CITIZEN || activePanel === PANEL_IDS.LEDGER || activePanel === PANEL_IDS.UPDATES
+    activePanel === PANEL_IDS.CITIZEN || activePanel === PANEL_IDS.UPDATES
       ? activePanel as TabId
       : PANEL_IDS.UPDATES
 
@@ -78,12 +76,6 @@ export default function PanelManager() {
         {activeTab === PANEL_IDS.CITIZEN && (
           <div className="flex-1 overflow-hidden flex flex-col min-h-0">
             {selectedCitizenId ? <CitizenCard /> : <CitizenList />}
-          </div>
-        )}
-
-        {activeTab === PANEL_IDS.LEDGER && (
-          <div className="flex-1 overflow-y-auto min-h-0">
-            <AccountabilityLedger />
           </div>
         )}
       </div>

@@ -7,43 +7,36 @@ interface Props {
   visible?: boolean
 }
 
-export default function CinematicSubtitle({ expertId, text, round, visible = true }: Props) {
-  if (!visible || !expertId || !text) return null
+const WAVE_DELAYS = ['0.1s', '0.3s', '0.2s', '0.5s', '0.4s', '0.6s', '0.35s', '0.15s']
+
+export default function CinematicSubtitle({ expertId, text, visible = true }: Props) {
+  if (!visible || !expertId) return null
 
   const expert = EXPERT_POOL.find((e) => e.id === expertId)
-  const colorClass = expert?.color ?? 'text-slate-300'
 
   return (
-    <div className="absolute bottom-28 left-0 right-0 z-20 flex justify-center px-4 pointer-events-none">
-      <div
-        className="w-full max-w-3xl rounded-xl border border-slate-700/60 px-6 py-4 backdrop-blur-md"
-        style={{
-          background: 'linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(15,23,42,0.92) 100%)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)',
-        }}
-      >
-        <div className="flex items-center gap-3 mb-2">
-          <span
-            className={`text-xs font-semibold uppercase tracking-widest ${colorClass}`}
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-          >
-            {expert?.name ?? expertId}
-          </span>
-          <span className="text-slate-600 text-[10px]">·</span>
-          <span
-            className="text-slate-500 text-[10px] uppercase tracking-wider"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-          >
-            {expert?.title}
-          </span>
-          <span className="ml-auto text-slate-600 text-[10px] tabular-nums">Round {round}</span>
+    <div className="absolute bottom-28 left-1/2 -translate-x-1/2 z-20 w-full max-w-3xl px-4 pointer-events-none">
+      <div className="glass-panel rounded-xl px-6 py-4 flex items-center gap-6">
+        {/* Waveform */}
+        <div className="flex items-end gap-1 h-8 w-16 flex-shrink-0">
+          {WAVE_DELAYS.map((delay, i) => (
+            <span
+              key={i}
+              className="waveform-bar w-1 rounded-full"
+              style={{ backgroundColor: '#f97316', animationDelay: delay }}
+            />
+          ))}
         </div>
-        <p
-          className="text-slate-100 text-base sm:text-lg leading-relaxed"
-          style={{ fontFamily: '"Source Sans 3", sans-serif' }}
-        >
-          &ldquo;{text}&rdquo;
-        </p>
+
+        {/* Speech text */}
+        <div className="min-w-0">
+          <span className="block mb-1 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#ffb690' }}>
+            {expert ? `${expert.name} · ${expert.title}` : 'Analyzing speech'}
+          </span>
+          <p className="text-[15px] leading-snug italic" style={{ color: '#e0c0b1' }}>
+            {text ? `“${text}”` : '…'}
+          </p>
+        </div>
       </div>
     </div>
   )
