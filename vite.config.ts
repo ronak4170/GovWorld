@@ -48,12 +48,15 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       fs: { allow: ['..'] },
-      // Proxy Phoenix OTLP trace ingestion so the browser stays same-origin (no CORS).
       proxy: {
+        // Proxy Phoenix OTLP trace ingestion so the browser stays same-origin (no CORS).
         '/v1/traces': {
           target: 'http://localhost:6006',
           changeOrigin: true,
         },
+        // Proxy the Browserbase research endpoint to the local dev shim
+        // (server/dev.ts). In production Vercel serves api/research.ts directly.
+        '/api': 'http://localhost:3001',
       },
     },
   }
