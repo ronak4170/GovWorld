@@ -236,17 +236,6 @@ Eight pre-built construction tasks for the Van Ness demo, with:
 - **Budget flags** when spend exceeds 115% of contract.
 - Pre-loaded **contractor history** (Ram Construction, Bharat Infra, CityUtil Services, SignPro Ltd).
 - **Weather-impact** days drawn from the Open-Meteo API, with fallback demo data.
-
----
-
-## Deployment
-
-```bash
-vercel --prod
-```
-
-`api/research.ts` deploys as a Vercel serverless function; set `BROWSERBASE_API_KEY` and `BROWSERBASE_PROJECT_ID` in the project's environment variables. The app degrades gracefully: if any API fails, it falls back to pre-computed demo JSON and shows a toast — judges never see a white screen.
-
 ---
 
 ## License
