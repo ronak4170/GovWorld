@@ -109,6 +109,7 @@ VITE_DEMO_MODE=false        # true = run entirely from pre-computed JSON
 VITE_SKIP_API=false         # true = force demo data even if keys are present
 VITE_DEMO_NEIGHBOURHOOD=andheri  # which neighbourhood to load in demo
 VITE_AUTO_DEMO=false        # true = auto-run the demo on load (unattended kiosks)
+ANTHROPIC_API_KEY=
 ```
 
 > **Demo mode** is active whenever `VITE_DEMO_MODE=true` or `VITE_SKIP_API=true`. Every LLM call then loads from pre-computed JSON in `src/data/` instead of hitting an API.
