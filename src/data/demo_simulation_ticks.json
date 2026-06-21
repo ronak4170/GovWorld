@@ -1,0 +1,594 @@
+[
+  {
+    "month": 1,
+    "label": "Month 1 — Excavation Begins",
+    "constructionProgress": 8,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Jasmine's Route 47 rerouted via Mission Street, adding 35 minutes each way.", "newPolicyImpact": "Month 1: Route diverted through Mission — 35 extra minutes each way. Scrambling for after-school coverage."},
+      {"citizenId": "C002", "newStatus": "amber", "narrative": "Tony's restaurant entrance partially blocked by construction hoarding. Lunch crowd down 30%.", "newPolicyImpact": "Month 1: Hoarding reduces storefront visibility. Revenue down ~30%."},
+      {"citizenId": "C003", "newStatus": "grey", "narrative": "Sofia watches the excavation crews from the sidewalk, hoping her contract inspector position starts soon.", "newPolicyImpact": "Month 1: Contract not yet active. Waiting on SF Public Works onboarding."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl's walking route to CPMC Van Ness is now blocked by construction barriers. Taking a longer detour.", "newPolicyImpact": "Month 1: CPMC route blocked. Relying on neighbors for rides."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Amy's school not yet affected — Block A excavation is 400m south of Tenderloin Community School.", "newPolicyImpact": "Month 1: Not yet affected. Keeping a dust log as precaution."},
+      {"citizenId": "C006", "newStatus": "green", "narrative": "Tyler's protected bike lane on Van Ness is gone. He's riding in traffic, nervous but managing.", "newPolicyImpact": "Month 1: Bike lane removed. Riding in mixed traffic. Feels unsafe."}
+    ],
+    "events": [
+      {
+        "id": "E001",
+        "tick": 1,
+        "type": "construction",
+        "title": "Block A Excavation Commences",
+        "description": "Bay Area Infrastructure Inc. begins excavation on the 0.8km Block A stretch of Van Ness Avenue. 3 excavators deployed. Southbound lanes closed to vehicles from 7am-6pm.",
+        "affectedCitizenIds": ["C001", "C002", "C004", "C006"],
+        "severity": "info"
+      },
+      {
+        "id": "E002",
+        "tick": 1,
+        "type": "displacement",
+        "title": "Van Ness Bus Routes Rerouted",
+        "description": "SFMTA Muni routes 47 and 49 rerouted via Mission Street. Journey time increase: 30-40 minutes per trip. 22,000 daily riders affected.",
+        "affectedCitizenIds": ["C001"],
+        "severity": "warning"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV001",
+        "type": "construction_zone",
+        "coordinates": [[37.7749, -122.4194], [37.7780, -122.4205]],
+        "color": "#f97316",
+        "label": "Block A — Excavation",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 2,
+    "label": "Month 2 — Inspector Assigned",
+    "constructionProgress": 15,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Jasmine adjusts to the longer route. Her neighbor Maria picks up the kids on Tuesdays and Thursdays.", "newPolicyImpact": "Month 2: Route adds 35 min. Neighbor helping with pickup twice a week."},
+      {"citizenId": "C002", "newStatus": "amber", "narrative": "Tony puts a chalk sandwich board on the sidewalk directing customers around the hoarding. Lunch crowd still down 40%.", "newPolicyImpact": "Month 2: Sandwich board workaround but lunch crowd still down 40%."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia gets the call from SF Public Works — she starts as Contract Inspector on Monday. First major role since graduation.", "newPolicyImpact": "Month 2: EMPLOYED — Contract Inspector, SF DPW. $7,400/month.", "routeChange": [[37.7598,-122.4148],[37.7680,-122.4185],[37.7831,-122.4223]], "specialEvent": "ASSIGNED: Road Inspector — Task T001"},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl's nephew offers him a Lyft account. Earl refuses — says he'll wait for the bus shelter to reopen.", "newPolicyImpact": "Month 2: Nephew offered Lyft account. Refused. Waiting for bus access to normalize."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Amy notices dust levels slightly elevated but classrooms are manageable with windows on the north side.", "newPolicyImpact": "Month 2: Slight dust increase. Using north-facing windows as precaution."},
+      {"citizenId": "C006", "newStatus": "amber", "narrative": "Tyler has a near-miss with a delivery truck on Van Ness. Files a cycling safety complaint with SFMTA.", "newPolicyImpact": "Month 2: Near-miss incident with delivery truck. SFMTA complaint filed. Shaken."}
+    ],
+    "events": [
+      {
+        "id": "E003",
+        "tick": 2,
+        "type": "employment",
+        "title": "Sofia Rodriguez Assigned — Road Inspector",
+        "description": "SF Public Works assigns Sofia Rodriguez (C003) as contract quality control inspector for Block A and B. First major professional role since Caltrain Engineering graduation.",
+        "affectedCitizenIds": ["C003"],
+        "severity": "info"
+      },
+      {
+        "id": "E004",
+        "tick": 2,
+        "type": "construction",
+        "title": "Block A Progress — 40%",
+        "description": "Excavation at Block A reaches 40% completion. Utility undergrounding by DPW General Contractors LLC begins.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV001",
+        "type": "construction_zone",
+        "coordinates": [[37.7749, -122.4194], [37.7780, -122.4205]],
+        "color": "#f97316",
+        "label": "Block A — Excavation 40%",
+        "visible": true
+      },
+      {
+        "id": "OV002",
+        "type": "worker_dot",
+        "coordinates": [[37.7831, -122.4223]],
+        "color": "#10b981",
+        "label": "Sofia — Inspector",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 3,
+    "label": "Month 3 — Atmospheric River Delays",
+    "constructionProgress": 22,
+    "weatherEvent": "Atmospheric river event — 14 workdays lost across Block A and B. Contractor B flagged for not deploying additional crew to recover schedule.",
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Rain plus the Mission Street diversion adds another 20 minutes on bad days. Jasmine is exhausted.", "newPolicyImpact": "Month 3: Atmospheric river + diversion = 55 extra minutes on bad days. Running on empty."},
+      {"citizenId": "C002", "newStatus": "amber", "narrative": "The heavy rain keeps customers home anyway. Tony uses the quiet period to repaint the dining room.", "newPolicyImpact": "Month 3: Rain suppressed footfall. Using downtime to refurbish interior."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia documents the rain damage to freshly-dug trenches. Files a delay report with SF Public Works.", "newPolicyImpact": "Month 3: Filed delay report. Trench flooding documented. Building reputation for diligence."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl stays indoors during the rain. His neighbor DeShawn makes a Walgreens run for his insulin supplies.", "newPolicyImpact": "Month 3: Housebound during rain event. Neighbor doing pharmacy runs."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "The rain suppresses construction dust. Amy opens the classroom windows for the first time since construction started.", "newPolicyImpact": "Month 3: Rain suppresses dust. Brief reprieve for the classroom."},
+      {"citizenId": "C006", "newStatus": "amber", "narrative": "Tyler works from home during the storms. No cycling. He starts browsing Oakland co-working spaces online.", "newPolicyImpact": "Month 3: WFH during storms. Casually browsing Oakland listings."}
+    ],
+    "events": [
+      {
+        "id": "E005",
+        "tick": 3,
+        "type": "flag",
+        "title": "Contractor B — Atmospheric River Delay Flag",
+        "description": "Bay Area Infrastructure Inc. (Block B) loses 14 workdays to atmospheric river but does not deploy additional crew to recover schedule. Delay: 21 days projected.",
+        "affectedCitizenIds": [],
+        "severity": "warning"
+      },
+      {
+        "id": "E006",
+        "tick": 3,
+        "type": "construction",
+        "title": "Weather Impact — 14 Workdays Lost",
+        "description": "Atmospheric river event halts all excavation activity on Van Ness Avenue. Open trenches require emergency shoring. SFPUC emergency protocols activated.",
+        "affectedCitizenIds": ["C001", "C002", "C004"],
+        "severity": "warning"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV003",
+        "type": "weather",
+        "coordinates": [[37.7749, -122.4194], [37.7900, -122.4247]],
+        "color": "#3b82f6",
+        "label": "Atmospheric River — Active",
+        "visible": true
+      },
+      {
+        "id": "OV004",
+        "type": "flag",
+        "coordinates": [[37.7800, -122.4210]],
+        "color": "#ef4444",
+        "label": "Contractor Delay Flag",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 4,
+    "label": "Month 4 — Block A Complete, Block B Begins",
+    "constructionProgress": 33,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Block A section reopens — Jasmine's Route 47 slightly improved, but Block B closure creates a new bottleneck near City Hall.", "newPolicyImpact": "Month 4: Block A open. Small relief. Block B now the bottleneck."},
+      {"citizenId": "C002", "newStatus": "red", "narrative": "Block B construction moves directly in front of Ricci's. Entrance completely hoarded. Revenue down 60%.", "newPolicyImpact": "Month 4: CRISIS — Revenue -60%. Entrance hoarded. Cannot cover payroll."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia's inspection report leads to a quality checkpoint being added for Block B concrete spec. She is mentioned in the site bulletin.", "newPolicyImpact": "Month 4: Quality checkpoint added from her report. Getting recognition."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl counts the months on his calendar. 8 more to go. He marks each day off like a countdown.", "newPolicyImpact": "Month 4: Calendar countdown. 8 months remaining. Isolation deepening."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Block B start means Amy's school is now in the construction corridor. She begins keeping a daily dust and noise log.", "newPolicyImpact": "Month 4: School now in construction corridor. Daily monitoring started."},
+      {"citizenId": "C006", "newStatus": "amber", "narrative": "Tyler attends a District 6 community meeting and presents his cycling lane petition. Gets 85 signatures from Hayes Valley neighbors.", "newPolicyImpact": "Month 4: Petition presented at D6 meeting. SFMTA said they will 'review'."}
+    ],
+    "events": [
+      {
+        "id": "E007",
+        "tick": 4,
+        "type": "completion",
+        "title": "Block A Excavation — Complete",
+        "description": "Block A (0.8km) excavation complete on schedule. BRT lane sub-base preparation begins next month.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      },
+      {
+        "id": "E008",
+        "tick": 4,
+        "type": "displacement",
+        "title": "Block B — Van Ness Businesses Directly Affected",
+        "description": "Construction moves to Block B. Restaurant and retail frontages directly blocked including Ricci's Italian Kitchen (C002). Peak disruption phase begins.",
+        "affectedCitizenIds": ["C002"],
+        "severity": "critical"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV005",
+        "type": "completion",
+        "coordinates": [[37.7749, -122.4194], [37.7780, -122.4205]],
+        "color": "#10b981",
+        "label": "Block A — Excavation Done",
+        "visible": true
+      },
+      {
+        "id": "OV006",
+        "type": "construction_zone",
+        "coordinates": [[37.7780, -122.4205], [37.7848, -122.4229]],
+        "color": "#f59e0b",
+        "label": "Block B — Active",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 5,
+    "label": "Month 5 — School Dust Complaint",
+    "constructionProgress": 42,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Jasmine starts an informal carpool with two other Muni drivers to share the longer Mission Street route.", "newPolicyImpact": "Month 5: Carpool formed with two colleagues. Sharing the burden. Still 35 min extra."},
+      {"citizenId": "C002", "newStatus": "red", "narrative": "Tony's wife suggests closing for the summer and visiting family in Genoa. Tony refuses — says he owes it to his father.", "newPolicyImpact": "Month 5: Wife wants to close and travel. Tony refuses. Business loan taken to cover staff wages."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia raises the PM2.5 issue at the site safety meeting. Dust screens installed within 48 hours.", "newPolicyImpact": "Month 5: Dust screens installed after her report. Respect growing on site."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl's diabetes reading is elevated — doctor says stress and reduced walking are contributing. Recommends vitamin D.", "newPolicyImpact": "Month 5: A1C elevated. Doctor concerned about inactivity and isolation."},
+      {"citizenId": "C005", "newStatus": "amber", "narrative": "One of Amy's asthmatic students has a breathing episode during recess. She files a formal PM2.5 complaint with SF DPW noise hotline.", "newPolicyImpact": "Month 5: FORMAL COMPLAINT FILED. Asthmatic student needed inhaler during recess."},
+      {"citizenId": "C006", "newStatus": "amber", "narrative": "Tyler's SFMTA petition gets a response — agency says cycling infrastructure will be 'considered in Phase 2'. Tyler posts the reply on Twitter.", "newPolicyImpact": "Month 5: SFMTA says cycling lanes will be 'Phase 2'. Cautiously furious."}
+    ],
+    "events": [
+      {
+        "id": "E009",
+        "tick": 5,
+        "type": "flag",
+        "title": "School Dust Complaint — Amy Park",
+        "description": "Amy Park (C005), teacher at Tenderloin Community School, files formal PM2.5 complaint with SF DPW. School is 200m from active Block B construction.",
+        "affectedCitizenIds": ["C005"],
+        "severity": "warning"
+      },
+      {
+        "id": "E010",
+        "tick": 5,
+        "type": "construction",
+        "title": "BRT Lane Sub-base — Block A Begins",
+        "description": "Class C5 concrete BRT lane sub-base work begins on completed Block A. Bay Area Infrastructure Inc. deploys 2 paving machines.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV007",
+        "type": "construction_zone",
+        "coordinates": [[37.7749, -122.4194], [37.7780, -122.4205]],
+        "color": "#eab308",
+        "label": "Block A — BRT Paving",
+        "visible": true
+      },
+      {
+        "id": "OV008",
+        "type": "flag",
+        "coordinates": [[37.7833, -122.4144]],
+        "color": "#f97316",
+        "label": "School Dust Alert",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 6,
+    "label": "Month 6 — Contractor B Misses Milestone",
+    "constructionProgress": 50,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Jasmine calculates she has driven 1,400 extra kilometres in 6 months. Her bus is due for a 50k mile service.", "newPolicyImpact": "Month 6: 1,400 extra km driven. Vehicle maintenance due early. Union grievance filed."},
+      {"citizenId": "C002", "newStatus": "red", "narrative": "Tony withdraws $18,000 from his savings to cover staff wages. His daughter starts working weekends for free.", "newPolicyImpact": "Month 6: $18K from savings withdrawn. Daughter helping on weekends. Shop barely surviving."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia is asked to formally document the contractor delay. She does so methodically — her first major professional milestone.", "newPolicyImpact": "Month 6: Formal delay documentation completed. First major professional milestone."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl's neighbor DeShawn has started driving him to CPMC every two weeks. Earl brings him a coffee and a newspaper.", "newPolicyImpact": "Month 6: CPMC access via neighbor established. Community support holding him up."},
+      {"citizenId": "C005", "newStatus": "amber", "narrative": "Dust screens have helped somewhat. Amy keeps windows closed on the south side. Students are restless in the heat.", "newPolicyImpact": "Month 6: Dust screens installed. South windows still closed. Students restless."},
+      {"citizenId": "C006", "newStatus": "amber", "narrative": "Tyler hires his second full-time employee. They celebrate by cycling to Mission Dolores, the long way round.", "newPolicyImpact": "Month 6: Second hire. Celebrating by cycling to the Mission. Still no Van Ness lane."}
+    ],
+    "events": [
+      {
+        "id": "E011",
+        "tick": 6,
+        "type": "flag",
+        "title": "RED FLAG — Contractor B Milestone Missed",
+        "description": "Bay Area Infrastructure Inc. misses Month 6 milestone on Block B excavation. Delay: 21 days beyond projected. Red flag raised. SF Public Works penalty clause review initiated.",
+        "affectedCitizenIds": [],
+        "severity": "critical"
+      },
+      {
+        "id": "E012",
+        "tick": 6,
+        "type": "construction",
+        "title": "Midpoint — 50% Construction Complete",
+        "description": "Van Ness Complete Streets project reaches 50% completion. Block A BRT paving complete. Block B excavation 3 weeks delayed.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV009",
+        "type": "flag",
+        "coordinates": [[37.7814, -122.4217]],
+        "color": "#ef4444",
+        "label": "RED FLAG — Contractor B Delay",
+        "visible": true
+      },
+      {
+        "id": "OV010",
+        "type": "completion",
+        "coordinates": [[37.7749, -122.4194], [37.7780, -122.4205]],
+        "color": "#94a3b8",
+        "label": "Block A — BRT Paving Done",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 7,
+    "label": "Month 7 — Midpoint Review",
+    "constructionProgress": 58,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Jasmine is invited to testify at the City Hall midpoint review. She speaks for 3 minutes and the Supervisor thanks her by name.", "newPolicyImpact": "Month 7: Testified at City Hall review. Her experience heard officially for the first time."},
+      {"citizenId": "C002", "newStatus": "red", "narrative": "Tony addresses the midpoint review via public comment and demands immediate business disruption checks. Told to resubmit his OEWD application.", "newPolicyImpact": "Month 7: Demanded compensation at midpoint review. Told to resubmit application. Furious."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia's delay documentation is cited in the official midpoint report. Her project manager recommends her for a permanent DPW role.", "newPolicyImpact": "Month 7: Work cited in official SF Public Works midpoint report. Permanent role recommendation submitted."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl watches the City Hall review livestream on his phone. A supervisor mentions 'seniors displaced from medical services on Van Ness'. He feels seen.", "newPolicyImpact": "Month 7: Supervisor mentioned senior medical access. Watched on livestream. Feels acknowledged."},
+      {"citizenId": "C005", "newStatus": "amber", "narrative": "The midpoint review commits to PM2.5 monitoring and construction halt protocol from Month 8. Amy is cautiously optimistic.", "newPolicyImpact": "Month 7: PM2.5 monitoring committed from Month 8. Waiting to see if it's enforced."},
+      {"citizenId": "C006", "newStatus": "amber", "narrative": "Tyler submits a detailed protected cycling infrastructure proposal to the District 6 Supervisor. Gets a 10-minute meeting scheduled.", "newPolicyImpact": "Month 7: Cycling proposal submitted to D6 Supervisor. Meeting scheduled. Cautiously hopeful."}
+    ],
+    "events": [
+      {
+        "id": "E013",
+        "tick": 7,
+        "type": "construction",
+        "title": "Midpoint City Hall Review Conducted",
+        "description": "Official midpoint review of Van Ness Complete Streets project held at SF City Hall. Citizens testify. Jasmine Chen and Tony Ricci address Supervisor. Contractor penalty clause discussion initiated.",
+        "affectedCitizenIds": ["C001", "C002", "C003", "C004", "C005", "C006"],
+        "severity": "info"
+      },
+      {
+        "id": "E014",
+        "tick": 7,
+        "type": "employment",
+        "title": "Sofia Rodriguez — Permanent DPW Role Recommended",
+        "description": "Sofia's midpoint report cited by SF Public Works project director. Formal recommendation for permanent civil engineering position submitted to HR.",
+        "affectedCitizenIds": ["C003"],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV011",
+        "type": "construction_zone",
+        "coordinates": [[37.7780, -122.4205], [37.7848, -122.4229]],
+        "color": "#f59e0b",
+        "label": "Block B — Mid Construction",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 8,
+    "label": "Month 8 — Block B Complete",
+    "constructionProgress": 67,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "A second section of Van Ness reopens. Jasmine's route improves by 12 minutes. She can see the end.", "newPolicyImpact": "Month 8: Route 12 min shorter than peak disruption. Down to 23 extra min. Getting there."},
+      {"citizenId": "C002", "newStatus": "amber", "narrative": "Block B moves past Ricci's. Tony unbolts the hoarding access panel and puts a welcome mat out. His regulars are trickling back.", "newPolicyImpact": "Month 8: Hoarding removed from entrance. Welcome mat out. Revenue at 55%."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia oversees the Block B concrete handover inspection. She catches 2 compaction issues — both corrected before sign-off.", "newPolicyImpact": "Month 8: Block B signed off after 2 compaction corrections. Professional reputation solidifying."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl marks Month 8 on his calendar. 4 more months. He tells DeShawn he can see the light at the end of the tunnel.", "newPolicyImpact": "Month 8: 4 months left. Telling neighbors he can see the end coming."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Block B moves north of the school. Dust levels drop. Amy opens the classroom windows for the first time in months.", "newPolicyImpact": "Month 8: Construction moved north of school. Windows open. Students breathing easier."},
+      {"citizenId": "C006", "newStatus": "green", "narrative": "Tyler hears that Block C design includes a protected cycling track. He shares the update on LinkedIn — 600 reactions.", "newPolicyImpact": "Month 8: Block C to include protected cycling track. Sharing the news. Daring to hope."}
+    ],
+    "events": [
+      {
+        "id": "E015",
+        "tick": 8,
+        "type": "completion",
+        "title": "Block B Excavation — Complete (21 Days Late)",
+        "description": "Block B excavation complete, 21 days behind schedule due to atmospheric river + contractor delay. SF Public Works penalty clause invoked: $280,000 deducted from Bay Area Infrastructure Inc. final payment.",
+        "affectedCitizenIds": ["C002"],
+        "severity": "warning"
+      },
+      {
+        "id": "E016",
+        "tick": 8,
+        "type": "construction",
+        "title": "Block C Excavation Begins — Golden Gate Civil Works",
+        "description": "Golden Gate Civil Works begins Block C (0.7km) excavation on Van Ness. On schedule. No flags.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV012",
+        "type": "completion",
+        "coordinates": [[37.7780, -122.4205], [37.7848, -122.4229]],
+        "color": "#94a3b8",
+        "label": "Block B — Complete",
+        "visible": true
+      },
+      {
+        "id": "OV013",
+        "type": "construction_zone",
+        "coordinates": [[37.7848, -122.4229], [37.7900, -122.4247]],
+        "color": "#f97316",
+        "label": "Block C — Excavation",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 9,
+    "label": "Month 9 — Tyler Files Relocation Intent",
+    "constructionProgress": 75,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Jasmine can see Block C progress from her bus window. She calculates 3 more months and starts to believe it.", "newPolicyImpact": "Month 9: Can see Block C progress from bus. 3 months left. Cautiously hopeful."},
+      {"citizenId": "C002", "newStatus": "amber", "narrative": "Revenue back to 60%. Tony hires back his part-time server who left in Month 4. First new payroll in 5 months.", "newPolicyImpact": "Month 9: Revenue at 60%. Part-time server rehired. Cautious optimism."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia receives her permanent DPW offer letter. She accepts on the spot. Her mom takes her out for dinner in the Mission.", "newPolicyImpact": "Month 9: PERMANENT OFFER ACCEPTED. $8,200/month SF DPW role. Career relaunched."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl's doctor clears him for short walks. He does laps in his building hallway, waiting for the Van Ness sidewalk.", "newPolicyImpact": "Month 9: Cleared for short walks. Doing hallway laps. Waiting for the sidewalk."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Amy's school files a formal request to be included in the Van Ness corridor community benefit commitments.", "newPolicyImpact": "Month 9: Community benefit request filed. Asking for air filtration system funded from project budget."},
+      {"citizenId": "C006", "newStatus": "red", "narrative": "Tyler has a second near-miss — construction truck runs a red on Van Ness. That evening he tours an Oakland office space.", "newPolicyImpact": "Month 9: Second near-miss. Touring Oakland co-working spaces. Decision nearly made.", "routeChange": [[37.7849, -122.4009], [37.7800, -122.4100]]}
+    ],
+    "events": [
+      {
+        "id": "E017",
+        "tick": 9,
+        "type": "displacement",
+        "title": "Tyler Brooks — Relocation Intent Filed",
+        "description": "Tyler Brooks (C006), startup founder and daily cyclist, tours Oakland co-working space after second near-miss incident on Van Ness. Cites removal of cycling infrastructure as primary driver.",
+        "affectedCitizenIds": ["C006"],
+        "severity": "warning"
+      },
+      {
+        "id": "E018",
+        "tick": 9,
+        "type": "employment",
+        "title": "Sofia Rodriguez — Permanent DPW Appointment",
+        "description": "Sofia Rodriguez receives and accepts permanent civil engineering position with SF Public Works. Salary: $8,200/month. Start date: Month 10.",
+        "affectedCitizenIds": ["C003"],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV014",
+        "type": "construction_zone",
+        "coordinates": [[37.7848, -122.4229], [37.7900, -122.4247]],
+        "color": "#f59e0b",
+        "label": "Block C — Active",
+        "visible": true
+      },
+      {
+        "id": "OV015",
+        "type": "flag",
+        "coordinates": [[37.7849, -122.4009]],
+        "color": "#ef4444",
+        "label": "Tyler — Relocation Risk",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 10,
+    "label": "Month 10 — Utility Pipe Burst",
+    "constructionProgress": 83,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "The pipe burst causes another week of detours. Jasmine texts her SFMTA union rep about overtime pay.", "newPolicyImpact": "Month 10: Another week of detours from pipe burst. Union grievance filed for overtime compensation."},
+      {"citizenId": "C002", "newStatus": "amber", "narrative": "Tony sees the pipe burst on Nextdoor and grips his coffee mug. He cannot absorb another month of reduced revenue.", "newPolicyImpact": "Month 10: Pipe burst news worrying. Cannot handle another delay. Watching the ledger daily."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia is called in from her new permanent role to assess the pipe burst damage. Her expertise is now formally recognized across departments.", "newPolicyImpact": "Month 10: Called in to assess pipe burst. Expertise recognized across DPW divisions."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl hears about the pipe burst on KQED. He shakes his head and says this city never changes. Then he makes some tea.", "newPolicyImpact": "Month 10: Not directly affected. Philosophical about it. Listening to KQED."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Amy hears about the $4M budget addition and immediately emails the principal about redirecting funds for school air filtration.", "newPolicyImpact": "Month 10: Demanding $150K of pipe burst supplementary budget for school air filtration system."},
+      {"citizenId": "C006", "newStatus": "red", "narrative": "Tyler signs his Oakland lease. He tells his startup team they move to a Jack London Square co-working space from Month 11.", "newPolicyImpact": "Month 10: Oakland lease signed. Team notified of move. This is final."}
+    ],
+    "events": [
+      {
+        "id": "E019",
+        "tick": 10,
+        "type": "flag",
+        "title": "Unplanned Utility Pipe Burst — $4M Budget Addition",
+        "description": "SFPUC water main discovered during Block C excavation. Emergency repair required. Budget impact: +$4,000,000. Timeline impact: +21 days. SF Controller watchdog flag raised.",
+        "affectedCitizenIds": [],
+        "severity": "critical"
+      },
+      {
+        "id": "E020",
+        "tick": 10,
+        "type": "construction",
+        "title": "Block C Progress — 60%",
+        "description": "Block C excavation at 60% despite pipe burst setback. Golden Gate Civil Works working extended hours to recover schedule.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV016",
+        "type": "flag",
+        "coordinates": [[37.7866, -122.4235]],
+        "color": "#f97316",
+        "label": "Pipe Burst — $4M Impact",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 11,
+    "label": "Month 11 — Block C Complete",
+    "constructionProgress": 92,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "amber", "narrative": "Jasmine can see the new BRT lane surface on Block A and B from her bus. Almost done. She dares to be hopeful.", "newPolicyImpact": "Month 11: Almost done. Route still 25 min extra but hope has returned."},
+      {"citizenId": "C002", "newStatus": "green", "narrative": "Tony's revenue is back to 85%. He orders new outdoor planters for the sidewalk. The regulars are coming back. He doesn't tell Maria about the savings.", "newPolicyImpact": "Month 11: Revenue at 85%. New outdoor planters ordered. Keeping the loan secret from Maria."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia is now coordinating 3 junior inspectors on site. Her permanent DPW manager calls her the best hire of the year.", "newPolicyImpact": "Month 11: Coordinating 3 junior inspectors. Called best DPW hire of the year."},
+      {"citizenId": "C004", "newStatus": "grey", "narrative": "Earl can see construction winding down from his window. He calls his nephew in Sacramento for the first time in months.", "newPolicyImpact": "Month 11: Watching construction wind down from window. Called family. Things looking up."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Construction dust is nearly gone. Amy reopens all classroom windows. Her asthmatic student's peak flow has improved.", "newPolicyImpact": "Month 11: All windows open. Asthmatic student's readings improved. Relief throughout the school."},
+      {"citizenId": "C006", "newStatus": "red", "narrative": "Tyler is fully settled in Oakland. He follows the Van Ness completion news on LinkedIn. He writes a thread: 'I left SF because they forgot cyclists.'", "newPolicyImpact": "Month 11: IN OAKLAND. Following project news on LinkedIn. Writing thread about why he left SF."}
+    ],
+    "events": [
+      {
+        "id": "E021",
+        "tick": 11,
+        "type": "completion",
+        "title": "Block C Excavation — Complete",
+        "description": "Block C (0.7km) excavation complete. Golden Gate Civil Works finished 4 days ahead of revised schedule. BRT lane paving begins.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      },
+      {
+        "id": "E022",
+        "tick": 11,
+        "type": "construction",
+        "title": "Final BRT Paving — All Blocks Active",
+        "description": "Simultaneous BRT lane paving on Block B remainder and Block C. Golden Gate Civil Works begins signage and road markings installation.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV017",
+        "type": "completion",
+        "coordinates": [[37.7848, -122.4229], [37.7900, -122.4247]],
+        "color": "#94a3b8",
+        "label": "Block C — Complete",
+        "visible": true
+      },
+      {
+        "id": "OV018",
+        "type": "construction_zone",
+        "coordinates": [[37.7780, -122.4205], [37.7900, -122.4247]],
+        "color": "#eab308",
+        "label": "BRT Paving — Final Phase",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "month": 12,
+    "label": "Month 12 — Van Ness Complete",
+    "constructionProgress": 100,
+    "weatherEvent": null,
+    "citizenUpdates": [
+      {"citizenId": "C001", "newStatus": "green", "narrative": "Jasmine's Route 47 is fully restored on Van Ness. Her trip is 8 minutes shorter than before construction. Home by 5:15.", "newPolicyImpact": "Month 12: Route restored. 8 min shorter than before. Home for the kids every night.", "routeChange": [[37.7558,-122.4195],[37.7620,-122.4193],[37.7680,-122.4194],[37.7720,-122.4194],[37.7749,-122.4194]]},
+      {"citizenId": "C002", "newStatus": "green", "narrative": "Ricci's Italian Kitchen has its best Friday night in 14 months. Tony's daughter frames the menu from his father's opening night. They survived.", "newPolicyImpact": "Month 12: Best Friday in 14 months. Framed original menu on the wall. Survived."},
+      {"citizenId": "C003", "newStatus": "green", "narrative": "Sofia walks the entire 2.3km at the ribbon-cutting ceremony. She supervised every meter of it.", "newPolicyImpact": "Month 12: Walked the full road at ribbon-cutting. Her road. Her win."},
+      {"citizenId": "C004", "newStatus": "green", "narrative": "Earl Washington walks to CPMC Van Ness Medical Center for the first time in 12 months. The new sidewalk has a railing. He takes it slowly, and smiles.", "newPolicyImpact": "Month 12: WALKED TO CPMC. First time in 12 months. New sidewalk with railing. Doctor says he looks 10 years younger."},
+      {"citizenId": "C005", "newStatus": "green", "narrative": "Amy's class plants 4 new street trees at the school block as part of the 3:1 replacement program. The kids name one of them 'Biscuit'.", "newPolicyImpact": "Month 12: Trees planted. Students healing the neighborhood. AQI back to baseline."},
+      {"citizenId": "C006", "newStatus": "red", "narrative": "Tyler watches the Van Ness ribbon-cutting livestream from his Oakland office. He tweets: 'Glad it is done. Still no protected bike lane.' He does not come back.", "newPolicyImpact": "Month 12: IN OAKLAND. Watching livestream remotely. No protected bike lane installed. Won't return."}
+    ],
+    "events": [
+      {
+        "id": "E023",
+        "tick": 12,
+        "type": "completion",
+        "title": "VAN NESS COMPLETE STREETS — PHASE 1 DONE",
+        "description": "2.3km Van Ness Avenue Complete Streets redesign officially complete. 21 days behind schedule. Final cost: $49.2M ($4.2M over budget due to pipe burst). BRT lanes, cycle tracks, and new bus shelters open to the public.",
+        "affectedCitizenIds": ["C001", "C002", "C003", "C004", "C005", "C006"],
+        "severity": "info"
+      },
+      {
+        "id": "E024",
+        "tick": 12,
+        "type": "closure",
+        "title": "Accountability Ledger Final — Contractor B Penalised",
+        "description": "Bay Area Infrastructure Inc.: $280,000 penalty deducted for 21-day delay. DPW General Contractors LLC: formal warning issued. Golden Gate Civil Works: commendation letter issued.",
+        "affectedCitizenIds": [],
+        "severity": "info"
+      }
+    ],
+    "mapOverlays": [
+      {
+        "id": "OV019",
+        "type": "completion",
+        "coordinates": [[37.7749,-122.4194],[37.7780,-122.4205],[37.7848,-122.4229],[37.7900,-122.4247]],
+        "color": "#e2e8f0",
+        "label": "VAN NESS — COMPLETE",
+        "visible": true
+      }
+    ]
+  }
+]

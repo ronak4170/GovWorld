@@ -1,0 +1,27 @@
+{
+  "id": "POL-2025-VANNESS-001",
+  "title": "Van Ness Avenue Complete Streets — Phase 1",
+  "description": "Redesign of Van Ness Avenue from Market Street to Jackson Street (2.3km) from a 4-lane arterial to a Complete Streets corridor with dedicated Bus Rapid Transit lanes, protected cycle tracks, enhanced pedestrian crossings, and street trees.",
+  "rawText": "PROPOSAL: Van Ness Avenue Complete Streets Project — Phase 1\n\nBUDGET: $45,000,000 (SF Capital Budget FY2025)\n\nDURATION: 18 months (commencement January 2025, completion June 2026)\n\nJUSTIFICATION: Van Ness Avenue carries 45,000 vehicles per day and is a primary SFMTA Muni corridor. Current configuration causes peak-hour delays averaging 28 minutes for bus riders. Complete Streets redesign will add dedicated BRT lanes reducing transit times by 40%, protected cycle tracks, widened sidewalks, and 6 upgraded bus shelters.\n\nCONTRACTOR: To be selected via SFPUC competitive bid process. Pre-qualified contractors include Bay Area Infrastructure Inc., DPW General Contractors LLC, and Golden Gate Civil Works.\n\nIMPACT ASSESSMENT: Full CEQA review completed December 2024. Community outreach conducted across 14 neighborhood associations. Environmental impact: removal of 12 mature street trees (all to be replaced 3:1).\n\nSPECIAL NOTES: Protected cycling infrastructure to be installed for first time on Van Ness. Utility undergrounding for 2.3km of overhead lines included in scope. Business disruption fund of $2.5M established for affected Van Ness corridor businesses.",
+  "policyType": "road",
+  "targetArea": "Van Ness Avenue, San Francisco, CA",
+  "budget": 45000000,
+  "plannedStartDate": "2025-01-01",
+  "plannedEndDate": "2026-06-30",
+  "affectedZone": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-122.430, 37.770],
+        [-122.415, 37.770],
+        [-122.415, 37.795],
+        [-122.430, 37.795],
+        [-122.430, 37.770]
+      ]
+    ]
+  },
+  "extractedBudget": 45000000,
+  "extractedDuration": "18 months",
+  "extractedArea": "Van Ness Avenue, San Francisco — 2.3km Market St to Jackson St",
+  "submittedAt": "2024-12-01T00:00:00Z"
+}

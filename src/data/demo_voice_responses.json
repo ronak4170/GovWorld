@@ -1,0 +1,128 @@
+{
+  "C001": {
+    "citizenId": "C001",
+    "citizenName": "Jasmine Chen",
+    "responses": [
+      {
+        "id": "C001-Q01",
+        "question": "How is the road construction affecting you?",
+        "answer": "It's brutal, honestly. My Route 47 got rerouted through Mission and now I'm running 35 minutes late every single day. Last Tuesday I couldn't make it to pick up my kids from Cesar Chavez before the after-school program closed — I had to call my neighbor to get them."
+      },
+      {
+        "id": "C001-Q02",
+        "question": "What do you think about the Van Ness project overall?",
+        "answer": "Look, I get it — the road needed work and the BRT lanes are going to help us drivers eventually. But they could've phased it better, you know? Right now it's just chaos with no relief in sight for families like mine."
+      },
+      {
+        "id": "C001-Q03",
+        "question": "What would help you most right now?",
+        "answer": "An honest schedule — just tell me which weeks the detours are worst so I can plan my kid pickups. SFMTA keeps saying 'temporary disruption' but it's been four months. I'm burning out."
+      }
+    ]
+  },
+  "C002": {
+    "citizenId": "C002",
+    "citizenName": "Tony Ricci",
+    "responses": [
+      {
+        "id": "C002-Q01",
+        "question": "How is the construction affecting your restaurant?",
+        "answer": "My father opened Ricci's in 1978. Forty-five years on Van Ness, and this is the worst I've ever seen it. They put hoarding right across my front entrance — you can barely tell the restaurant is here. Revenue is down 55%. I'm burning through my savings just to keep the staff."
+      },
+      {
+        "id": "C002-Q02",
+        "question": "Did the City warn you before starting?",
+        "answer": "They sent a form letter in December. A form letter! Eight months of warning for something that's going to cost me a quarter million dollars? I went to the community meeting but nobody from DPW would give me a straight answer on the timeline."
+      },
+      {
+        "id": "C002-Q03",
+        "question": "What are you hoping for going forward?",
+        "answer": "Honestly? I just need them to finish. I applied for the small business disruption fund — $15,000, which barely covers two weeks of losses. But I'll take it. My kids keep telling me to close up, but I'm not letting this city beat us after 45 years."
+      }
+    ]
+  },
+  "C003": {
+    "citizenId": "C003",
+    "citizenName": "Sofia Rodriguez",
+    "responses": [
+      {
+        "id": "C003-Q01",
+        "question": "How did you end up working on this project?",
+        "answer": "DPW put out a posting for contract inspectors — they needed people fast when construction started ahead of schedule. I applied, did the interview, and got placed on the Block A team. It's my first major contract, so I'm really trying not to mess it up."
+      },
+      {
+        "id": "C003-Q02",
+        "question": "What have you found so far during inspection?",
+        "answer": "Three drainage specification issues in Block B that the contractor glossed over. The slope on the storm drain catch basins doesn't match the approved plans — in a heavy rain, you'd get flooding. I flagged them formally and the project manager is still deciding whether to escalate."
+      },
+      {
+        "id": "C003-Q03",
+        "question": "Do you feel like your concerns are being heard?",
+        "answer": "Sometimes. The senior engineer respects me, but some of the site supers treat me like I'm there to slow them down. That's the hardest part — knowing I'm right about the drainage and still having to fight for it to get addressed."
+      }
+    ]
+  },
+  "C004": {
+    "citizenId": "C004",
+    "citizenName": "Earl Washington",
+    "responses": [
+      {
+        "id": "C004-Q01",
+        "question": "How has the construction changed your daily life?",
+        "answer": "My CPMC appointment is on the second Tuesday of every month. Used to take me 15 minutes walking — I know every crosswalk on Van Ness. Now the sidewalk is closed from Bush to Pine and the detour adds three extra blocks. With my knees, that's not nothing."
+      },
+      {
+        "id": "C004-Q02",
+        "question": "What do you think will happen when the road is finished?",
+        "answer": "They're putting in a new bus shelter right on my block — I've seen the plans at the community board. Covered, with a bench. That's going to change everything for getting to my diabetes appointments. So I'm trying to be patient even when it's hard."
+      },
+      {
+        "id": "C004-Q03",
+        "question": "Is there anything you want the City to know?",
+        "answer": "Don't forget about us seniors in the Tenderloin during construction. We don't have cars, we can't Uber everywhere. When you close a sidewalk, you close a whole part of the city for people like me. Keep a clear path, even if it's just temporary."
+      }
+    ]
+  },
+  "C005": {
+    "citizenId": "C005",
+    "citizenName": "Amy Park",
+    "responses": [
+      {
+        "id": "C005-Q01",
+        "question": "How is construction affecting your classroom?",
+        "answer": "We had three asthma incidents in the first six weeks. Three kids using their inhalers at school when they normally don't need to. I measured it on my phone's air quality app — PM2.5 spikes to 45 every time a truck runs near the building. The state standard is 12."
+      },
+      {
+        "id": "C005-Q02",
+        "question": "What have you done about it?",
+        "answer": "I filed a formal complaint with DPW through the noise and construction hotline. I called the district office. I got SFUSD to send an email. And then nothing. A form letter back. My kids are still coughing and I'm keeping windows shut in a classroom with no AC."
+      },
+      {
+        "id": "C005-Q03",
+        "question": "What do you want to happen?",
+        "answer": "A temporary HEPA air filtration unit in every classroom facing Van Ness. That's it. The contractor is running tens of millions of dollars. One unit costs $600. It's not complicated, it's just not being prioritized."
+      }
+    ]
+  },
+  "C006": {
+    "citizenId": "C006",
+    "citizenName": "Tyler Brooks",
+    "responses": [
+      {
+        "id": "C006-Q01",
+        "question": "How has the construction affected your commute?",
+        "answer": "They removed the protected cycle lane on Van Ness on Day One. I've been riding that lane for three years — it's how I get from Hayes Valley to SoMa safely. Now I'm riding in mixed traffic with construction trucks. I had a close call with a delivery van in Month 2. Almost quit cycling entirely."
+      },
+      {
+        "id": "C006-Q02",
+        "question": "What's your view on the project overall?",
+        "answer": "The BRT lanes are going to be great for transit — I actually support the project's goals. But why does cycling get sacrificed to build it? SFMTA keeps saying there'll be a bike lane in the final design, but I've been burned by SF promises before. I'll believe it when I'm riding it."
+      },
+      {
+        "id": "C006-Q03",
+        "question": "Are you going to stay in SF?",
+        "answer": "Seriously considering moving Luma Labs to Oakland. Better bike infrastructure, lower rent, half the commute stress. SF is incredible when it works — but right now it feels hostile to anyone who doesn't drive or take BART. We'll see what the road looks like when it's done."
+      }
+    ]
+  }
+}

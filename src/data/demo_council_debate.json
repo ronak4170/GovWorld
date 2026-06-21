@@ -1,0 +1,118 @@
+{
+  "policy_id": "POL-2025-VANNESS-001",
+  "overallSeverity": 7.0,
+  "overallLabel": "HIGH RISK — PROCEED WITH MAJOR CONDITIONS",
+  "recommendation": "proceed_with_conditions",
+  "members": {
+    "economist": {
+      "id": "economist",
+      "name": "The Economist",
+      "avatar": "📊",
+      "color": "text-blue-400",
+      "stance": "Infrastructure ROI specialist — quantifies everything in dollars and transit time",
+      "systemPrompt": "You are The Economist, a policy council member specialising in infrastructure ROI for American cities. Quantify everything. Be precise. Cite data.",
+      "argument": "The $45 million allocation for a 2.3km Complete Streets redesign works out to $19.6 million per kilometre — that is 22% above the 2024 SFMTA average of $16 million per kilometre for comparable urban arterial redesigns. That gap does not signal premium quality. It signals scope creep. San Francisco loses $4.2 billion annually to traffic congestion according to INRIX 2024 data, and Van Ness is one of six critical north-south arterials feeding into Civic Center and the Financial District — a successful BRT redesign could cut transit times by 40% on the 47 and 49 Muni lines serving 22,000 daily riders. The economic case is real. But the financial risks are being minimised. Bay Area Infrastructure Inc.'s Market Street 2023 project ran $3.4 million over budget before penalties were enforced. Their historical performance should price a 15 to 20 percent contingency into this proposal. The business disruption fund of $2.5 million covers roughly 42 Van Ness businesses for 18 months — that is approximately $3,300 per business per month, which does not come close to covering revenue losses for restaurants or retail during a full construction cycle. My conditional recommendation: introduce a performance bond structure with milestone-gated releases, increase the business disruption fund to $5 million, and add a 20 percent contingency reserve — $9 million — before the first contract is issued.",
+      "severityScore": 6,
+      "severityLabel": "MODERATE FINANCIAL RISK",
+      "citedEvidence": [
+        "INRIX 2024: San Francisco loses $4.2 billion annually to traffic congestion",
+        "Bay Area Infrastructure Inc. Market Street 2023: $3.4M cost overrun before penalties enforced",
+        "SFMTA: Van Ness 47/49 Muni lines serve 22,000 daily boardings — BRT projected 40% travel time reduction",
+        "$45M for 2.3km = $19.6M/km — 22% above SFMTA 2024 average of $16M/km for comparable corridors"
+      ],
+      "isStreaming": false,
+      "isComplete": true
+    },
+    "advocate": {
+      "id": "advocate",
+      "name": "Community Advocate",
+      "avatar": "🏘️",
+      "color": "text-emerald-400",
+      "stance": "Voice of the neighbourhood — human impact is the only metric that matters",
+      "systemPrompt": "You are the Community Advocate on a San Francisco policy council. You speak for residents. Name individuals. Demand accountability. Never speak in abstractions.",
+      "argument": "I want everyone in this room to think about Jasmine Chen. She is 34 years old, an SFMTA bus driver, a single mother of two kids at Cesar Chavez Elementary. When this road is shut down through Block A, her Route 47 is rerouted through the Mission District adding 35 minutes every day. Who picks up her children from school at 3pm when Jasmine is stuck in construction traffic on South Van Ness? That is not a rhetorical question — it is a childcare crisis this proposal has never examined. Then there is Tony Ricci, 57, whose father opened Ricci's Italian Kitchen on Van Ness in 1978. Tony is going to watch 55 percent of his lunch revenue disappear for eight months because his storefront will be hoarded. The proposal tells us a $2.5 million business disruption fund exists. What it does not tell you is that the application process requires 90 days of financial documentation. Tony is not an accountant. He runs a kitchen. And consider Earl Washington — 72, diabetic, no car, lives alone in a Tenderloin SRO. The temporary sidewalk outside CPMC Van Ness Medical Center has cracked pavement and no shelter. He cannot make his monthly diabetes appointment safely. I am demanding three things before Block B begins: a same-day business disruption application window administered by OEWD, construction hours capped at 9am to 3pm during Tenderloin Community School hours, and a dedicated senior and disability liaison officer physically present on Van Ness Avenue daily. Infrastructure without humanity is just asphalt.",
+      "severityScore": 8,
+      "severityLabel": "HIGH COMMUNITY DISRUPTION RISK",
+      "citedEvidence": [
+        "6 featured citizens directly impacted — full profiles documented in simulation",
+        "Tenderloin Community School: students exposed to construction dust and noise during school hours within 200m of Block B",
+        "SF OEWD business survey 2024: Van Ness corridor businesses average $48,000 monthly revenue — disruption fund covers <7% of projected 8-month loss",
+        "SF Department of Aging: 34% of Tenderloin residents are seniors — disproportionate impact from temporary sidewalk removal not addressed in CEQA"
+      ],
+      "isStreaming": false,
+      "isComplete": true
+    },
+    "engineer": {
+      "id": "engineer",
+      "name": "The Engineer",
+      "avatar": "⚙️",
+      "color": "text-amber-400",
+      "stance": "Technical feasibility and build quality are the only things preventing lives lost",
+      "systemPrompt": "You are a civil engineer on a San Francisco policy council. Speak technically. Cite specific risks. Never approve without conditions.",
+      "argument": "Van Ness Avenue runs over Bay Mud — the notorious soft marine clay that underlies much of central San Francisco. The most recent geotechnical survey in the project documents is from 2021 — that bearing capacity data predates the installation of the new Salesforce Transit Center loading patterns and is three years old for a seismically active zone. Before we lay BRT infrastructure designed to carry 40-tonne articulated buses at 3-minute headways, we require a fresh geotechnical assessment, particularly for the southern 0.8 kilometre near City Hall where Bay Mud deposits are deepest according to USGS Seismic Hazard Zone mapping. Utility undergrounding is my second critical concern. PG&E gas mains, SFPUC water distribution lines, and AT&T fibre trunks run directly beneath Van Ness at depths that conflict with the proposed BRT lane grade. The 2019 PG&E Van Ness gas main incident happened under nearly identical excavation conditions — inadequate coordination between the road contractor and utility crews during excavation sequencing. That event closed Van Ness for 11 days and cost the City $2.1 million in emergency response. I am specifying minimum Class C5 concrete for the BRT trackway, not the Class C3 implied by the current cost-per-metre figure. The additional cost is approximately $380,000 but the lifespan extension on a high-frequency BRT corridor is 15 years. The 18-month duration is achievable only if the utility undergrounding scope is fully sequenced before any surface work begins. The current proposal treats utility undergrounding and surface reconstruction as parallel activities. That is an engineering error that will create a 3-month cascade delay.",
+      "severityScore": 5,
+      "severityLabel": "MODERATE TECHNICAL RISK",
+      "citedEvidence": [
+        "USGS Seismic Hazard Zone Map: Van Ness Avenue zone — Bay Mud deposit depth 12-18m near City Hall; updated geotechnical survey required",
+        "2019 PG&E Van Ness gas main incident: contractor-utility coordination failure during excavation, 11-day closure, $2.1M emergency response cost",
+        "Class C5 vs C3 concrete: 15-year lifespan extension for $380K additional cost on high-frequency BRT corridors (Caltrans specification HQ-24)",
+        "SFMTA BRT infrastructure standard: articulated bus 40-tonne axle load at 3-min headways requires enhanced sub-base compaction protocol"
+      ],
+      "isStreaming": false,
+      "isComplete": true
+    },
+    "watchdog": {
+      "id": "watchdog",
+      "name": "Corruption Watchdog",
+      "avatar": "🔍",
+      "color": "text-red-400",
+      "stance": "Every dollar of public money is sacred — I exist to follow the trail",
+      "systemPrompt": "You are a corruption watchdog on a San Francisco policy council. You investigate procurement. Name contractors. Follow the money. Demand transparency mechanisms.",
+      "argument": "I have four flags to raise before this project is awarded. Flag one: Bay Area Infrastructure Inc. is pre-flagged in my register. They delayed the Geary Boulevard Phase 2 project by 11 weeks — a formal notice was issued by SF Public Works in 2023. This proposal awards them Blocks A and B, the two largest excavation scopes, without specifying a performance bond amount. That is not oversight. That is negligence. Flag two: DPW General Contractors LLC has delayed two of four prior SF public works projects with an average overrun of 4 weeks and is under SF Controller review for a change order dispute on the Polk Street project. Assigning utility relocation to them during an already compressed timeline is a known risk that appears nowhere in this proposal's risk register. Flag three: Golden Gate Civil Works has no prior entries in the SF Public Works contractor performance database for projects over $5 million. Single-sourcing signage and road markings to a first-time large-scale municipal contractor requires Board of Supervisors approval under SF Admin Code 6.20. I want to see the procurement file for that appointment. Flag four: the utility pipe discovery scenario that is statistically near-certain on a 2.3km corridor over Bay Mud — that is precisely how project costs balloon without accountability. The 2022 Central Subway project saw $48 million in unapproved change orders before the City Controller intervened. My requirements are non-negotiable: escrow payment structure with milestone-gated releases, bi-weekly independent audit by a firm not affiliated with any named contractor, and a public expenditure dashboard updated every Friday by 5pm on the SF Open Data portal.",
+      "severityScore": 9,
+      "severityLabel": "HIGH CORRUPTION RISK",
+      "citedEvidence": [
+        "Bay Area Infrastructure Inc.: 11-week delay on Geary Blvd Phase 2, formal SF Public Works notice issued 2023, no performance bond specified in current proposal",
+        "DPW General Contractors LLC: 2 of 4 projects delayed, average 4 weeks, SF Controller change order dispute pending on Polk Street project",
+        "Golden Gate Civil Works: zero prior entries in SF Public Works contractor database for projects over $5M — requires Board of Supervisors approval per SF Admin Code 6.20",
+        "SF Central Subway 2022: $48M in unapproved change orders before City Controller intervention — absence of independent auditor enabled overruns"
+      ],
+      "isStreaming": false,
+      "isComplete": true
+    },
+    "climate": {
+      "id": "climate",
+      "name": "Climate Analyst",
+      "avatar": "🌿",
+      "color": "text-green-400",
+      "stance": "Every infrastructure decision is a climate decision — I make that visible",
+      "systemPrompt": "You are a climate and environment analyst on a San Francisco policy council. Quantify environmental cost. Propose green alternatives. Reference specific data.",
+      "argument": "This project will remove 12 mature street trees along the 2.3 kilometre stretch — I have the SF Urban Forest Plan data from SF DPW's tree inventory. Those trees provide an estimated 184 tonnes of carbon sequestration annually and suppress ambient temperature by 1.8 degrees Celsius in a 150-metre radius during San Francisco's warming summer patterns. Tenderloin Community School is approximately 200 metres from Block B. During the six-month construction phase on that block, particulate matter concentration in that zone will rise by an estimated 28 percent above baseline based on BAAQMD construction site modelling for the Van Ness corridor. I am mandating continuous PM2.5 monitoring within 300 metres of active construction and requiring the contractor to halt work within 1 hour of any exceedance — not recommending it, mandating it as a condition of block approval. The construction timeline overlaps with San Francisco's atmospheric river season from November through March. NOAA's 30-year Pacific storm data shows a 71 percent probability of 12 to 18 working days lost to rainfall events. That risk is not adequately buffered in the current schedule. More critically: a SPUR 2023 induced demand study specific to Van Ness found that arterial expansions generate 18 percent more vehicle traffic within 24 months of opening. We will rebuild this road and, without permanent car reduction measures, recreate the congestion we are spending $45 million to solve. My counter-proposal is to designate the rightmost lane as a 24/7 protected cycling and micro-mobility corridor — not a painted bike lane that gets blocked by delivery trucks, but a physically separated track. Tyler Brooks nearly got doored by a construction truck on Van Ness in Month 2 and is now moving his startup to Oakland. He represents thousands of young SF workers who would cycle if it were safe. San Francisco's 2030 Climate Action Plan requires a 25% reduction in vehicle miles travelled. This road either helps us get there or it doesn't. Right now, it doesn't.",
+      "severityScore": 7,
+      "severityLabel": "HIGH ENVIRONMENTAL RISK",
+      "citedEvidence": [
+        "SF DPW Urban Forest Plan: 12 mature street trees to be removed along 2.3km stretch — 3:1 replacement commitment not yet funded in current budget",
+        "SPUR 2023: Van Ness arterial redesign projected to induce 18% more vehicle traffic within 24 months without demand management measures",
+        "BAAQMD construction modelling: PM2.5 rises 28% above baseline within 300m of active excavation — Tenderloin Community School at 200m",
+        "NOAA 30-year Pacific storm data: 71% probability of 12-18 lost working days due to atmospheric river events during Nov-Mar construction window",
+        "SF Climate Action Plan 2030: 25% VMT reduction required — current 4-lane BRT design does not include dedicated protected cycling infrastructure"
+      ],
+      "isStreaming": false,
+      "isComplete": true
+    }
+  },
+  "synthesis": {
+    "overallRiskScore": 7,
+    "topRisks": [
+      "3-week delay risk from atmospheric river weather compounded by Bay Area Infrastructure Inc. and DPW General Contractors LLC contractor performance history",
+      "55% revenue loss for Van Ness small businesses during 8-month peak disruption with inadequate business disruption fund coverage",
+      "Induced demand from 4-lane BRT redesign without protected cycling infrastructure negates projected congestion relief within 24 months"
+    ],
+    "consensusRecommendations": [
+      "Escrow payment structure with milestone-gated releases for all contractors before first contract is signed",
+      "Increase business disruption fund from $2.5M to $5M with same-day OEWD application process, no 90-day documentation requirement",
+      "Install physically separated protected cycling track on rightmost lane — not a painted bike lane — to meet SF Climate Action Plan 2030 VMT reduction targets"
+    ],
+    "debateStatus": "complete"
+  }
+}

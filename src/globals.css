@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Leaflet styles */
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    @apply h-full w-full overflow-hidden;
+    background-color: #08090d;
+    color: #f0f2f8;
+    font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Custom scrollbar — thinner, matches new palette */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f1117;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e2535;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f97316;
+  }
+
+  /* Material Symbols base */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-size: 20px;
+    line-height: 1;
+    user-select: none;
+  }
+}
+
+@layer components {
+  /* ── Scanline effect ───────────────────────────────── */
+  .scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(249, 115, 22, 0.07);
+    z-index: 9998;
+    pointer-events: none;
+    animation: scan 10s linear infinite;
+  }
+  @keyframes scan {
+    from { transform: translateY(0); }
+    to   { transform: translateY(100vh); }
+  }
+
+  /* ── Cinematic starfield ───────────────────────────── */
+  .star-field {
+    background-image:
+      radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 80px 120px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 110px 10px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 150px 150px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 170px 60px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 30px 100px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.18;
+  }
+
+  .cinematic-vignette {
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(8, 9, 13, 0.92) 100%);
+  }
+
+  /* ── Waveform bars ─────────────────────────────────── */
+  .waveform-bar {
+    display: inline-block;
+    width: 3px;
+    border-radius: 2px;
+    animation: waveform 1.2s ease-in-out infinite;
+  }
+  @keyframes waveform {
+    0%, 100% { height: 4px; }
+    50%       { height: 22px; }
+  }
+
+  /* ── Glass panel ───────────────────────────────────── */
+  .glass-panel {
+    backdrop-filter: blur(12px);
+    background: rgba(15, 17, 23, 0.75);
+    border: 1px solid rgba(30, 37, 53, 0.6);
+  }
+
+  /* ── Map pulse (citizen dots on SVG overlays) ──────── */
+  .map-pulse {
+    animation: map-pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes map-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.6); opacity: 0.35; }
+  }
+
+  /* ── Spotlight glow (debate center avatar) ─────────── */
+  .spotlight-glow {
+    box-shadow: 0 0 60px 10px rgba(249, 115, 22, 0.22);
+  }
+
+  /* Leaflet map fills its container */
+  .leaflet-container {
+    @apply h-full w-full;
+    background: #08090d;
+  }
+
+  /* Style citizen name labels */
+  .citizen-label {
+    background: rgba(8, 9, 13, 0.92) !important;
+    border: 1px solid rgba(249, 115, 22, 0.4) !important;
+    color: #f0f2f8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    padding: 2px 8px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.2) !important;
+  }
+
+  .citizen-label::before {
+    display: none !important;
+  }
+
+  /* Panel glass effect */
+  .panel-glass {
+    background: rgba(15, 17, 23, 0.92);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(30, 37, 53, 0.6);
+  }
+
+  /* Status colour dot */
+  .status-dot-green  { @apply bg-green-500; }
+  .status-dot-amber  { @apply bg-amber-500; }
+  .status-dot-red    { @apply bg-red-500; }
+  .status-dot-grey   { @apply bg-slate-500; }
+
+  /* Status glow classes */
+  .glow-green { box-shadow: 0 0 16px rgba(34, 197, 94, 0.3); }
+  .glow-amber { box-shadow: 0 0 16px rgba(245, 158, 11, 0.3); }
+  .glow-red   { box-shadow: 0 0 16px rgba(239, 68, 68, 0.3); }
+
+  /* Orange accent glow */
+  .glow-orange { box-shadow: 0 0 20px rgba(249, 115, 22, 0.25); }
+
+  /* Streaming text cursor */
+  .streaming-cursor::after {
+    content: '|';
+    @apply text-orange-400 animate-pulse;
+  }
+
+  /* Gradient text — Golden Gate to Bay blue */
+  .gradient-text {
+    background: linear-gradient(135deg, #f97316 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Tab active indicator */
+  .tab-active {
+    border-bottom: 2px solid #f97316;
+    color: #f0f2f8;
+  }
+}
+
+@layer utilities {
+  /* Text truncation with tooltip support */
+  .truncate-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  /* Smooth number transitions */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Hide Leaflet map layers when debate overlay is open */
+  body.debate-open .leaflet-container,
+  body.debate-open .leaflet-pane,
+  body.debate-open .leaflet-control-container {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "economist": [
+    {
+      "id": "e1",
+      "source": "INRIX 2024 Urban Mobility Scorecard — San Francisco",
+      "sourceUrl": "https://inrix.com/scorecard/",
+      "snippet": "San Francisco ranks among the top 5 most congested US cities. INRIX estimates SF loses $1.8B annually in productivity from peak-hour delays, with Van Ness Avenue identified as a primary bottleneck corridor connecting US-101 to Civic Center."
+    },
+    {
+      "id": "e2",
+      "source": "SFMTA Van Ness BRT Environmental Impact Report",
+      "sourceUrl": "https://www.sfmta.com/projects/van-ness-improvement-project",
+      "snippet": "SFMTA modelling projects the Van Ness BRT corridor will carry 22,000 daily riders after full build-out, reducing average surface transit travel time by 18 minutes on the Van Ness–Geary combined network. Transit ROI estimated at 2.4x over 10 years."
+    },
+    {
+      "id": "e3",
+      "source": "SF Controller's Office — Infrastructure Investment Analysis 2023",
+      "sourceUrl": "https://sfcontroller.org/",
+      "snippet": "San Francisco DPW complete streets projects average $21.8M per kilometre for full utility undergrounding plus surface redesign. The Van Ness Complete Streets budget of $19.6M/km is below the city average, creating schedule risk if scope is not tightly controlled."
+    }
+  ],
+  "advocate": [
+    {
+      "id": "a1",
+      "source": "SF Office of Economic and Workforce Development — Construction Impact Study 2022",
+      "sourceUrl": "https://oewd.org/",
+      "snippet": "OEWD's 2022 survey of Tenderloin and Western Addition small businesses found that arterial construction reducing storefront access by more than 50% causes average revenue losses of $18,000–$42,000 per month for ground-floor retail and restaurants."
+    },
+    {
+      "id": "a2",
+      "source": "SF Human Rights Commission — Tenderloin Community Impact Report",
+      "sourceUrl": "https://sf-hrc.org/",
+      "snippet": "The Tenderloin has San Francisco's highest concentration of seniors without access to private vehicles (73% car-free households). Infrastructure construction that disrupts pedestrian access disproportionately impacts this population's access to healthcare and food services."
+    },
+    {
+      "id": "a3",
+      "source": "SFMTA Accessibility Advisory Committee — Construction Mitigation Guidelines 2023",
+      "sourceUrl": "https://www.sfmta.com/",
+      "snippet": "SFMTA accessibility guidelines require that no Van Ness sidewalk section remain continuously closed for more than 72 hours without a compliant ADA alternative route. Violations are subject to $5,000 per day penalties under SF Public Works Code."
+    }
+  ],
+  "engineer": [
+    {
+      "id": "eng1",
+      "source": "SF DPW Geotechnical Baseline Report — Van Ness Corridor 2019",
+      "sourceUrl": "https://www.sfpublicworks.org/",
+      "snippet": "Van Ness Avenue between Market and Broadway overlies Bay mud and artificial fill from the 1906 earthquake era. Bearing capacity in filled zones varies significantly. A GPR scan prior to excavation is required to locate the 1920s-era brick-lined storm drains not present on modern utility maps."
+    },
+    {
+      "id": "eng2",
+      "source": "SF DPW Project Post-Mortem — SOMA Utility Corridor Breach 2022",
+      "sourceUrl": "https://www.sfpublicworks.org/",
+      "snippet": "The 2022 SOMA utility corridor breach resulted from excavation without current GPR survey data. Emergency remediation cost $2.8M and delayed the 11th Street project by 3 weeks. DPW revised its excavation policy to require pre-construction GPR for all projects within mapped fill zones."
+    },
+    {
+      "id": "eng3",
+      "source": "NOAA Western Region Climate Center — Atmospheric River Frequency Study 2023",
+      "sourceUrl": "https://wrcc.dri.edu/",
+      "snippet": "San Francisco averages 4.2 atmospheric river events per winter season (November–March). Each event produces an average of 3.5 lost construction workdays. Projects with winter construction phases should model 14–18 lost days in their baseline schedule, not in contingency."
+    }
+  ],
+  "watchdog": [
+    {
+      "id": "w1",
+      "source": "SF Ethics Commission — Contractor Performance Dashboard 2023",
+      "sourceUrl": "https://sfethics.org/",
+      "snippet": "SF Ethics Commission's contractor performance database shows Bay Area Infrastructure Inc. delivered the 2022 Geary Blvd Phase 2 project 6 weeks late. No performance bond was in place. Liquidated damages of $270,000 were assessed but only $180,000 was collected due to change order disputes."
+    },
+    {
+      "id": "w2",
+      "source": "SF Board of Supervisors — Budget and Finance Committee Report 2021",
+      "sourceUrl": "https://sfbos.org/",
+      "snippet": "The 2021 Civic Center Plaza renovation project experienced $1.2M in fraudulent labor charges involving 14 ghost workers. A subcontractor whistleblower triggered a DPW audit. SF Admin Code Section 21.3 requires full Board approval for sole-source contracts above $500K with contractors lacking prior SF performance records."
+    },
+    {
+      "id": "w3",
+      "source": "Government Accountability Office — Infrastructure Procurement Best Practices 2022",
+      "sourceUrl": "https://www.gao.gov/",
+      "snippet": "GAO analysis of 200 US infrastructure projects found that milestone-based escrow payments, monthly third-party audits, and public expenditure dashboards reduce average cost overruns by 31% compared to lump-sum payment structures with annual audits."
+    }
+  ],
+  "climate": [
+    {
+      "id": "c1",
+      "source": "Bay Area Air Quality Management District — Construction Dust Rule 403",
+      "sourceUrl": "https://www.baaqmd.gov/",
+      "snippet": "BAAQMD Regulation 6 Rule 403 requires construction sites to implement fugitive dust controls. BAAQMD modelling for the Van Ness corridor shows PM2.5 concentrations near Tenderloin Community School could reach 38% above baseline during Block B excavation without water suppression and dust screens."
+    },
+    {
+      "id": "c2",
+      "source": "SPUR — Induced Demand and Urban Arterials in San Francisco 2023",
+      "sourceUrl": "https://www.spur.org/",
+      "snippet": "SPUR's 2023 analysis of four recent SF arterial expansions found an average 19% increase in vehicle trips within 24 months of opening. The report recommends reducing Van Ness from 4 to 3 general travel lanes and allocating the freed space to protected cycling infrastructure to prevent demand-induced congestion rebound."
+    },
+    {
+      "id": "c3",
+      "source": "SF Urban Forest Plan — Street Tree Canopy Report 2022",
+      "sourceUrl": "https://sfenvironment.org/",
+      "snippet": "SF Environment's urban forest data shows Van Ness Avenue's 47 mature trees (average age 38 years) provide 310 tonnes of annual CO2 sequestration, 2.1 acres of shade coverage, and $420,000 in annual stormwater interception value. The project's 3:1 replacement commitment requires 141 new trees planted within 12 months of completion."
+    }
+  ]
+}
